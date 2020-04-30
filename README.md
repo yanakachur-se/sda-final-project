@@ -1,4 +1,4 @@
-# SDA starter template
+# Ways of running small & medium business during Covid 19 Pandemic
 
 This web starter template is based on Spring, PostgreSQL, React, React router and Axios. Check the following links for documentation and guides:
 

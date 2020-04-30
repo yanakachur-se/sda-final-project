@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Carousel } from "react-bootstrap";
+import tips from "./hand-washing.jpg";
 
 class HomePage extends Component {
   render() {

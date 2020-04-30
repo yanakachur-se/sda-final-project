@@ -3,6 +3,7 @@ import PostsApi from "./../../api/PostsApi";
 import PostForm from "./PostForm";
 import PostCard from "./PostCard";
 
+
 class PostsPage extends React.Component {
     constructor(props) {
         super(props);
@@ -25,6 +26,7 @@ class PostsPage extends React.Component {
             console.error(e);
         }
     }
+
 
     async deletePost(post) {
         try {
@@ -54,6 +56,7 @@ class PostsPage extends React.Component {
         return (
             <div>
                 <PostForm onSubmit={(postData) => this.createPost(postData,currentEmail)}/>
+                
 
                 {posts.map(post => 
                     <PostCard key={post.id} currentEmail={currentEmail} post={post} onDeleteClick={() => this.deletePost(post)}/>
