@@ -3,7 +3,6 @@ import PostsApi from './../../api/PostsApi';
 import ServiceForm from './serviceForm';
 import ServicePost from '../posts/ServicePost';
 import ServiceCard from '../service/serviceCard';
-import History from '../home/history';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class ServicePage extends React.Component {

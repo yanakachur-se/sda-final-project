@@ -36,8 +36,8 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-warning text-uppercase" to="/posts">
-              Posts
+            <Link className="nav-link text-warning text-uppercase" to="/service">
+              Service
             </Link>
           </li>
 
@@ -79,14 +79,14 @@ function Navbar({ onLogout }) {
               </NavDropdown.Item>
             </NavDropdown>
           </li>
-          <li className="nav-item">
+        {/*   <li className="nav-item">
             <Link
               className="nav-link text-warning text-uppercase"
               to="/service"
             >
               Service
             </Link>
-          </li>
+          </li> */}
 
           <li className="nav-item">
             <Link
