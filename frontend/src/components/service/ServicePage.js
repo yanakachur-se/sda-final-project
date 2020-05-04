@@ -83,8 +83,9 @@ class ServicePage extends React.Component {
       <div>
         {posts.map((post) => (
           <ServiceCard
+          
             key={post.id}
-            currentEmail={post.user.email}
+            postEmail={post.user.email}
             post={post}
             createdAt={post.createdAt}
             onDeleteClick={() => this.deletePost(post)}

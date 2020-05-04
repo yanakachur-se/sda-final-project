@@ -6,6 +6,7 @@ import PostsApi from '../../api/PostsApi';
 function ServiceCard(props) {
   const postId = props.post.id;
   const [post, setPost] = React.useState({});
+  const [email, setEmail] = React.useState({});
 
   const [name, setName] = React.useState('');
   //   const [email, setEmail] = React.useState('');
@@ -50,13 +51,19 @@ function ServiceCard(props) {
     }).then(function () {
       window.location.reload();
     });
-
-    // window.location.reload();
-    // .then(window.location.reload())
-    // .catch((error) => {
-    //   console.log(error);
-    // });
   };
+
+  useEffect(() => {
+    try {
+      async function fetchData() {
+        const response = await PostsApi.getEmail();
+        setEmail(response.data);
+      }
+      fetchData();
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
 
   const [edit, setEdit] = useState(false);
 
@@ -128,23 +135,18 @@ function ServiceCard(props) {
     </div>
   );
 
-  // useEffect(() => {
-  //   try {
-  //     async function fetchData() {
-  //       const response = await PostsApi.getPostById(postId);
-  //       setPost(response.data);
-  //     }
-  //     fetchData();
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }, []);
+  let serviceProviderView = props.postEmail === email;
+  let visitorView = props.postEmail !== email;
+  let showEditButton = serviceProviderView && !edit;
+  let showSaveButton = serviceProviderView && edit;
+  let showCancelButton = serviceProviderView && edit;
 
   return (
     <div className='card mt-3'>
       <div className='card-body'>
         <p>{edit && editedTextDescription}</p>
         <p>{edit && editedAttendeesLimit}</p>
+        <p>{edit || 'From: ' + props.postEmail}</p>
         <p>{edit || 'Activity Description: ' + props.post.description}</p>
         <p> {edit || 'Name of the organizer: ' + props.post.name}</p>
         <p> {edit || 'Activity: ' + props.post.serviceType}</p>
@@ -157,12 +159,20 @@ function ServiceCard(props) {
         <p> {edit || 'Time: ' + props.post.time}</p>
         <p> {edit || 'Created at: ' + props.post.createdAt}</p>
         <p> {edit || 'Updated at: ' + props.post.updatedAt}</p>
+        {/* <p>
+          From : <u>{post.user.email}</u>
+        </p>
+        {post.user.email === currentEmail ? (
+          <button className='btn btn-danger' onClick={onDeleteClick}>
+            Delete
+          </button>
+        ) : null} */}
 
-        {edit || editButton}
-        {edit || deleteButton}
-        {edit && saveButton}
-        {edit && cancelButton}
-        {edit || comeToTheEventButton}
+        {showEditButton && editButton}
+        {showEditButton && deleteButton}
+        {showSaveButton && saveButton}
+        {showCancelButton && cancelButton}
+        {visitorView && comeToTheEventButton}
       </div>
     </div>
   );

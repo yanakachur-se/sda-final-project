@@ -1,5 +1,6 @@
 package se.kth.sda.skeleton.posts;
 
+import se.kth.sda.skeleton.audit.AuditModel;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "post ")
-public class Post {
+public class Post extends AuditModel {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +23,8 @@ public class Post {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "body")
-    private String body;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "date")
     private String date;
@@ -53,6 +54,7 @@ public class Post {
         return status;
     }
 
+
     public void setStatus(String status) {
         this.status = status;
     }
@@ -77,9 +79,9 @@ public class Post {
 
     }
 
-    public Post(String body,User user) {
+    public Post(String description, User user) {
+        this.description = description;
         this.user = user;
-        this.body = body;
     }
 
     public String getServiceType() {
@@ -146,67 +148,11 @@ public class Post {
         this.id = id;
     }
 
-    public String getBody() {
-        return body;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getAttendeesLimit() {
-        return attendeesLimit;
-    }
-
-    public void setAttendeesLimit(int attendeesLimit) {
-        this.attendeesLimit = attendeesLimit;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
