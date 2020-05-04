@@ -15,6 +15,8 @@ import PostsPage from "./components/posts/PostsPage";
 import ChatPage from './components/chat/ChatPage';
 import CommentsPage from './components/comments/CommentsPage'
 import ServicePost from "./components/posts/ServicePost"
+import ServicePage from './components/service/ServicePage';
+import ServiceForm from './components/service/serviceForm';
 
 
 function App() {
@@ -22,33 +24,34 @@ function App() {
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
-            <Router>
-                <Navbar onLogout={() => Auth.logout()} />
+    <Router>
+      <Navbar onLogout={() => Auth.logout()} />
 
-                <div className="container mt-5">
-                    <Switch> 
-                        <Route path='/posts/:id' component={CommentsPage} />
-                        <Route path="/posts">
-                            <PostsPage/>
-                        </Route>
+      <div className='container mt-5'>
+        <Switch>
+          <Route path='/posts/:id' component={CommentsPage} />
+          <Route path='/posts'>
+            <ServicePage />
+          </Route>
 
-                        <Route path="/chat">
-                            <ChatPage/>
-                        </Route>
+          <Route path='/chat'>
+            <ChatPage />
+          </Route>
 
-                        <Route path="/servicepost">
-                            <ServicePost/>
-                        </Route>
-                        
-                        <Route path="/">
-                          <HomePage/>
-                        </Route>
+          <Route exact path='/serviceform'>
+            <ServiceForm />
+          </Route>
 
-
-                        
-                    </Switch>
-                </div>
-            </Router>
+          <Route path='/service'>
+            <ServicePage />
+          </Route>
+          
+          <Route path='/'>
+            <HomePage />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 
   return loggedIn ? loggedInRouter : <LoginPage />;

@@ -1,4 +1,6 @@
-import React from "react";  
+import React, { Component } from "react";
+import PostsApi from "./../../api/PostsApi";
+import Calendar from 'react-calendar';
 
 class PostForm extends Component {
 
@@ -60,15 +62,14 @@ class PostForm extends Component {
         return (
             <div>
                 <div>
-                    <form>
-                        <label>Name</label>
-                        <input type= 'text' />
-                    </form>
-                    <div className="form-group">
-                        <textarea 
-                            className="form-control"
-                            value={body}
-                            onChange={e => setBody(e.target.value)} />
+                    <h3>
+                        Post a Service Here
+                    </h3>
+                </div>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <label>Name of the service provider</label>
+                        <input type='text' value={this.state.name} onChange={this.handleNameChange} />
                     </div>
 
                     <div>
@@ -131,7 +132,7 @@ class PostForm extends Component {
                     <button className="btn btn-primary" onSubmit={this.handleSubmit}>Post this service</button>
                     <button>Cancel</button>
 
-                </div>
+                </form>
 
             </div>
 
