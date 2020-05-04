@@ -19,6 +19,29 @@ public class Post {
     @Column(name = "body")
     private String body;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "date")
+    private String date;
+
+    @Column(name = "time")
+    private String time;
+
+    @Column(name = "location")
+    private String location;
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "attendeesLimit")
+    private int attendeesLimit;
+
+
+
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
@@ -58,4 +81,59 @@ public class Post {
         this.body = body;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getAttendeesLimit() {
+        return attendeesLimit;
+    }
+
+    public void setAttendeesLimit(int attendeesLimit) {
+        this.attendeesLimit = attendeesLimit;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
