@@ -1,44 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-import { NavDropdown } from "react-bootstrap";
-
-function Navbar({ onLogout }) {
-  return (
-    <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
-      <a className="navbar-brand" href="#">
-        <img
-          src={require(`../../assets/logo1.png`)}
-          width={64}
-          height={64}
-          alt="Logo"
-        />
-      </a>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="navbarColor01">
-        <ul className="navbar-nav m-auto">
-          <li className="nav-item">
-            <Link className="nav-link text-warning text-uppercase" to="/">
-              home&nbsp;<i class="fas fa-home"></i>{" "}
-              <span class="sr-only">(current)</span>
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link text-warning text-uppercase" to="/posts">
-=======
 function Navbar({ onLogout }) {
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
@@ -71,7 +33,6 @@ function Navbar({ onLogout }) {
 
           <li className='nav-item'>
             <Link to='/posts' className='nav-link'>
->>>>>>> changes
               Posts
             </Link>
           </li>
