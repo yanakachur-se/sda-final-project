@@ -15,7 +15,6 @@ class serviceForm extends Component {
       date: new Date(),
       time: '6am-8am',
       place: 'Solna',
-      status: 'active',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,7 +32,6 @@ class serviceForm extends Component {
       date: this.state.date,
       time: this.state.time,
       place: this.state.place,
-      status: 'active',
     })
       .then((response) => {
         if (response.status == 200) {
