@@ -4,12 +4,15 @@ import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import Form from "react-bootstrap/Form";
 
 
 
 function Covid19Live() {
   const [latest, setLatest] = useState([]);
   const [results, setResults] = useState([]);
+  const [searchCountries, setSearchCountries] = useState("");
+
   useEffect(() => {
     axios
       .all([
@@ -26,7 +29,13 @@ function Covid19Live() {
   }, []);
   const date = new Date(parseInt(latest.updated));
   const lastUpdated = date.toString();
-  const countries = results.map(data => {
+
+  //filters Countries to show just Sweden
+  const filterCountry = results.filter(item => {
+    return searchCountries !== "" ? item.country.includes(searchCountries) : item;
+  })
+
+  const countries = filterCountry.map(data => {
     return (
       <Card
         bg="light"
@@ -110,6 +119,15 @@ function Covid19Live() {
           </Card.Footer>
         </Card>
       </CardDeck>
+      <Form>
+        <Form.Group controlID="formGroupSearch">
+          <Form.Control 
+            type="text" 
+            placeholder="Search a country"
+            onChange={e => setSearchCountries(e.target.value)}  
+          />
+        </Form.Group>
+      </Form>
       {countries}
       {/* <Sweden /> */}
     </div>
