@@ -23,14 +23,14 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="wrapper-login container-fluid bg-light">
+      <div className="wrapper-login">
         <div className="container">
           <div className="row mt-4">
             <div className="col-md-12">
               <div className="row">
-                <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top container-fluid">
+                <nav className="navbar flex-column navbar-expand-lg navbar-light bg-dark">
                   <a className="navbar-brand" href="#">
-                    <img src={logo} alt="logo" style={{ width: "80px" }} />
+                    <img src={logo} alt="logo" style={{ width: "40px" }} />
                   </a>
                   <button
                     className="navbar-toggler"
@@ -56,25 +56,25 @@ class LoginPage extends Component {
                       <li className="nav-item active">
                         <button
                           type="button"
-                          className="btn btn-warning"
+                          class="btn btn-warning"
                           data-toggle="modal"
                           data-target="#login"
                         >
                           Login
                         </button>
 
-                        <div className="modal" id="login">
-                          <div className="modal-dialog">
-                            <div className="modal-content">
-                              <div className="modal-body">
+                        <div class="modal" id="login">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-body">
                                 <div className="col-12  strong-shadow">
                                   <LoginForm onSubmit={this.login} />
                                 </div>
                               </div>
-                              <div className="modal-footer">
+                              <div class="modal-footer">
                                 <button
                                   type="button"
-                                  className="btn btn-danger"
+                                  class="btn btn-danger"
                                   data-dismiss="modal"
                                 >
                                   Close
@@ -87,25 +87,25 @@ class LoginPage extends Component {
                       <li className="nav-item">
                         <button
                           type="button"
-                          className="btn btn-warning"
+                          class="btn btn-warning"
                           data-toggle="modal"
                           data-target="#sign-up"
                         >
                           Sign up
                         </button>
 
-                        <div className="modal" id="sign-up">
-                          <div className="modal-dialog">
-                            <div className="modal-content">
-                              <div className="modal-body">
+                        <div class="modal" id="sign-up">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-body">
                                 <div className="col-12 mt-4" id="sign-up">
                                   <RegisterForm onSubmit={this.register} />
                                 </div>
                               </div>
-                              <div className="modal-footer">
+                              <div class="modal-footer">
                                 <button
                                   type="button"
-                                  className="btn btn-danger"
+                                  class="btn btn-danger"
                                   data-dismiss="modal"
                                 >
                                   Close
@@ -122,17 +122,16 @@ class LoginPage extends Component {
             </div>
           </div>
           <br />
-          <div className = 'container-fluid'>
           <div
             id="carouselExampleIndicators"
-            className="carousel slide"
+            class="carousel slide"
             data-ride="carousel"
           >
-            <ol className="carousel-indicators">
+            <ol class="carousel-indicators">
               <li
                 data-target="#carouselExampleIndicators"
                 data-slide-to="0"
-                className="active"
+                class="active"
               ></li>
               <li
                 data-target="#carouselExampleIndicators"
@@ -143,81 +142,69 @@ class LoginPage extends Component {
                 data-slide-to="2"
               ></li>
             </ol>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
                 <img
-                  src={require(`../../assets/nature/nature2.jpeg`)}
+                  src={require(`../../assets/how-to-cut-hair.jpg`)}
                   width={1200}
-                  height={300}
+                  height={500}
                   alt="Logo"
-                  d-block w-100
                 />
-                <div className="carousel-caption d-none d-md-block">
-                  <h1 className="display-2" text-warning>
+                <div class="carousel-caption d-none d-md-block">
+                  <h1 class="display-2" text-warning>
                     First slide label
                   </h1>
                   <p>
                     Nulla vitae elit libero, a pharetra augue mollis interdum.
                   </p>
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg"
-                  >
+                  <button type="button" class="btn btn-outline-light btn-lg">
                     View Demo
                   </button>
-                  <button type="button" className="btn btn-warning btn-lg">
+                  <button type="button" class="btn btn-warning btn-lg">
                     Get Started
                   </button>
                 </div>
               </div>
-              <div className="carousel-item">
+              <div class="carousel-item">
                 <img
-                  src={require(`../../assets/nature/yellow-flowers.jpeg`)}
+                  src={require(`../../assets/haircut-sitting-on-bike.jpg`)}
                   width={1200}
-                  height={300}
+                  height={500}
                   alt="Logo"
-                  d-block w-100
                 />
-                <div className="carousel-caption d-none d-md-block">
-                  <h1 className="display-2" text-warning>
+                <div class="carousel-caption d-none d-md-block">
+                  <h1 class="display-2" text-warning>
                     Second slide label
                   </h1>
                   <p>
                     Nulla vitae elit libero, a pharetra augue mollis interdum.
                   </p>
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg"
-                  >
+                  <button type="button" class="btn btn-outline-light btn-lg">
                     View Demo
                   </button>
-                  <button type="button" className="btn btn-warning btn-lg">
+                  <button type="button" class="btn btn-warning btn-lg">
                     Get Started
                   </button>
                 </div>
               </div>
-              <div className="carousel-item">
+              <div class="carousel-item">
                 <img
-                  src={require(`../../assets/nature/nature2.jpeg`)}
+                  src={require(`../../assets/outdoor-hairdresser.jpg`)}
                   width={1200}
-                  height={300}
+                  height={500}
                   alt="Logo"
-                  d-block w-100
                 />
-                <div className="carousel-caption d-none d-md-block">
-                  <h1 className="display-2" text-warning>
+                <div class="carousel-caption d-none d-md-block">
+                  <h1 class="display-2" text-warning>
                     Third slide label
                   </h1>
                   <p>
                     Nulla vitae elit libero, a pharetra augue mollis interdum.
                   </p>
-                  <button
-                    type="button"
-                    className="btn btn-outline-light btn-lg"
-                  >
+                  <button type="button" class="btn btn-outline-light btn-lg">
                     View Demo
                   </button>
-                  <button type="button" className="btn btn-warning btn-lg">
+                  <button type="button" class="btn btn-warning btn-lg">
                     Get Started
                   </button>
                 </div>
@@ -225,72 +212,74 @@ class LoginPage extends Component {
             </div>
           </div>
         </div>
-        </div>
 
         {/* MEET THE TEAM */}
-        <div className="container-fluid-padding">
-          <div className="row welcome text-center">
-            <div className="col-12">
-              <h1 className="display-4">Check Our Services</h1>
+        <div class="container-fluid-padding">
+          <div class="row welcome text-center">
+            <div class="col-12">
+              <h1 class="display-4">Meet the Team</h1>
             </div>
             <hr></hr>
           </div>
         </div>
         {/* CARDS */}
-        <div className="container-fluid-padding">
-          <div className="row padding">
-            <div className="col-md-4">
-              <div className="card">
+        <div class="container-fluid-padding">
+          <div class="row padding">
+            <div class="col-md-4">
+              <div class="card">
                 <img
-                  className="card-img-top"
-                  src={require(`../../assets/group-training.jpeg`)}
-                   width={200}
-                   height={300}
+                  class="card-img-top"
+                  src={require(`../../assets/hair-style.jpeg`)}
                 />
-                <div className="card-body">
-                  <h4 className="card.title">Outdoor group trainings</h4>
-                  <p className="card-text">
-                    Interval trainings, fitness and yoga outdoor: up to 50 people, nice outdoor locations and qualified trainers
+                <div class="card-body">
+                  <h4 class="card.title">Jessica</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Cupiditate deserunt quos tempore omnis expedita suscipit
+                    cumque obcaecati magni. Dignissimos minima vel labore quos,
+                    nostrum doloremque blanditiis iure tempore pariatur facilis.
                   </p>
-                  <a href="#" className="btn btn-outline-warning">
+                  <a href="#" class="btn btn-outline-warning">
                     See profile
                   </a>
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="card">
+            <div class="col-md-4">
+              <div class="card">
                 <img
-                  className="card-img-top"
-                  src={require(`../../assets/traveling-barber.jpg`)}
-                  width={200}
-                  height={300}
+                  class="card-img-top"
+                  src={require(`../../assets/hair-tales.jpeg`)}
                 />
-                <div className="card-body">
-                  <h4 className="card.title">Outdoor haircuts</h4>
-                  <p className="card-text">
-                    Wide range of outdoors services from best hairdressers. Book your time or come to drop-in and have a safe haircut
+                <div class="card-body">
+                  <h4 class="card.title">Amana </h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Cupiditate deserunt quos tempore omnis expedita suscipit
+                    cumque obcaecati magni. Dignissimos minima vel labore quos,
+                    nostrum doloremque blanditiis iure tempore pariatur facilis.
                   </p>
-                  <a href="#" className="btn btn-outline-warning">
+                  <a href="#" class="btn btn-outline-warning">
                     See profile
                   </a>
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="card">
+            <div class="col-md-4">
+              <div class="card">
                 <img
-                  className="card-img-top"
-                  src={require(`../../assets/individual-trainings.jpeg`)}
-                  width={200}
-                  height={300}
+                  class="card-img-top"
+                  src={require(`../../assets/hair-color.jpeg`)}
                 />
-                <div className="card-body">
-                  <h4 className="card.title">Outdoor personal trainings</h4>
-                  <p className="card-text">
-                    Adjust your trainings to you needs and level, have personal sessions in outdoor gyms in your neighbourhood
+                <div class="card-body">
+                  <h4 class="card.title">Monica</h4>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Cupiditate deserunt quos tempore omnis expedita suscipit
+                    cumque obcaecati magni. Dignissimos minima vel labore quos,
+                    nostrum doloremque blanditiis iure tempore pariatur facilis.
                   </p>
-                  <a href="#" className="btn btn-outline-warning">
+                  <a href="#" class="btn btn-outline-warning">
                     See profile
                   </a>
                 </div>
