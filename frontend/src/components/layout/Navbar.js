@@ -28,16 +28,16 @@ function Navbar({ onLogout }) {
         <ul className='navbar-nav m-auto'>
           <li className='nav-item'>
             <Link className='nav-link text-warning text-uppercase' to='/'>
-              home&nbsp;<i class='fas fa-home'></i>{' '}
-              <span class='sr-only'>(current)</span>
+              home&nbsp;<i className='fas fa-home'></i>{' '}
+              <span className='sr-only'>(current)</span>
             </Link>
           </li>
 
           <li className='nav-item'>
             <Link
               className='nav-link text-warning text-uppercase'
-              to='/service'>
-              Service
+              to='/posts'>
+              Service Posts
             </Link>
           </li>
 
@@ -60,12 +60,12 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className='nav-item'>
-            {/* <Link
+            <Link
               className="nav-link text-warning text-uppercase"
               to="/services"
             >
               services
-            </Link> */}
+            </Link>
             <NavDropdown title='Services' id='basic-nav-dropdown'>
               <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
               <NavDropdown.Item href='#action/3.2'>

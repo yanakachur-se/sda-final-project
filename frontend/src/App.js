@@ -38,9 +38,9 @@ function App() {
             <ChatPage />
           </Route>
 
-          <Route path='/service'>
+          {/* <Route path='/service'>
             <ServicePage />
-          </Route>
+          </Route> */}
 
           <Route path='/serviceform'>
             <ServiceForm />

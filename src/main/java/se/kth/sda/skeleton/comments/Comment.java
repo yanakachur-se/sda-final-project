@@ -1,4 +1,7 @@
 package se.kth.sda.skeleton.comments;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.cache.spi.support.CacheUtils;
+import se.kth.sda.skeleton.audit.AuditModel;
 import se.kth.sda.skeleton.posts.Post;
 import se.kth.sda.skeleton.user.User;
 
@@ -6,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "comment")
-public class Comment {
+public class Comment extends AuditModel {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,6 +19,7 @@ public class Comment {
     private String body;
 
     @ManyToOne
+    @JsonIgnore
     private Post post;
 
     @ManyToOne

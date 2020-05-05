@@ -5,74 +5,72 @@ class HomePage extends Component {
   render() {
     return (
       <div
-        id="carouselExampleIndicators"
-        class="carousel slide"
-        data-ride="carousel"
-      >
-        <ol class="carousel-indicators">
+        id='carouselExampleIndicators'
+        className='carousel slide'
+        data-ride='carousel'>
+        <ol className='carousel-indicators'>
           <li
-            data-target="#carouselExampleIndicators"
-            data-slide-to="0"
-            class="active"
-          ></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            data-target='#carouselExampleIndicators'
+            data-slide-to='0'
+            className='active'></li>
+          <li data-target='#carouselExampleIndicators' data-slide-to='1'></li>
+          <li data-target='#carouselExampleIndicators' data-slide-to='2'></li>
         </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+        <div className='carousel-inner'>
+          <div className='carousel-item active'>
             <img
               src={require(`../../assets/traveling-barber.jpg`)}
               width={1200}
               height={500}
-              alt="Logo"
+              alt='Logo'
             />
-            <div class="carousel-caption d-none d-md-block">
-              <h1 class="display-2" text-warning>
+            <div className='carousel-caption d-none d-md-block'>
+              <h1 className='display-2' text-warning>
                 First slide label
               </h1>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <button type="button" class="btn btn-outline-light btn-lg">
+              <button type='button' className='btn btn-outline-light btn-lg'>
                 View Demo
               </button>
-              <button type="button" class="btn btn-warning btn-lg">
+              <button type='button' className='btn btn-warning btn-lg'>
                 Get Started
               </button>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class='carousel-item'>
             <img
               src={require(`../../assets/haircit-in-greenery-trees-river-and-park.jpg`)}
               width={1200}
               height={500}
-              alt="Logo"
+              alt='Logo'
             />
-            <div class="carousel-caption d-none d-md-block">
-              <h1 class="display-2" text-warning>
+            <div class='carousel-caption d-none d-md-block'>
+              <h1 class='display-2' text-warning>
                 Second slide label
               </h1>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <button type="button" class="btn btn-outline-light btn-lg">
+              <button type='button' class='btn btn-outline-light btn-lg'>
                 View Demo
               </button>
-              <button type="button" class="btn btn-warning btn-lg">
+              <button type='button' class='btn btn-warning btn-lg'>
                 Get Started
               </button>
             </div>
           </div>
-          <div class="carousel-item">
+          <div className='carousel-item'>
             <img
               src={require(`../../assets/outdoor-hairdresser.jpg`)}
               width={1200}
               height={500}
-              alt="Logo"
+              alt='Logo'
             />
-            <div class="carousel-caption d-none d-md-block">
+            <div className='carousel-caption d-none d-md-block'>
               <h1>Third slide label</h1>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <button type="button" class="btn btn-outline-light btn-lg">
+              <button type='button' className='btn btn-outline-light btn-lg'>
                 View Demo
               </button>
-              <button type="button" class="btn btn-warning btn-lg">
+              <button type='button' className='btn btn-warning btn-lg'>
                 Get Started
               </button>
             </div>

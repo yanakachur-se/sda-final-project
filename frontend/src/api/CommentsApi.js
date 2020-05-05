@@ -1,4 +1,4 @@
-import Api from "./Api";
+import Api from './Api';
 
 class CommentsApi {
     getEmail(){
@@ -24,6 +24,7 @@ class CommentsApi {
     deleteComment(id) {
         return Api.delete('posts/comments/'+id);
     } 
+
 }
 
 export default new CommentsApi();
