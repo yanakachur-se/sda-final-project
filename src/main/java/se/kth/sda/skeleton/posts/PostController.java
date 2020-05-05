@@ -9,6 +9,7 @@ import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
 import java.util.List;
+import java.util.Optional;
 /*
     @TODO AutoWire PostService and create the methods needed to implement the API.
     Don't forget to add necessary annotations.
@@ -42,9 +43,9 @@ public class PostController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/{email}")
-    public Post savePost(@RequestBody Post newPost ,@PathVariable String email) {
-            User user = userService.findUserByEmail(email);
+    @PostMapping("")
+    public Post savePost(@RequestBody Post newPost ) {
+            User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
             newPost.setUser(user);
             return postService.save(newPost);
     }
@@ -54,8 +55,19 @@ public class PostController {
         postService.deleteById(id);
     }
 
-    @PutMapping("")
-    public Post update(@PathVariable Post updatedPost) {
-        return postService.update(updatedPost);
+    @PutMapping("/{id}")
+    public Post update(@PathVariable Long id,@RequestBody Post updatePost) throws Exception {
+        return postService.update(id,updatePost);
+    }
+
+    @PostMapping("/{id}")
+    public Post savePostWithAttendeeInfo(@PathVariable Long id) throws Exception {
+        User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
+        Optional<Post> existingPost = postService.getByID(id);
+        if (existingPost.isPresent()){
+            return postService.savePostWithAttendeeInfo(existingPost.get(), user);
+        }
+
+         throw new Exception("PostId " + id + " not found");
     }
 }

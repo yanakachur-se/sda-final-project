@@ -23,7 +23,6 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
 
-
     @Length(min = 5, max=100, message = "Password length most be between 5-100 characters")
     @Column(name = "password")
     private String password;
@@ -37,6 +36,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
+
+    @ManyToOne
+    private Post post;
 
     // Hibernate needs a default constructor to function
     public User() {}

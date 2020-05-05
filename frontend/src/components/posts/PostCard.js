@@ -8,9 +8,16 @@ function PostCard({post, onDeleteClick,currentEmail}) {
     return (
         <div className="card mt-3">
             <div className="card-body">
-                <p>
-                    {post.body}
-                </p>
+                
+                  
+
+                <p>Type of the event: {post.type}</p>
+                <p>Activity Description :{post.body}</p>
+                <p>Name of the Organizer :{post.name} </p>
+                <p> Event Date :  {post.date}</p>
+                <p> Location : {post.location} </p>
+                <p>Allowed number of people : {post.attendeesLimit}</p>
+                
                 <p>
                  From : <u>{post.user.email}</u>
                 </p>
