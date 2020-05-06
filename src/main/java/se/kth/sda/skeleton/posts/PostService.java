@@ -44,7 +44,7 @@ public class PostService {
         postRepository.deleteById(id);
     }
 
-    public Post savePostWithAttendeeInfo(Post post, User attendee)  {
+    public Post updatePostWithAttendeeInfo(Post post, User attendee)  {
             List<User> attendees = post.getAttendees();
             attendees.add(attendee);
             post.setAttendees(attendees);
