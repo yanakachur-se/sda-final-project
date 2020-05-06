@@ -27,6 +27,7 @@ public class PostService {
 
     public Post save(Post post) {
         // @TODO save the post to DB and return the saved post
+        post.setStatus(Status.ACTIVE);
         return postRepository.save(post);
     }
 
@@ -47,7 +48,14 @@ public class PostService {
             List<User> attendees = post.getAttendees();
             attendees.add(attendee);
             post.setAttendees(attendees);
+            updateStatus(post);
             return postRepository.save(post);
-
     }
+
+    public void updateStatus(Post post) {
+        if (post.getAttendees().size() == post.getAttendeesLimit()) {
+            post.setStatus(Status.FULL);
+        }
+    }
+
 }
