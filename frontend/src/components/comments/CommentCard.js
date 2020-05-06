@@ -59,10 +59,9 @@ function CommentCard(props){
   
 
   let authUser = props.comment.user.email === props.currentEmail;
-   let visitorView = props.comment.user.email !== props.currentEmail;
+  //  let visitorView = props.comment.user.email !== props.currentEmail;
    let showEditButton = authUser && !edit;
    let showDeleteButton = authUser && !edit;
-
    let showSaveButton = authUser && edit;
    let showCancelButton = authUser && edit;
   return (
