@@ -33,7 +33,19 @@ class CommentsPage extends React.Component {
       console.error(e);
     }
   }
-
+  async updateComment(comment, postId) {
+    try {
+      await CommentsApi.updateComment(postId, comment.id, comment);
+      const newComments = this.state.comments.filter(
+        (c) => c.id !== comment.id
+      );
+      this.setState({
+        comments: newComments,
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
   async deleteComment(comment) {
     try {
       await CommentsApi.deleteComment(comment.id);
@@ -106,6 +118,8 @@ class CommentsPage extends React.Component {
             currentEmail={currentEmail}
             comment={comment}
             onDeleteClick={() => this.deleteComment(comment)}
+            onSubmit={this.updateComment}
+            postID={id}
           />
         ))}
       </div>

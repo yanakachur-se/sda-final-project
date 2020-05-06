@@ -10,7 +10,9 @@ import se.kth.sda.skeleton.posts.PostService;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CommentController {
@@ -58,5 +60,12 @@ public class CommentController {
         comment.setUser(user);
         comment.setPost(post);
         return commentService.create(comment);
+    }
+
+    @PutMapping("/posts/{postId}/comments/{id}")
+    public Comment updateComment(@PathVariable (value = "postId") Long postId,
+                                 @PathVariable (value = "id") Long id,
+                                 @Valid @RequestBody Comment updatedComment) throws Exception {
+        return commentService.updateComment(postId,id,updatedComment);
     }
 }

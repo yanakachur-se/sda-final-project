@@ -7,11 +7,11 @@ function CommentCard(props){
   const handleSubmit = () => {
     // Invoke the passed in event callback
     console.log(body);
-    props.onSubmit({ id:props.comment.id, body: body });
+    props.onSubmit( {body: body, id:props.comment.id}, props.postID );
 
     // Clear the input field
     setBody('');
-    window.location.reload();
+   window.location.reload();
   };
   const [edit, setEdit] = useState(false);
  

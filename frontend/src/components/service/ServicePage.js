@@ -82,7 +82,6 @@ class ServicePage extends React.Component {
 
     return (
       <div>
-        {/* {posts} */}
         {posts.map((post) => (
           <ServiceCard
             key={post.id}
