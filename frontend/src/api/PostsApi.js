@@ -26,8 +26,8 @@ class PostsApi {
     return Api.delete('/posts/' + id);
   }
 
-  savePostWithAttendeeInfo(postId) {
-    return Api.post(`/posts/${postId}`);
+  updatePostWithAttendeeInfo(postId) {
+    return Api.put(`/posts/${postId}/book`);
   }
 }
 

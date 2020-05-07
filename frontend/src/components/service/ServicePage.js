@@ -15,9 +15,9 @@ class ServicePage extends React.Component {
     };
   }
 
-  async createPost(postData,email) {
+  async createPost(postData, email) {
     try {
-      const response = await PostsApi.createPost(postData,email);
+      const response = await PostsApi.createPost(postData, email);
       const post = response.data;
       const newPosts = this.state.posts.concat(post);
 
@@ -43,9 +43,9 @@ class ServicePage extends React.Component {
     }
   }
 
-  async registerAttendee(postData){
+  async registerAttendee(postData) {
     try {
-      const response = await PostsApi.savePostWithAttendeeInfo(postData.id);
+      const response = await PostsApi.updatePostWithAttendeeInfo(postData.id);
       const post = response.data;
       const newPosts = this.state.posts.concat(post);
 
@@ -56,7 +56,6 @@ class ServicePage extends React.Component {
       console.error(e);
     }
   }
-  
 
   async deletePost(post) {
     try {
@@ -71,6 +70,8 @@ class ServicePage extends React.Component {
   }
 
   componentDidMount() {
+
+
     PostsApi.getAllPosts()
       .then(({ data }) => this.setState({ posts: data }))
       .catch((err) => console.error(err));
@@ -83,7 +84,6 @@ class ServicePage extends React.Component {
       <div>
         {posts.map((post) => (
           <ServiceCard
-          
             key={post.id}
             postEmail={post.user.email}
             post={post}

@@ -1,10 +1,12 @@
 package se.kth.sda.skeleton.posts;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import se.kth.sda.skeleton.audit.AuditModel;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,12 +38,13 @@ public class Post extends AuditModel {
     private String place;
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @Column(name = "attendeesLimit")
     private int attendeesLimit;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @ManyToMany (mappedBy = "bookedServices")
     private List<User> attendees = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
@@ -50,12 +53,11 @@ public class Post extends AuditModel {
     @ManyToOne
     private User user;
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

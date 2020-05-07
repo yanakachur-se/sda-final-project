@@ -173,6 +173,9 @@ function ServiceCard(props) {
         {showSaveButton && saveButton}
         {showCancelButton && cancelButton}
         {visitorView && comeToTheEventButton}
+        {<Link to={'/posts/' + props.post.id}>
+          <button className='btn btn-primary'>View</button>
+        </Link>}
       </div>
     </div>
   );
