@@ -71,7 +71,6 @@ class ServicePage extends React.Component {
 
   componentDidMount() {
 
-
     PostsApi.getAllPosts()
       .then(({ data }) => this.setState({ posts: data }))
       .catch((err) => console.error(err));
@@ -90,7 +89,7 @@ class ServicePage extends React.Component {
             createdAt={post.createdAt}
             onDeleteClick={() => this.deletePost(post)}
             onSubmit={(postData) => this.updatePost(postData)}
-            onRegister={(attendeeData)=>this.registerAttendee(attendeeData)}
+            onRegister={(attendeeData) => this.registerAttendee(attendeeData)}
           />
         ))}
       </div>
