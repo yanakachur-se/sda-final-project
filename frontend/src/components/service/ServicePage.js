@@ -45,7 +45,7 @@ class ServicePage extends React.Component {
 
   async registerAttendee(postData) {
     try {
-      const response = await PostsApi.savePostWithAttendeeInfo(postData.id);
+      const response = await PostsApi.updatePostWithAttendeeInfo(postData.id);
       const post = response.data;
       const newPosts = this.state.posts.concat(post);
 

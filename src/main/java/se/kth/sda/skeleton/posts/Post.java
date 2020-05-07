@@ -1,5 +1,6 @@
 package se.kth.sda.skeleton.posts;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import se.kth.sda.skeleton.audit.AuditModel;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
@@ -43,7 +44,7 @@ public class Post extends AuditModel {
     @Column(name = "attendeesLimit")
     private int attendeesLimit;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @ManyToMany (mappedBy = "bookedServices")
     private List<User> attendees = new ArrayList<>();
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)

@@ -1,5 +1,7 @@
 package se.kth.sda.skeleton.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.posts.Post;
@@ -31,14 +33,21 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
-    @ManyToOne
-    private Post post;
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "booking",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "post_id") }
+    )
+    List<Post> bookedServices = new ArrayList<>();
 
     // Hibernate needs a default constructor to function
     public User() {}
@@ -49,6 +58,29 @@ public class User {
         this.name = name;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Post> getBookedServices() {
+        return bookedServices;
+    }
+
+    public void setBookedServices(List<Post> bookedServices) {
+        this.bookedServices = bookedServices;
+    }
 
     public Long getId() {
         return id;
