@@ -18,6 +18,7 @@ import ServicePost from './components/posts/ServicePost';
 import ServicePage from './components/service/ServicePage';
 import ServiceForm from './components/service/serviceForm';
 import Covid19live from './components/covid19live/Covid19Live';
+import ServiceList from './components/service/ServiceList';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -34,13 +35,13 @@ function App() {
             <ServicePage />
           </Route>
 
+          <Route path='/service'>
+            <ServiceList />
+          </Route>
+
           <Route path='/chat'>
             <ChatPage />
           </Route>
-
-          {/* <Route path='/service'>
-            <ServicePage />
-          </Route> */}
 
           <Route path='/serviceform'>
             <ServiceForm />
