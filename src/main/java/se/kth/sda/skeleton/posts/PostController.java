@@ -65,12 +65,9 @@ public class PostController {
         User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
         Optional<Post> existingPost = postService.getByID(id);
         if (existingPost.isPresent()){
-            List services = user.getBookedServices();
-            services.add(existingPost.get());
-            user.setBookedServices(services);
+            postService.updateUserWithBookedService(user, existingPost.get());
             return postService.updatePostWithAttendeeInfo(existingPost.get(), user);
         }
-
          throw new Exception("PostId " + id + " not found");
     }
 }

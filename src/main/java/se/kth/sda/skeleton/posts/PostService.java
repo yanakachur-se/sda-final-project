@@ -31,7 +31,7 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public Post update(Long id,Post postRequest) throws Exception {
+    public Post update(Long id, Post postRequest) throws Exception {
         return postRepository.findById(id).map(post -> {
             post.setAttendeesLimit(postRequest.getAttendeesLimit());
             post.setDescription(postRequest.getDescription());
@@ -44,12 +44,23 @@ public class PostService {
         postRepository.deleteById(id);
     }
 
-    public Post updatePostWithAttendeeInfo(Post post, User attendee)  {
+    public Post updatePostWithAttendeeInfo(Post post, User attendee) {
+        if (post.getStatus() == Status.ACTIVE) {
             List<User> attendees = post.getAttendees();
             attendees.add(attendee);
             post.setAttendees(attendees);
             updateStatus(post);
-            return postRepository.save(post);
+        }
+        return postRepository.save(post);
+    }
+
+    public User updateUserWithBookedService(User user, Post post) {
+        if (post.getStatus() == Status.ACTIVE) {
+            List<Post> services = user.getBookedServices();
+            services.add(post);
+            user.setBookedServices(services);
+        }
+        return user;
     }
 
     public void updateStatus(Post post) {
