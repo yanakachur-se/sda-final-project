@@ -27,7 +27,9 @@ public class PostService {
 
     public Post save(Post post) {
         // @TODO save the post to DB and return the saved post
-        post.setStatus(Status.ACTIVE);
+        if(post.getStatus() != Status.ARCHIVED) {
+            post.setStatus(Status.ACTIVE);
+        }
         return postRepository.save(post);
     }
 
