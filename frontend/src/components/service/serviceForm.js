@@ -142,8 +142,8 @@ class serviceForm extends Component {
           <select value={this.state.time} onChange={this.handleTimeChange}>
             <option value='6am-8am'>6.00am-8.00am</option>
             <option value='8am-10am'>8.00am-10.00am</option>
-            <option value='10am-12am'>10.00am-12.00am</option>
-            <option value='12am-1pm'>12.00am-1.00pm</option>
+            <option value='10am-12pm'>10.00am-12.00pm</option>
+            <option value='12pm-1pm'>12.00pm-1.00pm</option>
             <option value='1pm-3pm'>1.00pm-3.00pm</option>
             <option value='3pm-5pm'>3.00pm-5.00pm</option>
             <option value='5pm-7pm'>5.00pm-7.00pm</option>
