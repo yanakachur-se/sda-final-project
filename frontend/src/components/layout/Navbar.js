@@ -34,6 +34,18 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className='nav-item'>
+            <NavDropdown title='SERVICES' id='basic-nav-dropdown'>
+              <NavDropdown.Item href='/service?service=groupTraining'>Group Training</NavDropdown.Item>
+              <NavDropdown.Item href='/service?service=groupRun'>Group Run</NavDropdown.Item>
+              <NavDropdown.Item href='/service?service=meditation'>Meditation</NavDropdown.Item>
+              <NavDropdown.Item href='/service?service=soccer'>Soccer</NavDropdown.Item>
+              <NavDropdown.Item href='/service?service=Outdoor Yoga'>Outdoor Yoga</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href='/service?service=all'>All Services</NavDropdown.Item>
+            </NavDropdown>
+          </li>
+
+          <li className='nav-item'>
             <Link
               className='nav-link text-warning text-uppercase'
               to='/posts'>
@@ -58,34 +70,6 @@ function Navbar({ onLogout }) {
               about
             </Link>
           </li>
-
-          <li className='nav-item'>
-            <Link
-              className="nav-link text-warning text-uppercase"
-              to="/services"
-            >
-              services
-            </Link>
-            <NavDropdown title='Services' id='basic-nav-dropdown'>
-              <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.2'>
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href='#action/3.4'>
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </li>
-          {/*   <li className="nav-item">
-            <Link
-              className="nav-link text-warning text-uppercase"
-              to="/service"
-            >
-              Service
-            </Link>
-          </li> */}
 
           <li className='nav-item'>
             <Link
