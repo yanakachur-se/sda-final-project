@@ -5,7 +5,7 @@ import PostsApi from '../../api/PostsApi';
 
 function ServiceCard(props) {
   const postId = props.post.id;
-  const [post, setPost] = React.useState({});
+
   const [email, setEmail] = React.useState({});
 
   const [name, setName] = React.useState('');
@@ -135,11 +135,19 @@ function ServiceCard(props) {
     </div>
   );
 
+  let visitorView =
+    props.post.attendees.filter((x) => x.email == email).length === 0 &&
+    props.post.status === 'ACTIVE' &&
+    props.postEmail !== email;
+
+  let attendeeView =
+    props.post.attendees.filter((x) => x.email == email).length === 1;
   let serviceProviderView = props.postEmail === email;
-  let visitorView = props.postEmail !== email;
+  // let visitorView = props.postEmail !== email;
   let showEditButton = serviceProviderView && !edit;
   let showSaveButton = serviceProviderView && edit;
   let showCancelButton = serviceProviderView && edit;
+  let seatsLeft = props.post.attendeesLimit - props.post.attendees.length;
 
   return (
     <div className='card mt-3'>
@@ -159,23 +167,20 @@ function ServiceCard(props) {
         <p> {edit || 'Time: ' + props.post.time}</p>
         <p> {edit || 'Created at: ' + props.post.createdAt}</p>
         <p> {edit || 'Updated at: ' + props.post.updatedAt}</p>
-        {/* <p>
-          From : <u>{post.user.email}</u>
-        </p>
-        {post.user.email === currentEmail ? (
-          <button className='btn btn-danger' onClick={onDeleteClick}>
-            Delete
-          </button>
-        ) : null} */}
-
         {showEditButton && editButton}
         {showEditButton && deleteButton}
         {showSaveButton && saveButton}
         {showCancelButton && cancelButton}
         {visitorView && comeToTheEventButton}
-        {<Link to={'/posts/' + props.post.id}>
-          <button className='btn btn-primary'>View</button>
-        </Link>}
+        {
+          <Link to={'/posts/' + props.post.id}>
+            <button className='btn btn-primary'>View</button>
+          </Link>
+        }
+        {visitorView &&
+          'Only ' + seatsLeft + ' seats left! Smash the green button!'}
+        {attendeeView && ' ' + 'Thank you for booking! :)'}
+        {seatsLeft === 0 && ' ' + 'Sorry, you missed the last seat :)'}
       </div>
     </div>
   );

@@ -13,6 +13,9 @@ class PostsApi {
     return Api.get('/posts/' + id);
   }
 
+  getActiveAndFullPostByEmailAddress(emailAddress){
+    return Api.get(`/posts/by-email/${emailAddress}`);
+  }
 
   createPost(post) {
     return Api.post(`/posts`, post);
