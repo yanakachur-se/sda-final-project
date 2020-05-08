@@ -84,7 +84,7 @@ class PostForm extends Component {
                     <div>
                         <label>Date</label>
                         <Calendar value={this.state.date} onChange={this.handleDateChange} />
-                        {console.log(this.state.date)}
+                        {/* {console.log(this.state.date)} */}
                     </div>
                     <div>
                         <label>Time </label>

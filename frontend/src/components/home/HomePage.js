@@ -37,22 +37,22 @@ class HomePage extends Component {
               </button>
             </div>
           </div>
-          <div class='carousel-item'>
+          <div className='carousel-item'>
             <img
               src={require(`../../assets/haircit-in-greenery-trees-river-and-park.jpg`)}
               width={1200}
               height={500}
               alt='Logo'
             />
-            <div class='carousel-caption d-none d-md-block'>
-              <h1 class='display-2' text-warning>
+            <div className='carousel-caption d-none d-md-block'>
+              <h1 className='display-2' text-warning>
                 Second slide label
               </h1>
               <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <button type='button' class='btn btn-outline-light btn-lg'>
+              <button type='button' className='btn btn-outline-light btn-lg'>
                 View Demo
               </button>
-              <button type='button' class='btn btn-warning btn-lg'>
+              <button type='button' className='btn btn-warning btn-lg'>
                 Get Started
               </button>
             </div>

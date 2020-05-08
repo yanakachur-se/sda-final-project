@@ -137,7 +137,8 @@ function ServiceCard(props) {
 
   let visitorView =
     props.post.attendees.filter((x) => x.email == email).length === 0 &&
-    props.post.status === 'ACTIVE';
+    props.post.status === 'ACTIVE' &&
+    props.postEmail !== email;
 
   let attendeeView =
     props.post.attendees.filter((x) => x.email == email).length === 1;
