@@ -34,7 +34,26 @@ function ServiceCard(props) {
 
     window.location.reload();
   };
-
+ const deletePost = () => {
+   swal({
+     title: 'Are you sure?',
+     text: 'Once deleted, you will not be able to recover this post!',
+     icon: 'warning',
+     buttons: true,
+     dangerMode: true,
+   }).then((willDelete) => {
+     if (willDelete) {
+       swal('Poof! This post has been deleted!', {
+         icon: 'success',
+       });
+       props.onDeleteClick({
+         id: props.post.id,
+       });
+     } else {
+       swal('Your post is safe!');
+     }
+   });
+ };
   const registerComeToEvent = () => {
     props.onRegister({
       id: props.post.id,
@@ -76,10 +95,7 @@ function ServiceCard(props) {
     </button>
   );
   const deleteButton = (
-    <button
-      className='btn btn-danger'
-      onClick={props.onDeleteClick}
-      id='delete'>
+    <button className='btn btn-danger' onClick={deletePost} id='delete'>
       DELETE
     </button>
   );
@@ -136,13 +152,17 @@ function ServiceCard(props) {
   );
 
   let visitorView =
-    props.post.attendees.filter((x) => x.email == email).length === 0 &&
+    props.post.attendees.filter((x) => x.email == email).length == 0 &&
     props.post.status === 'ACTIVE' &&
     props.postEmail !== email;
 
   let attendeeView =
     props.post.attendees.filter((x) => x.email == email).length === 1;
+
   let serviceProviderView = props.postEmail === email;
+
+  // let archivedPostView = props.post.status === 'ARCHIVED';
+
   // let visitorView = props.postEmail !== email;
   let showEditButton = serviceProviderView && !edit;
   let showSaveButton = serviceProviderView && edit;
