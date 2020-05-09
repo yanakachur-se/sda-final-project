@@ -19,6 +19,7 @@ import ServicePage from './components/service/ServicePage';
 import ServiceForm from './components/service/serviceForm';
 import Covid19live from './components/covid19live/Covid19Live';
 import ServiceList from './components/service/ServiceList';
+import Profile from './components/profile/Profile';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -41,6 +42,10 @@ function App() {
 
           <Route path='/chat'>
             <ChatPage />
+          </Route>
+
+          <Route path='/profile'>
+            <Profile />
           </Route>
 
           <Route path='/serviceform'>
