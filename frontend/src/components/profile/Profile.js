@@ -55,6 +55,7 @@ class Profile extends React.Component {
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
                 <th scope="col">Attendees</th>
+                <th scope="col">Status</th>
 
               </tr>
             </thead>
@@ -66,6 +67,7 @@ class Profile extends React.Component {
                   <td>{post.place}</td>
                   <td>{post.date.substring(0,10)}</td>
                   <td>{getListOfAttendees(post).join(', ')}</td>
+                  <td>{post.status.toLowerCase()}</td>
                 </tr>
               )
               }
@@ -80,8 +82,10 @@ class Profile extends React.Component {
             <thead>
               <tr>
                 <th scope="col">Event Description</th>
+                <th scope="col">Activity</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
+                
 
               </tr>
             </thead>
@@ -90,6 +94,7 @@ class Profile extends React.Component {
               {bookings.map((booking) =>
                 <tr>
                   <td>{booking.description}</td>
+                  <td>{booking.serviceType}</td>
                   <td>{booking.place}</td>
                   <td>{booking.date.substring(0,10)}</td>
                 </tr>
