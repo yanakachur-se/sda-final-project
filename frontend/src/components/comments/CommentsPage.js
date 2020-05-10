@@ -3,7 +3,6 @@ import CommentsApi from '../../api/CommentsApi';
 import PostsApi from '../../api/PostsApi';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
-import swal from 'sweetalert';
 
 class CommentsPage extends React.Component {
   constructor(props) {

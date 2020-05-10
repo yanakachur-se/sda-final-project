@@ -11,14 +11,13 @@ import Footer from './components/layout/Footer';
 // Import pages
 import LoginPage from './components/auth/LoginPage';
 import HomePage from './components/home/HomePage';
-import PostsPage from './components/posts/PostsPage';
 import ChatPage from './components/chat/ChatPage';
 import CommentsPage from './components/comments/CommentsPage';
-import ServicePost from './components/posts/ServicePost';
 import ServicePage from './components/service/ServicePage';
 import ServiceForm from './components/service/serviceForm';
 import Covid19live from './components/covid19live/Covid19Live';
 import ServiceList from './components/service/ServiceList';
+import ServiceDetail from './components/service/ServiceDetail';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -34,6 +33,7 @@ function App() {
           <Route path='/posts'>
             <ServicePage />
           </Route>
+          <Route path='/service/:id' component={ServiceDetail} />
 
           <Route path='/service'>
             <ServiceList />
