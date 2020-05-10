@@ -54,9 +54,9 @@ class Profile extends React.Component {
                 <th scope="col">Event Description</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
-                <th scope="col">Attendees</th>
                 <th scope="col">Status</th>
-
+                <th scope="col">Booked</th>
+                <th scope="col">Attendees</th>
               </tr>
             </thead>
 
@@ -66,8 +66,9 @@ class Profile extends React.Component {
                   <td>{post.description}</td>
                   <td>{post.place}</td>
                   <td>{post.date.substring(0,10)}</td>
-                  <td>{getListOfAttendees(post).join(', ')}</td>
                   <td>{post.status.toLowerCase()}</td>
+                  <td>{post.attendees.length + ' out of ' + post.attendeesLimit}</td>
+                  <td>{getListOfAttendees(post).join(', ')}</td>
                 </tr>
               )
               }
