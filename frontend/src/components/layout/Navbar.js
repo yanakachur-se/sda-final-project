@@ -72,6 +72,11 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className='nav-item'>
+            <Link className='nav-link text-warning text-uppercase' to='/profile'>Profile</Link>
+
+          </li>
+
+          <li className='nav-item'>
             <Link
               className='nav-link text-warning text-uppercase'
               to='/serviceform'>

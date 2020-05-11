@@ -70,4 +70,16 @@ public class PostController {
         }
          throw new Exception("PostId " + id + " not found");
     }
+
+    @GetMapping("/myEvents")
+    public List<Post> listOfPostsByServiceProviderEmail(){
+        String email = authService.getLoggedInUserEmail();
+        return postService.getPostsByServiceProviderEmail(email);
+    }
+
+    @GetMapping("/myBookings")
+    public List<Post> listOfBookedServices(){
+        User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
+        return user.getBookedServices();
+    }
 }

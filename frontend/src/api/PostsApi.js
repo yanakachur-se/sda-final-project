@@ -32,6 +32,15 @@ class PostsApi {
   updatePostWithAttendeeInfo(postId) {
     return Api.put(`/posts/${postId}/book`);
   }
+
+  listOfPostsByServiceProviderEmail(){
+    return Api.get('/posts/myEvents');
+  }
+
+  listOfPostsByAttendeeEmail(){
+    return Api.get('/posts/myBookings')
+  }
+
 }
 
 export default new PostsApi();

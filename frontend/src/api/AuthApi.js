@@ -9,6 +9,14 @@ class AuthApi {
     return Api.post('/register', { name, email, password });
   }
 
+  /*getUserDetails(){
+    return Api.get('/profile', {email})
+  } */
+
+  getUserDetails(){
+    return Api.get('/profile')
+  }
+
 }
 
 export default new AuthApi();

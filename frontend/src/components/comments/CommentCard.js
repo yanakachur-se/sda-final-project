@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
+import swal from 'sweetalert';
 
-function CommentCard(props){
-  
+function CommentCard(props) {
   const [body, setBody] = React.useState('');
-
+  const [edit, setEdit] = useState(false);
   const handleSubmit = () => {
     // Invoke the passed in event callback
     console.log(body);
-    props.onSubmit( {body: body, id:props.comment.id}, props.postID );
+    props.onSubmit({ body: body, id: props.comment.id }, props.postID);
 
     // Clear the input field
     setBody('');
-   window.location.reload();
+    window.location.reload();
   };
-  const [edit, setEdit] = useState(false);
- 
+
+ const deleteComment = () => {
+  
+   swal({
+     title: 'Are you sure?',
+     text: 'Once deleted, you will not be able to recover this comment!',
+     icon: 'warning',
+     buttons: true,
+     dangerMode: true,
+   }).then((willDelete) => {
+     if (willDelete) {
+       swal('Done! This comment has been deleted!', {
+         icon: 'success',
+       });
+        props.onDeleteClick({
+          id: props.comment.id,
+        });
+     } 
+     else {
+       swal('Your comment is safe!');
+     }
+   });
+ };
   const editButton = (
     <button
       className='btn btn-warning'
@@ -24,10 +45,7 @@ function CommentCard(props){
     </button>
   );
   const deleteButton = (
-    <button
-      className='btn btn-danger'
-      onClick={props.onDeleteClick}
-      id='delete'>
+    <button className='btn btn-danger' onClick={deleteComment} id='delete'>
       DELETE
     </button>
   );
@@ -56,14 +74,13 @@ function CommentCard(props){
       onChange={(e) => setBody(e.target.value)}
     />
   );
-  
 
   let authUser = props.comment.user.email === props.currentEmail;
   //  let visitorView = props.comment.user.email !== props.currentEmail;
-   let showEditButton = authUser && !edit;
-   let showDeleteButton = authUser && !edit;
-   let showSaveButton = authUser && edit;
-   let showCancelButton = authUser && edit;
+  let showEditButton = authUser && !edit;
+  let showDeleteButton = authUser && !edit;
+  let showSaveButton = authUser && edit;
+  let showCancelButton = authUser && edit;
   return (
     <div className='card mt-3'>
       <div className='card-body'>
@@ -79,7 +96,6 @@ function CommentCard(props){
         {showCancelButton && cancelButton}
       </div>
     </div>
-
   );
 }
 
