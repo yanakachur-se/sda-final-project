@@ -50,7 +50,7 @@ function ServiceDetail(props) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal('Poof! This post has been deleted!', {
+        swal('Done! This post has been deleted!', {
           icon: 'success',
         });
         deletePost(post);
@@ -65,7 +65,7 @@ function ServiceDetail(props) {
       title: 'Good job!',
       text: 'You are successfully registered!',
       icon: 'success',
-      button: 'Yuhuuuu!',
+      button: 'Confirmed!',
       confirmButtonText: 'Yes',
       cancelButtonText: 'No',
       closeOnConfirm: true,

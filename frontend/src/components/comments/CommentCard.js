@@ -24,7 +24,7 @@ function CommentCard(props) {
      dangerMode: true,
    }).then((willDelete) => {
      if (willDelete) {
-       swal('Poof! This comment has been deleted!', {
+       swal('Done! This comment has been deleted!', {
          icon: 'success',
        });
         props.onDeleteClick({

@@ -6,6 +6,7 @@ import se.kth.sda.skeleton.user.User;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /*
     @TODO Autowire the PostRepository and use it to implement all the service methods.
@@ -18,6 +19,14 @@ public class PostService {
 
     public List<Post> getAll() {
         return postRepository.findAll();
+    }
+
+    public List<Post> getPostsByServiceProviderEmail(String email) {
+        List<Post> posts = postRepository.findAll();
+        List<Post> userPosts = posts.stream()
+                .filter(p -> p.getUser().getEmail().equals(email))
+                .collect(Collectors.toList());
+        return userPosts;
     }
 
     public Optional<Post> getByID(Long id) {
@@ -70,5 +79,4 @@ public class PostService {
             post.setStatus(Status.FULL);
         }
     }
-
 }

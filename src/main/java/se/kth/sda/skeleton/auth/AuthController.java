@@ -37,4 +37,11 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
+
+    @GetMapping ("/profile")
+    public User getUserDetails(){
+
+        String email = authService.getLoggedInUserEmail();
+        return userService.findUserByEmail(email);
+    }
 }

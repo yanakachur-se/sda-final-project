@@ -66,7 +66,7 @@ class ServiceList extends React.Component {
                         <td>{post.date}</td>
                         {
                           <Link to={`/service/${post.id}`}>
-                            <button className='btn btn-success'>See detailes</button>
+                            <button className='btn btn-success'>See details</button>
                           </Link>
                         }
                       </tr>
