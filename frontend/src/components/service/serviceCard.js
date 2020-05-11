@@ -29,7 +29,7 @@ function ServiceCard(props) {
       date: date,
       time: time,
       place: place,
-      status: 'active',
+      status: status,
     });
 
     window.location.reload();

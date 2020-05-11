@@ -35,7 +35,7 @@ class serviceForm extends Component {
     })
       .then((response) => {
         if (response.status == 200) {
-          window.location = '/posts';
+          window.location = '/service?service=all';
         }
       })
       .catch((error) => {

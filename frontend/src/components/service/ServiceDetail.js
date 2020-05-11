@@ -20,14 +20,14 @@ function ServiceDetail(props) {
   const [post, setPost] = React.useState(emptyPost);
   const [name, setName] = React.useState('');
   const [description, setDescription] = React.useState('');
-  const [attendeesLimit, setAttendeesLimit] = React.useState('');
+  const [attendeesLimit, setAttendeesLimit] = React.useState('10');
   const [serviceType, setServiceType] = React.useState('');
   const [date, setDate] = React.useState('');
   const [time, setTime] = React.useState('');
   const [place, setPlace] = React.useState('');
   const [edit, setEdit] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     const onSubmit=({
       id: postId,
       name: name,
@@ -70,7 +70,8 @@ function ServiceDetail(props) {
       cancelButtonText: 'No',
       closeOnConfirm: true,
       closeOnCancel: true,
-    }).then(function () {
+    })
+    .then(function () {
       window.location.reload();
     });
   };
@@ -208,14 +209,17 @@ function ServiceDetail(props) {
     post.attendees.filter((x) => x.email == email).length === 1;
 
   let serviceProviderView = post.user.email === email;
-  console.log(post.user.email);
 
-  // let archivedPostView = props.post.status === 'ARCHIVED';
+  let archivedPostView = post.status === 'ARCHIVED';
 
   let showEditButton = serviceProviderView && !edit;
   let showSaveButton = serviceProviderView && edit;
   let showCancelButton = serviceProviderView && edit;
   let seatsLeft = post.attendeesLimit - post.attendees.length;
+  let showYouMissTheLastSeat =
+    post.attendees.filter((x) => x.email == email).length === 0 &&
+    post.status === 'FULL' &&
+    post.user.email !== email;;
 
   return (
     <div className='card mt-3'>
@@ -241,13 +245,19 @@ function ServiceDetail(props) {
         {visitorView && comeToTheEventButton}
         {
           <Link to={'/posts/' + postId}>
-            <button className='btn btn-primary'>Leave a comment!</button>
+            {archivedPostView || (
+              <button className='btn btn-primary'>Leave a comment!</button>
+            )}
           </Link>
         }
+        <p>
+          {archivedPostView && 'Sorry! This is an archived service post. :('}
+        </p>
+
         {visitorView &&
           'Only ' + seatsLeft + ' seats left! Smash the green button!'}
         {attendeeView && ' ' + 'Thank you for booking! :)'}
-        {seatsLeft === 0 && ' ' + 'Sorry, you missed the last seat :)'}
+        {showYouMissTheLastSeat && ' ' + 'Sorry, you missed the last seat :)'}
       </div>
     </div>
   );
