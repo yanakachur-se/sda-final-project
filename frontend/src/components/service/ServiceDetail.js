@@ -2,6 +2,16 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import swal from 'sweetalert';
 import PostsApi from '../../api/PostsApi';
+import moment from 'moment';
+
+var getLocalTime = function(stringDate) {
+  let localTime = moment.utc(stringDate);
+  return localTime.local().format("dddd, MMMM Do YYYY, h:mm:ss a");
+};
+
+var formatDate = function(stringDate) {
+  return moment(stringDate).format("dddd, MMMM Do YYYY");
+};
 
 function ServiceDetail(props) {
   let emptyPost = {
@@ -15,6 +25,7 @@ function ServiceDetail(props) {
     place: '',
     attendees: [{ email: '' }],
   };
+
   const postId = props.match.params.id;
   const [email, setEmail] = React.useState('');
   const [post, setPost] = React.useState(emptyPost);
@@ -234,10 +245,10 @@ function ServiceDetail(props) {
         <p>
           {edit || 'Max number of people attending: ' + post.attendeesLimit}
         </p>
-        <p> {edit || 'Date: ' + post.date}</p>
+        <p> {edit || 'Date: ' + formatDate(post.date)}</p>
         <p> {edit || 'Time: ' + post.time}</p>
-        <p> {edit || 'Created at: ' + post.createdAt}</p>
-        <p> {edit || 'Updated at: ' + post.updatedAt}</p>
+        <p> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</p>
+        <p> {edit || 'Updated at: ' + getLocalTime(post.updatedAt)}</p>
         {showEditButton && editButton}
         {showEditButton && deleteButton}
         {showSaveButton && saveButton}

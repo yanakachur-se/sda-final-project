@@ -1,7 +1,7 @@
 import React from "react";
 import PostsApi from './../../api/PostsApi';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import moment from 'moment';
 
 var getParams = function () {
     var url = window.location.href;
@@ -16,6 +16,10 @@ var getParams = function () {
     }
     return params;
 };
+
+var formatDate = function(stringDate) {
+  return moment(stringDate).format("dddd, MMMM Do YYYY");
+}; 
 
 class ServiceList extends React.Component {
 
@@ -63,7 +67,7 @@ class ServiceList extends React.Component {
                       <tr>
                         <td>{post.description}</td>
                         <td>{post.place}</td>
-                        <td>{post.date}</td>
+                        <td>{formatDate(post.date)}</td>
                         {
                           <Link to={`/service/${post.id}`}>
                             <button className='btn btn-success'>See details</button>
