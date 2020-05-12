@@ -2,6 +2,7 @@ package se.kth.sda.skeleton.posts;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.skeleton.config.EmailServiceImpl;
 import se.kth.sda.skeleton.user.User;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class PostService {
 
     @Autowired
     PostRepository postRepository;
+
+    @Autowired
+    EmailServiceImpl emailService;
 
     public List<Post> getAll() {
         return postRepository.findAll();
@@ -52,6 +56,26 @@ public class PostService {
 
     public void deleteById(Long id) {
         // @TODO delete the post by id
+        Optional<Post> postToDelete = postRepository.findById(id);
+        Post post = postToDelete.get();
+
+        List<User> attendees = post.getAttendees();
+        String postName = post.getName();
+        String postDate = post.getDate().substring(0, 10);
+        String postTime = post.getTime();
+
+        for(User attendee : attendees) {
+            String userEmail = attendee.getEmail();
+            emailService.sendSimpleMessage(userEmail, "event cancellation" ,
+                    "We are sorry to inform you that event " + postName
+                            + " that should take place on " + postDate
+                            +  " " + postTime + " has been cancelled.");
+
+            List<Post> services = attendee.getBookedServices();
+            services.remove(post);
+            attendee.setBookedServices(services);
+        }
+
         postRepository.deleteById(id);
     }
 
