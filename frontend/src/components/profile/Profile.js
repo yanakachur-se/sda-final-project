@@ -10,7 +10,7 @@ var getListOfAttendees = function (post) {
 };
 
 var formatDate = function (stringDate) {
-  return moment(stringDate).format("dddd, MMMM Do YYYY");
+  return moment(stringDate).format("ddd, MMMM Do YYYY");
 };
 
 class Profile extends React.Component {
@@ -42,7 +42,12 @@ class Profile extends React.Component {
   render() {
     const user = this.state.user;
     const posts = this.state.posts;
+    const sortedPosts = [].concat(posts)
+      .sort((a, b) => a.date > b.date ? 1 : -1);
     const bookings = this.state.bookings;
+    const sortedBookings = [].concat(bookings)
+      .sort((a, b) => a.date > b.date ? 1 : -1);
+
 
     return (
 
@@ -61,7 +66,6 @@ class Profile extends React.Component {
         <div className="table table-hover table-responsive ">
           <h3> My Services</h3>
           <table className="table service-table " >
-
             <thead>
               <tr>
                 <th scope="col">Event Description</th>
@@ -74,7 +78,7 @@ class Profile extends React.Component {
             </thead>
 
             <tbody>
-              {posts.map((post) =>
+              {sortedPosts.map((post) =>
                 <tr>
                   <td>{post.description}</td>
                   <td>{post.place}</td>
@@ -106,7 +110,7 @@ class Profile extends React.Component {
             </thead>
 
             <tbody>
-              {bookings.map((booking) =>
+              {sortedBookings.map((booking) =>
                 <tr>
                   <td>{booking.description}</td>
                   <td>{booking.place}</td>

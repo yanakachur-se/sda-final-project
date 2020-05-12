@@ -18,7 +18,7 @@ var getParams = function () {
 };
 
 var formatDate = function (stringDate) {
-  return moment(stringDate).format("dddd, MMMM Do YYYY");
+  return moment(stringDate).format("ddd, MMMM Do YYYY");
 };
 
 class ServiceList extends React.Component {

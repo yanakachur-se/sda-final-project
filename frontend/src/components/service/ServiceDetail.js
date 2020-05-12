@@ -6,11 +6,11 @@ import moment from 'moment';
 
 var getLocalTime = function(stringDate) {
   let localTime = moment.utc(stringDate);
-  return localTime.local().format("dddd, MMMM Do YYYY, h:mm:ss a");
+  return localTime.local().format("ddd, MMMM Do YYYY, h:mm:ss a");
 };
 
 var formatDate = function(stringDate) {
-  return moment(stringDate).format("dddd, MMMM Do YYYY");
+  return moment(stringDate).format("ddd, MMMM Do YYYY");
 };
 
 function ServiceDetail(props) {
