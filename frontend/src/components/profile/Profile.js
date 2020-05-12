@@ -1,12 +1,16 @@
 import React from "react";
 import AuthApi from "../../api/AuthApi";
 import PostsApi from "../../api/PostsApi";
+import moment from 'moment';
 
 var getListOfAttendees = function(post) {
   let emails = post.attendees.map((a) => a.email)
   return emails;
 };
 
+var formatDate = function(stringDate) {
+  return moment(stringDate).format("dddd, MMMM Do YYYY");
+}; 
 
 class Profile extends React.Component {
 
@@ -65,7 +69,7 @@ class Profile extends React.Component {
                 <tr>
                   <td>{post.description}</td>
                   <td>{post.place}</td>
-                  <td>{post.date.substring(0,10)}</td>
+                  <td>{formatDate(post.date)}</td>
                   <td>{post.status.toLowerCase()}</td>
                   <td>{post.attendees.length + ' out of ' + post.attendeesLimit}</td>
                   <td>{getListOfAttendees(post).join(', ')}</td>
@@ -97,7 +101,7 @@ class Profile extends React.Component {
                   <td>{booking.description}</td>
                   <td>{booking.serviceType}</td>
                   <td>{booking.place}</td>
-                  <td>{booking.date.substring(0,10)}</td>
+                  <td>{formatDate(booking.date)}</td>
                 </tr>
               )
               }

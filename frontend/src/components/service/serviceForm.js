@@ -78,6 +78,7 @@ class serviceForm extends Component {
   };
 
   handleDateChange = (date) => {
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
     this.setState({ date });
   };
 
