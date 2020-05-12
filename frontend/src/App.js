@@ -19,7 +19,7 @@ import Covid19live from './components/covid19live/Covid19Live';
 import ServiceList from './components/service/ServiceList';
 import ServiceDetail from './components/service/ServiceDetail';
 import Profile from './components/profile/Profile';
-import ContactUs from './components/contactus/ContactUs'
+import AboutUs from './components/about/AboutUs'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -49,8 +49,8 @@ function App() {
             <Profile />
           </Route>
 
-          <Route path='/contactus'>
-            <ContactUs />
+          <Route path='/aboutus'>
+            <AboutUs />
           </Route>
 
           <Route path='/serviceform'>

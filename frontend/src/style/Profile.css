@@ -8,7 +8,7 @@
 }
 
 .service-table thead tr{
-    background-color: seagreen;
+    background-color:#176560;
     color: white;
     text-align: left;
 }
@@ -26,7 +26,7 @@
 }
 
 .service-table tbody tr:last-of-type{
-    border-bottom: 2px solid seagreen;
+    border-bottom: 2px solid#176560;
 }
 
 .profile{

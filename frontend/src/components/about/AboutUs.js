@@ -3,7 +3,7 @@ import PersonCard from "./PersonCard";
 import '../../style/PersonCard.css';
 import people from '../../assets/developers/developer.json';
 
-function ContactUs() {
+function AboutUs() {
   return (
     <div>
       <h2 class="team-title">Our Development Team</h2>
@@ -23,4 +23,4 @@ function ContactUs() {
   );
 }
 
-export default ContactUs;
+export default AboutUs;

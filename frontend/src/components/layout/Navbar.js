@@ -66,8 +66,8 @@ function Navbar({ onLogout }) {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link text-warning text-uppercase' to='/contactus'>
-              Contact Us
+            <Link className='nav-link text-warning text-uppercase' to='/aboutus'>
+              About Us
             </Link>
           </li>
 

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import PostsApi from './../../api/PostsApi';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
 class serviceForm extends Component {
   constructor(props) {
     super(props);
