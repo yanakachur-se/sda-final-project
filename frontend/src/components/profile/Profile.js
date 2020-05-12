@@ -2,15 +2,16 @@ import React from "react";
 import AuthApi from "../../api/AuthApi";
 import PostsApi from "../../api/PostsApi";
 import moment from 'moment';
+import '../../style/Profile.css';
 
-var getListOfAttendees = function(post) {
+var getListOfAttendees = function (post) {
   let emails = post.attendees.map((a) => a.email)
   return emails;
 };
 
-var formatDate = function(stringDate) {
+var formatDate = function (stringDate) {
   return moment(stringDate).format("dddd, MMMM Do YYYY");
-}; 
+};
 
 class Profile extends React.Component {
 
@@ -46,13 +47,21 @@ class Profile extends React.Component {
     return (
 
       <div>
-        <h2>My Profile Information</h2>
-        <p>Name : {user.name}</p>
-        <p>Email :  {user.email}</p>
+        <div className="profile">
+          <div class="text-uppercase"> <h3>{user.name}</h3></div>
+          <hr></hr>
+          <div class="font-weight-bold">Contact Info</div>
+
+          <p>E-Mail</p>
+          <p>{user.email}</p>
+        </div>
+
+        <hr></hr>
 
         <div className="table table-hover table-responsive ">
           <h3> My Services</h3>
-          <table class="table">
+          <table className="table service-table " >
+
             <thead>
               <tr>
                 <th scope="col">Event Description</th>
@@ -83,14 +92,15 @@ class Profile extends React.Component {
 
         <div className="table table-hover table-responsive ">
           <h3> My Bookings</h3>
-          <table class="table">
+          <table class="table service-table">
             <thead>
               <tr>
-                <th scope="col">Event Description</th>
-                <th scope="col">Activity</th>
+              <th scope="col">Event Description</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
-                
+                <th scope="col">Activity</th>
+                <th scope="col"> Status</th>
+                <th scope="col">Provided By</th>
 
               </tr>
             </thead>
@@ -99,9 +109,11 @@ class Profile extends React.Component {
               {bookings.map((booking) =>
                 <tr>
                   <td>{booking.description}</td>
-                  <td>{booking.serviceType}</td>
                   <td>{booking.place}</td>
                   <td>{formatDate(booking.date)}</td>
+                  <td>{booking.serviceType}</td>
+                  <td>{booking.status}</td>
+                  <td>{booking.user.name}</td>
                 </tr>
               )
               }
