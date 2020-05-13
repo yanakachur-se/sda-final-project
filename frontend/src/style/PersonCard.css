@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Josefin+Sans:ital,wght@0,400;1,300&display=swap");
+
+
+ .team-title{
+    font-family: 'Allura', cursive;
+    font-weight: bold;
+    font-size: 52px;
+    margin-bottom: 60px;
+    text-align: center;
+    justify-content: center;
+}
+
+.person-card{
+    margin: 20px;
+    width: 20rem;
+    box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253);
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;  
+}
+
+.card .person-card:hover{
+box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+}
+
+.person-card .card-body{
+ padding: 3rem 0 !important;
+ font-family: 'Josefin Sans', sans-serif;
+ background-color: olive;
+ color: white;
+}
+
+#team{
+    margin-top: -90px;
+}
+

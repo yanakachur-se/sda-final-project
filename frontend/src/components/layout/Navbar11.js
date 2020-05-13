@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../assets/logo1.png";
-import { Link } from "react-router-dom";
 
 function CustomNavbar1() {
   return (

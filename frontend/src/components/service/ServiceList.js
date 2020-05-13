@@ -1,6 +1,6 @@
 import React from "react";
 import PostsApi from './../../api/PostsApi';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Link } from 'react-router-dom';
 import moment from 'moment';
 
 var getParams = function () {
@@ -49,17 +49,18 @@ class ServiceList extends React.Component {
       .sort((a, b) => a.date > b.date ? 1 : -1);
     var variable = getParams();
 
-    return (
-      <div className='table table-hover table-responsive '>
-        <h2> List Of Events Scheduled</h2>
-        <table class='table'>
-          <thead>
-            <tr>
-              <th scope='col'>Event Description</th>
-              <th scope='col'>Location</th>
-              <th scope='col'>Date</th>
-            </tr>
-          </thead>
+        return (
+          <div className='table table-hover table-responsive '>
+            <h2>Available Events</h2>
+            <table class='table service-table'>
+              <thead>
+                <tr>
+                  <th scope='col'>Event Description</th>
+                  <th scope='col'>Location</th>
+                  <th scope='col'>Date and Time</th>
+                  <th></th>
+                </tr>
+              </thead>
 
           <tbody>
             {sortedPosts.map(
