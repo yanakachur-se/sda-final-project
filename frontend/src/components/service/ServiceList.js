@@ -62,28 +62,28 @@ class ServiceList extends React.Component {
                 </tr>
               </thead>
 
-          <tbody>
-            {sortedPosts.map(
-              (post) =>
-                (variable.service === 'all' ||
-                  post.serviceType === variable.service) && (
-                  <tr>
-                    <td>{post.description}</td>
-                    <td>{post.place}</td>
-                    <td>{formatDate(post.date)}</td>
-                    {
-                      <Link to={`/service/${post.id}`}>
-                        <button className='btn btn-success'>See details</button>
-                      </Link>
-                    }
-                  </tr>
-                )
-            )}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+              <tbody>
+                {posts.map(
+                  (post) =>
+                    (variable.service === 'all' ||
+                      post.serviceType === variable.service) && (
+                      <tr key={post.id}>
+                        <td>{post.name}</td>
+                        <td>{post.place}</td>
+                        <td>{post.date}</td>
+                        {
+                          <Link to={`/service/${post.id}`}>
+                            <button className='btn btn-success'>See details</button>
+                          </Link>
+                        }
+                      </tr>
+                    )
+                )}
+              </tbody>
+            </table>
+          </div>
+        );
+    }
 }
 
 export default ServiceList;

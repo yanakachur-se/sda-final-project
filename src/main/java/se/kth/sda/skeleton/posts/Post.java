@@ -7,6 +7,7 @@ import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
 import javax.swing.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Post extends AuditModel {
     private String name;
 
     @Column(name = "description")
+    @Lob
     private String description;
 
     @Column(name = "date")
