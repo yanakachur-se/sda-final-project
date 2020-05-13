@@ -55,9 +55,9 @@ class ServiceList extends React.Component {
             <table class='table service-table'>
               <thead>
                 <tr>
-                  <th scope='col'>Event Description</th>
+                  <th scope='col'>Name</th>
                   <th scope='col'>Location</th>
-                  <th scope='col'>Date and Time</th>
+                  <th scope='col'>Date</th>
                   <th></th>
                 </tr>
               </thead>
@@ -70,7 +70,7 @@ class ServiceList extends React.Component {
                       <tr key={post.id}>
                         <td>{post.name}</td>
                         <td>{post.place}</td>
-                        <td>{post.date}</td>
+                        <td>{formatDate(post.date)}</td>
                         {
                           <Link to={`/service/${post.id}`}>
                             <button className='btn btn-success'>See details</button>
