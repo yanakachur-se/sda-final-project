@@ -34,13 +34,11 @@ public class PostService {
     }
 
     public Optional<Post> getByID(Long id) {
-        // @TODO get a post by ID if it exists
         return postRepository.findById(id);
     }
 
     public Post save(Post post) {
-        // @TODO save the post to DB and return the saved post
-        if(post.getStatus() != Status.ARCHIVED) {
+        if (post.getStatus() != Status.ARCHIVED) {
             post.setStatus(Status.ACTIVE);
         }
         return postRepository.save(post);
