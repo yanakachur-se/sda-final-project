@@ -1,6 +1,6 @@
 import React from "react";
 import PostsApi from './../../api/PostsApi';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import moment from 'moment';
 
 var getParams = function () {
