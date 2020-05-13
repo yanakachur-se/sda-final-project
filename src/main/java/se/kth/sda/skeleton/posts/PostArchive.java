@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -36,12 +37,14 @@ public class PostArchive {
                 int hyphenIndex = completePostTime.indexOf("-");
                 String postTime = completePostTime.substring(0, hyphenIndex);
 
+                postTime = postTime.replace("am", "AM").replace("pm","PM");
+
                 DateTimeFormatter parser = DateTimeFormatter.ofPattern("h[:mm]a");
                 LocalTime postTimePart = LocalTime.parse(postTime, parser);
 
                 LocalDateTime postDateTime = LocalDateTime.of(postDatePart, postTimePart);
                 //fixing the wrong value of date in database - it is stored one day earlier, because of wrong timezone
-                postDateTime = postDateTime.plusDays(1);
+                //postDateTime = postDateTime.plusDays(1);
 
                 if (currentDateTime.isAfter(postDateTime)) {
                     post.setStatus(Status.ARCHIVED);

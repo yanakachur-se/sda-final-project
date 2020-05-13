@@ -1,5 +1,7 @@
 import React from "react";
 import PostsApi from './../../api/PostsApi';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import moment from 'moment';
 
 var getParams = function () {
     var url = window.location.href;
@@ -14,6 +16,10 @@ var getParams = function () {
     }
     return params;
 };
+
+var formatDate = function(stringDate) {
+  return moment(stringDate).format("dddd, MMMM Do YYYY");
+}; 
 
 class ServiceList extends React.Component {
 
@@ -42,31 +48,37 @@ class ServiceList extends React.Component {
         var variable = getParams();
 
         return (
-            <div className="table table-hover table-responsive ">
-                <h2> List Of Events Scheduled</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Event Description</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Date and Time</th>
-                        </tr>
-                    </thead>
+          <div className='table table-hover table-responsive '>
+            <h2> List Of Events Scheduled</h2>
+            <table class='table'>
+              <thead>
+                <tr>
+                  <th scope='col'>Event Description</th>
+                  <th scope='col'>Location</th>
+                  <th scope='col'>Date and Time</th>
+                </tr>
+              </thead>
 
-                    <tbody>
-                        {posts.map((post) =>
-                                ( ( (variable.service === "all") || (post.serviceType === variable.service ) )
-                                     &&
-                                    <tr>
-                                        <td>{post.description}</td>
-                                        <td>{post.place}</td>
-                                        <td>{post.date}</td>
-                                    </tr>
-                                )
-                            )}
-                    </tbody>
-                </table>
-            </div>
+              <tbody>
+                {posts.map(
+                  (post) =>
+                    (variable.service === 'all' ||
+                      post.serviceType === variable.service) && (
+                      <tr>
+                        <td>{post.description}</td>
+                        <td>{post.place}</td>
+                        <td>{formatDate(post.date)}</td>
+                        {
+                          <Link to={`/service/${post.id}`}>
+                            <button className='btn btn-success'>See details</button>
+                          </Link>
+                        }
+                      </tr>
+                    )
+                )}
+              </tbody>
+            </table>
+          </div>
         );
     }
 }

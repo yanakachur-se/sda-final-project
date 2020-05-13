@@ -35,7 +35,7 @@ class serviceForm extends Component {
     })
       .then((response) => {
         if (response.status == 200) {
-          window.location = '/posts';
+          window.location = '/service?service=all';
         }
       })
       .catch((error) => {
@@ -78,6 +78,7 @@ class serviceForm extends Component {
   };
 
   handleDateChange = (date) => {
+    date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
     this.setState({ date });
   };
 
@@ -163,6 +164,7 @@ class serviceForm extends Component {
           <select
             value={this.state.attendeesLimit}
             onChange={this.handleAttendeesLimitChange}>
+            <option value='1'>1</option>
             <option value='10'>10</option>
             <option value='20'>20</option>
             <option value='30'>30</option>

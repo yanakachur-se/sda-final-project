@@ -1,7 +1,6 @@
 import React from 'react';
 import PostsApi from './../../api/PostsApi';
 import ServiceForm from './serviceForm';
-import ServicePost from '../posts/ServicePost';
 import ServiceCard from '../service/serviceCard';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
