@@ -4,7 +4,7 @@ import { NavDropdown } from "react-bootstrap";
 
 function Navbar({ onLogout }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top shadowNavbar">
+    <nav className="navbar navbar-expand-lg navbar-light bg-sedondary sticky-top shadowNavbar">
       <button
         className="navbar-toggler"
         type="button"
