@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import PostsApi from './../../api/PostsApi';
-
+import ServiceEditor from './ServiceEditor';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import ReactDOM from 'react-dom';
 class serviceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      description: '',
+      description: '{"blocks":[],"entityMap":{}}',
       attendeesLimit: '10',
       serviceType: 'Outdoor Yoga',
       date: new Date(),
@@ -48,15 +48,11 @@ class serviceForm extends Component {
       name: event.target.value,
     });
   };
-  // handleEmailChange = (event) => {
-  //   this.setState({
-  //     email: event.target.value,
-  //   });
-  // };
 
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value,
+
+  handleDescriptionChange = (raw) => {
+    this.setState({     
+      description: JSON.stringify(raw),
     });
   };
 
@@ -99,14 +95,6 @@ class serviceForm extends Component {
           />
         </div>
 
-        {/* <div>
-            <label>Email</label>
-            <input
-              type='text'
-              value={this.state.email}
-              onChange={this.handleEmailChange}
-            />
-          </div> */}
         <div>
           <label>Select an activity you want to organize</label>
           <select
@@ -134,7 +122,7 @@ class serviceForm extends Component {
         <div>
           <label>Date</label>
           <Calendar value={this.state.date} onChange={this.handleDateChange} />
-          {console.log(this.state.date)}
+          {/* {console.log(this.state.date)} */}
         </div>
 
         <div>
@@ -154,9 +142,12 @@ class serviceForm extends Component {
 
         <div>
           <label>Activity Description</label>
-          <textarea
+          <ServiceEditor
+            onChange={this.handleDescriptionChange}
+          />
+          {/* <textarea
             value={this.state.description}
-            onChange={this.handleDescriptionChange}></textarea>
+            onChange={this.handleDescriptionChange}></textarea> */}
         </div>
         <div>
           <label>Max number of people</label>
@@ -171,13 +162,11 @@ class serviceForm extends Component {
           </select>
         </div>
 
-       
-          <div className='form-group'>
-            <button className='btn btn-primary' onClick={this.handleSubmit}>
-              Post this service!
-            </button>
-          </div>
-        
+        <div className='form-group'>
+          <button className='btn btn-primary' onClick={this.handleSubmit}>
+            Post this service!
+          </button>
+        </div>
       </form>
     );
   }

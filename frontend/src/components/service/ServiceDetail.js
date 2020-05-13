@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import swal from 'sweetalert';
 import PostsApi from '../../api/PostsApi';
+import { Editor, EditorState, convertFromRaw, ConvertFromRaw } from 'draft-js';
+import ServiceEditor from './ServiceEditor';
 
 function ServiceDetail(props) {
   let emptyPost = {
@@ -28,7 +30,7 @@ function ServiceDetail(props) {
   const [edit, setEdit] = useState(false);
 
   const handleSubmit = (event) => {
-    const onSubmit=({
+    const onSubmit = {
       id: postId,
       name: name,
       description: description,
@@ -37,10 +39,12 @@ function ServiceDetail(props) {
       date: date,
       time: time,
       place: place,
-    });
+    };
     updatePost(onSubmit);
     window.location.reload();
   };
+
+  console.log(description)
   const deleteAlert = () => {
     swal({
       title: 'Are you sure?',
@@ -176,13 +180,13 @@ function ServiceDetail(props) {
       I will come to this event!
     </button>
   );
+ 
   const editedTextDescription = (
     <div>
-      <label>Activity description: </label>
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <label>Activity Description</label>
+      <ServiceEditor 
+      onChange={(raw) => setDescription(JSON.stringify(raw))}
+       />
     </div>
   );
 
@@ -219,7 +223,7 @@ function ServiceDetail(props) {
   let showYouMissTheLastSeat =
     post.attendees.filter((x) => x.email == email).length === 0 &&
     post.status === 'FULL' &&
-    post.user.email !== email;;
+    post.user.email !== email;
 
   return (
     <div className='card mt-3'>
@@ -227,7 +231,7 @@ function ServiceDetail(props) {
         <p>{edit && editedTextDescription}</p>
         <p>{edit && editedAttendeesLimit}</p>
         <p>{edit || 'From: ' + post.user.email}</p>
-        <p>{edit || 'Activity Description: ' + post.description}</p>
+
         <p> {edit || 'Name of the organizer: ' + post.name}</p>
         <p> {edit || 'Activity: ' + post.serviceType}</p>
         <p> {edit || 'Place: ' + post.place}</p>
@@ -236,6 +240,15 @@ function ServiceDetail(props) {
         </p>
         <p> {edit || 'Date: ' + post.date}</p>
         <p> {edit || 'Time: ' + post.time}</p>
+        <p>{edit || `Activity Description:`}</p>
+        <p>
+          {post.description !== '' && (
+            <ServiceEditor
+              editorState={JSON.parse(post.description)}
+              readOnly={true}
+            />
+          )}
+        </p>
         <p> {edit || 'Created at: ' + post.createdAt}</p>
         <p> {edit || 'Updated at: ' + post.updatedAt}</p>
         {showEditButton && editButton}
@@ -246,7 +259,7 @@ function ServiceDetail(props) {
         {
           <Link to={'/posts/' + postId}>
             {archivedPostView || (
-              <button className='btn btn-primary'>Leave a comment!</button>
+              <button className='btn btn-primary'>View</button>
             )}
           </Link>
         }

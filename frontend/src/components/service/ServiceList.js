@@ -46,7 +46,7 @@ class ServiceList extends React.Component {
         return (
           <div className='table table-hover table-responsive '>
             <h2> List Of Events Scheduled</h2>
-            <table class='table'>
+            <table className='table'>
               <thead>
                 <tr>
                   <th scope='col'>Event Description</th>
@@ -60,8 +60,8 @@ class ServiceList extends React.Component {
                   (post) =>
                     (variable.service === 'all' ||
                       post.serviceType === variable.service) && (
-                      <tr>
-                        <td>{post.description}</td>
+                      <tr key={post.id}>
+                        <td>{post.name}</td>
                         <td>{post.place}</td>
                         <td>{post.date}</td>
                         {

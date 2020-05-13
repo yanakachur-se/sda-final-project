@@ -19,6 +19,8 @@ class LoginPage extends Component {
     if (!registerSuccess) {
       alert("Couldn't register check credentials and try again");
     }
+    window.location.reload();
+    
   }
 
   render() {
