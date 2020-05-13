@@ -9,18 +9,18 @@ function Footer() {
           <div className="row">
             {/* Column 1 */}
             <div className="col-md-4 col-sm-8">
-              <p>email</p>
+              <h12>Email</h12>
               <p>https:www.meetout.se</p>
             </div>
             {/* Column 2 */}
             <div className="col-md-4 col-sm-8">
-              <p>Phone No</p>
+              <h12>Phone No</h12>
 
               <p>0046-08 8675432</p>
             </div>
             {/* Column 3 */}
             <div className="col-md-4 col-sm-8">
-              <p>Address</p>
+              <h12>Address</h12>
 
               <p>Sveavägen 89, Stockholm</p>
             </div>
@@ -38,11 +38,13 @@ function Footer() {
 }
 
 export default Footer;
+
 const FooterContainer = styled.footer`
   .footer-middle {
-    background: var(--mainDark);
+    margin-top: 30px
+    background: #79ba9e;
     padding-top: 3rem;
-    color: var(--mainWhite);
+    color: white;
   }
 
   .footer-bottom {
@@ -50,11 +52,16 @@ const FooterContainer = styled.footer`
     padding-bottom: 2rem;
   }
 
+   .col-md-4 h12 {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
   ul li a {
-    color: var(--mainGrey);
+    color: grey;
   }
 
   ul li a:hover {
-    color: var(--mainLightGrey);
+    color: #f3eee6;
   }
 `;

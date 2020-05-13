@@ -16,7 +16,7 @@ class HomePage extends Component {
             className="active"
           ></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -33,10 +33,7 @@ class HomePage extends Component {
               <p>Click on the Get Started button below to post a service</p>
 
               <Link className="link-button" to="/serviceform">
-                <button
-                  type="button"
-                  className="btn btn-lg"
-                >
+                <button type="button" className="btn btn-lg">
                   Get Started
                 </button>
               </Link>
@@ -56,16 +53,15 @@ class HomePage extends Component {
               <p>Click on the Get Started button below to book a service</p>
 
               <Link className="link-button" to="/service?service=all">
-                <button
-                  type="button"
-                  className="btn btn-lg"
-                >
+                <button type="button" className="btn btn-lg">
                   Get Started
                 </button>
               </Link>
             </div>
           </div>
         </div>
+        <br />
+        <br />
       </div>
     );
   }

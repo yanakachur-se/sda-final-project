@@ -54,13 +54,13 @@ button .btn {
   }
 }
 
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   .navbar ul li {
     padding: 0px !important;
     margin-left: 0px !important;
     margin-right: 0px !important;
   }
-}
+} */
 
 .navbar ul li button {
   height: 64;
@@ -72,6 +72,7 @@ button .btn {
 }
 
 .nav-item :hover {
+  border-bottom: 1px solid #262626;
   background-color: #79ba9e;
 }
 
