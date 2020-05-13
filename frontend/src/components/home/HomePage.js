@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class HomePage extends Component {
   render() {
@@ -27,15 +28,18 @@ class HomePage extends Component {
             />
             <div className="carousel-caption d-none d-md-block">
               <h1 className="display-2" text-warning>
-                First slide label
+                Post a service
               </h1>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <button type="button" className="btn btn-outline-light btn-lg">
-                View Demo
-              </button>
-              <button type="button" className="btn btn-secondary btn-lg">
-                Get Started
-              </button>
+              <p>Click on the Get Started button below to post a service</p>
+
+              <Link className="link-button" to="/serviceform">
+                <button
+                  type="button"
+                  className="btn btn-lg"
+                >
+                  Get Started
+                </button>
+              </Link>
             </div>
           </div>
           <div className="carousel-item">
@@ -47,15 +51,18 @@ class HomePage extends Component {
             />
             <div className="carousel-caption d-none d-md-block">
               <h1 className="display-2" text-warning>
-                Second slide label
+                Book a Service
               </h1>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              <button type="button" className="btn btn-outline-light btn-lg">
-                View Demo
-              </button>
-              <button type="button" className="btn btn-secondary btn-lg">
-                Get Started
-              </button>
+              <p>Click on the Get Started button below to book a service</p>
+
+              <Link className="link-button" to="/service?service=all">
+                <button
+                  type="button"
+                  className="btn btn-lg"
+                >
+                  Get Started
+                </button>
+              </Link>
             </div>
           </div>
         </div>

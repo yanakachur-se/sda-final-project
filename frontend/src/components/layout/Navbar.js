@@ -5,6 +5,14 @@ import { NavDropdown } from "react-bootstrap";
 function Navbar({ onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-sedondary sticky-top shadowNavbar">
+      <a className="navbar-brand mt=0" href="#">
+        <img
+          src={require(`../../assets/meetout1.png`)}
+          width={120}
+          height={50}
+          alt="Logo"
+        />
+      </a>
       <button
         className="navbar-toggler"
         type="button"
@@ -13,17 +21,8 @@ function Navbar({ onLogout }) {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <a className="navbar-brand" href="#">
-        <img
-          src={require(`../../assets/meetout1.png`)}
-          width={120}
-          height={50}
-          alt="Logo"
-        />
-      </a>
-
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav m-auto">
+        <ul className="navbar-nav mx-auto">
           <li className="nav-item">
             <Link className="nav-link text-uppercase" to="/">
               home&nbsp;<i className="fas fa-home"></i>{" "}
