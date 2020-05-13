@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Igor",
+      "title": "Back-end Developer",
+      "description": "Developer",
+      "image": "igor.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Manju",
+        "title": "Back-end Developer",
+        "description": "Developer",
+        "image": "manju.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Maria",
+        "title": "Tester",
+        "description": "Developer",
+        "image": "maria.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Mehwish",
+        "title": "Front-end Developer",
+        "description": "Developer",
+        "image": "mehwish.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Viji",
+        "title": "Front-end Developer",
+        "description": "Cross skilled person who is enthusiatic and good team player",
+        "image": "viji3.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Yana",
+        "title": "Back-end Developer",
+        "description": "Developer",
+        "image": "yana.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Yingtong",
+        "title": "Front-end Developer",
+        "description": "Passionate about numbers, parties :), cooking and photography",
+        "image": "Yingtong.jpg"
+      }
+  ]
