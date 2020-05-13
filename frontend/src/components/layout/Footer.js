@@ -42,7 +42,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          {/* FooteR Bottom */}
+          {/* Footer Bottom */}
           <div className="footer-bottom">
             <p className="text-xs-center">
               &copy;{new Date().getFullYear()} FunOut App - All Rights Reserved
