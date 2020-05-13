@@ -48,11 +48,26 @@ body {
   background: #79ba9e;
 }
 
+.navbar-nav {
+  height: 64;
+  font-weight: 800;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #176560;
+}
+
 .nav-item {
   height: 64;
   font-weight: 800;
   margin-left: 25px;
   margin-right: 25px;
+  color: #176560;
+}
+
+button .btn {
+  color: #79ba9e;
+  height: 64;
+  font-weight: 800;
 }
 
 @media (max-width: 900px) {
@@ -63,7 +78,7 @@ body {
 }
 
 .navbar ul li button {
-  color: #79ba9e;
+  color: gray;
 }
 .navbar ul li button:hover {
   border-bottom: 1px solid #262626;
@@ -133,4 +148,8 @@ p img {
     transform: translateX(-500px);
     transition: transform 0.5s ease-in-out; */
   }
+}
+
+.footer-middle {
+  background: #79ba9e;
 }

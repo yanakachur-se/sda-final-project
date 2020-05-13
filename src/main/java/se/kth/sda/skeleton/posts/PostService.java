@@ -2,10 +2,12 @@ package se.kth.sda.skeleton.posts;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.skeleton.config.EmailServiceImpl;
 import se.kth.sda.skeleton.user.User;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /*
     @TODO Autowire the PostRepository and use it to implement all the service methods.
@@ -16,18 +18,27 @@ public class PostService {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    EmailServiceImpl emailService;
+
     public List<Post> getAll() {
         return postRepository.findAll();
     }
 
+    public List<Post> getPostsByServiceProviderEmail(String email) {
+        List<Post> posts = postRepository.findAll();
+        List<Post> userPosts = posts.stream()
+                .filter(p -> p.getUser().getEmail().equals(email))
+                .collect(Collectors.toList());
+        return userPosts;
+    }
+
     public Optional<Post> getByID(Long id) {
-        // @TODO get a post by ID if it exists
         return postRepository.findById(id);
     }
 
     public Post save(Post post) {
-        // @TODO save the post to DB and return the saved post
-        if(post.getStatus() != Status.ARCHIVED) {
+        if (post.getStatus() != Status.ARCHIVED) {
             post.setStatus(Status.ACTIVE);
         }
         return postRepository.save(post);
@@ -43,6 +54,26 @@ public class PostService {
 
     public void deleteById(Long id) {
         // @TODO delete the post by id
+        Optional<Post> postToDelete = postRepository.findById(id);
+        Post post = postToDelete.get();
+
+        List<User> attendees = post.getAttendees();
+        String postName = post.getName();
+        String postDate = post.getDate().substring(0, 10);
+        String postTime = post.getTime();
+
+        for(User attendee : attendees) {
+            String userEmail = attendee.getEmail();
+            emailService.sendSimpleMessage(userEmail, "event cancellation" ,
+                    "We are sorry to inform you that event " + postName
+                            + " that should take place on " + postDate
+                            +  " " + postTime + " has been cancelled.");
+
+            List<Post> services = attendee.getBookedServices();
+            services.remove(post);
+            attendee.setBookedServices(services);
+        }
+
         postRepository.deleteById(id);
     }
 
@@ -70,5 +101,4 @@ public class PostService {
             post.setStatus(Status.FULL);
         }
     }
-
 }

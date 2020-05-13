@@ -16,8 +16,8 @@ function Navbar({ onLogout }) {
       <a className="navbar-brand" href="#">
         <img
           src={require(`../../assets/meetout1.png`)}
-          width={64}
-          height={40}
+          width={120}
+          height={50}
           alt="Logo"
         />
       </a>
@@ -56,12 +56,6 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-uppercase" to="/posts">
-              Service Posts
-            </Link>
-          </li>
-
-          <li className="nav-item">
             <Link className="nav-link text-uppercase" to="/chat">
               chat
             </Link>
@@ -72,8 +66,14 @@ function Navbar({ onLogout }) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-uppercase" to="/about">
-              about
+            <Link className="nav-link text-uppercase" to="/aboutus">
+              About Us
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link text-uppercase" to="/profile">
+              Profile
             </Link>
           </li>
 
@@ -85,7 +85,7 @@ function Navbar({ onLogout }) {
 
           <li className="nav-item">
             <button
-              className="btn btn-outline-success my-2 my-sm-0"
+              className="btn btn-outline-secondary my-2 my-sm-0"
               onClick={onLogout}
             >
               Logout

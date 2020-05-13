@@ -22,7 +22,7 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="wrapper-login bg-light">
-        <nav className="navbar navbar-expand-md navbar-light bg-light shadowNavbar">
+        <nav className="navbar navbar-expand-lg navbar-light bg-sedondary shadowNavbar">
           <button
             className="navbar-toggler"
             type="button"
@@ -34,8 +34,8 @@ class LoginPage extends Component {
           <a className="navbar-brand" href="#">
             <img
               src={require(`../../assets/meetout1.png`)}
-              width={64}
-              height={40}
+              width={120}
+              height={50}
               alt="Logo"
             />
           </a>
@@ -144,66 +144,65 @@ class LoginPage extends Component {
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img
-                  src={require(`../../assets/wild-green.jpeg`)}
+                  src={require(`../../assets/bars.jpeg`)}
                   width={1200}
-                  height={700}
+                  height={400}
                   alt="Logo"
                 />
                 <div class="carousel-caption d-none d-md-block">
                   <h1 class="display-2" text-secondary>
-                    First slide label
+                    Outdoor Trainings
                   </h1>
                   <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                    We provide safe outdoor services in this Cororona pandemic:
+                    Yoga, Aerobics, Meditation and Soccer.
                   </p>
-                  <button type="button" class="btn btn-outline-light btn-lg">
-                    View Demo
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-lg">
+
+                  <button type="button" class="btn btn-outline-light  btn-lg">
                     Get Started
                   </button>
                 </div>
               </div>
               <div class="carousel-item">
                 <img
-                  src={require(`../../assets/pattern-multi.jpeg`)}
+                  src={require(`../../assets/contrast.jpeg`)}
                   width={1200}
-                  height={700}
+                  height={400}
                   alt="Logo"
                 />
                 <div class="carousel-caption d-none d-md-block">
                   <h1 class="display-2" text-secondary>
-                    Second slide label
+                    Outdoor Haircut Services
                   </h1>
                   <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                    In the indoor services, there are more chances of corona
+                    spread. To deal with the situation and to provide
+                    opportunity for business and customer, we have arranged
+                    services regarding hair in outdoor, open-air settings.
                   </p>
+
                   <button type="button" class="btn btn-outline-light btn-lg">
-                    View Demo
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-lg">
                     Get Started
                   </button>
                 </div>
               </div>
               <div class="carousel-item">
                 <img
-                  src={require(`../../assets/green-tree.jpeg`)}
+                  src={require(`../../assets/leaves.jpeg`)}
                   width={1200}
-                  height={700}
+                  height={400}
                   alt="Logo"
                 />
                 <div class="carousel-caption d-none d-md-block">
                   <h1 class="display-2" text-secondary>
-                    Third slide label
+                    Open oppertunities for business sufferers
                   </h1>
                   <p>
-                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                    The main initiative of this application is to help people
+                    with their business to get new customers.
                   </p>
+
                   <button type="button" class="btn btn-outline-light btn-lg">
-                    View Demo
-                  </button>
-                  <button type="button" class="btn btn-secondary btn-lg">
                     Get Started
                   </button>
                 </div>
@@ -220,7 +219,7 @@ class LoginPage extends Component {
                 class="display-4 landingPageHeader"
                 style={{ paddingTop: "60px", paddingBottom: "30px" }}
               >
-                Meet the Team
+                Outdoor Services
               </h1>
             </div>
             <hr></hr>
@@ -233,19 +232,19 @@ class LoginPage extends Component {
               <div class="card shadow">
                 <img
                   class="card-img-top"
-                  src={require(`../../assets/hair-style.jpeg`)}
+                  src={require(`../../assets/meditation.jpeg`)}
+                  width={300}
+                  height={600}
                 />
                 <div class="card-body">
-                  <h4 class="card.title">Jessica</h4>
+                  <h4 class="card.title">Meditation</h4>
                   <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Cupiditate deserunt quos tempore omnis expedita suscipit
-                    cumque obcaecati magni. Dignissimos minima vel labore quos,
-                    nostrum doloremque blanditiis iure tempore pariatur facilis.
+                    Meditation is a practice where an individual uses a
+                    technique – such as mindfulness, or focusing the mind on a
+                    particular object, thought, or activity – to train attention
+                    and awareness, and achieve a mentally clear and emotionally
+                    calm and stable state.
                   </p>
-                  <a href="#" class="btn btn-outline-secondary">
-                    See profile
-                  </a>
                 </div>
               </div>
             </div>
@@ -253,19 +252,19 @@ class LoginPage extends Component {
               <div class="card shadow">
                 <img
                   class="card-img-top"
-                  src={require(`../../assets/hair-tales.jpeg`)}
+                  src={require(`../../assets/sports.jpeg`)}
+                  width={300}
+                  height={600}
                 />
                 <div class="card-body">
-                  <h4 class="card.title">Amana </h4>
+                  <h4 class="card.title">Sports </h4>
                   <p class="card-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Cupiditate deserunt quos tempore omnis expedita suscipit
-                    cumque obcaecati magni. Dignissimos minima vel labore quos,
-                    nostrum doloremque blanditiis iure tempore pariatur facilis.
+                    Sport includes all forms of competitive physical activity or
+                    games which through casual or organized participation, at
+                    least in part aim to use, maintain or improve physical
+                    ability and skills while providing enjoyment to
+                    participants, entertainment for spectators.
                   </p>
-                  <a href="#" class="btn btn-outline-secondary">
-                    See profile
-                  </a>
                 </div>
               </div>
             </div>
@@ -273,19 +272,18 @@ class LoginPage extends Component {
               <div class="card shadow">
                 <img
                   class="card-img-top"
-                  src={require(`../../assets/hair-color.jpeg`)}
+                  src={require(`../../assets/running.jpeg`)}
+                  width={300}
+                  height={600}
                 />
                 <div class="card-body">
-                  <h4 class="card.title">Monica</h4>
+                  <h4 class="card.title">Running</h4>
                   <p class="card-text">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Cupiditate deserunt quos tempore omnis expedita suscipit
                     cumque obcaecati magni. Dignissimos minima vel labore quos,
                     nostrum doloremque blanditiis iure tempore pariatur facilis.
                   </p>
-                  <a href="#" class="btn btn-outline-secondary">
-                    See profile
-                  </a>
                 </div>
               </div>
             </div>

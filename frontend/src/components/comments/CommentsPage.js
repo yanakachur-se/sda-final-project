@@ -36,12 +36,6 @@ class CommentsPage extends React.Component {
   async updateComment(comment, postId) {
     try {
       await CommentsApi.updateComment(postId, comment.id, comment);
-      const newComments = this.state.comments.filter(
-        (c) => c.id !== comment.id
-      );
-      this.setState({
-        comments: newComments,
-      });
     } catch (e) {
       console.error(e);
     }
@@ -59,6 +53,8 @@ class CommentsPage extends React.Component {
       console.error(e);
     }
   }
+
+  
 
   componentDidMount() {
     const idPost = Number(this.props.match.params.id);
@@ -110,6 +106,7 @@ class CommentsPage extends React.Component {
           onSubmit={(commentData) =>
             this.createComment(commentData, id, currentEmail)
           }
+          post={posts}
         />
 
         {comments.map((comment) => (
