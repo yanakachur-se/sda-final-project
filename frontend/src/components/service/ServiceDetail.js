@@ -4,6 +4,16 @@ import swal from 'sweetalert';
 import PostsApi from '../../api/PostsApi';
 import { Editor, EditorState, convertFromRaw, ConvertFromRaw } from 'draft-js';
 import ServiceEditor from './ServiceEditor';
+import moment from 'moment';
+
+var getLocalTime = function(stringDate) {
+  let localTime = moment.utc(stringDate);
+  return localTime.local().format("ddd, MMMM Do YYYY, h:mm:ss a");
+};
+
+var formatDate = function(stringDate) {
+  return moment(stringDate).format("ddd, MMMM Do YYYY");
+};
 
 function ServiceDetail(props) {
   let emptyPost = {
@@ -17,6 +27,7 @@ function ServiceDetail(props) {
     place: '',
     attendees: [{ email: '' }],
   };
+
   const postId = props.match.params.id;
   const [email, setEmail] = React.useState('');
   const [post, setPost] = React.useState(emptyPost);
@@ -238,7 +249,7 @@ function ServiceDetail(props) {
         <p>
           {edit || 'Max number of people attending: ' + post.attendeesLimit}
         </p>
-        <p> {edit || 'Date: ' + post.date}</p>
+        <p> {edit || 'Date: ' + formatDate(post.date)}</p>
         <p> {edit || 'Time: ' + post.time}</p>
         <p>{edit || `Activity Description:`}</p>
         <p>
@@ -249,8 +260,8 @@ function ServiceDetail(props) {
             />
           )}
         </p>
-        <p> {edit || 'Created at: ' + post.createdAt}</p>
-        <p> {edit || 'Updated at: ' + post.updatedAt}</p>
+        <p> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</p>
+        <p> {edit || 'Updated at: ' + getLocalTime(post.updatedAt)}</p>
         {showEditButton && editButton}
         {showEditButton && deleteButton}
         {showSaveButton && saveButton}

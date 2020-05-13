@@ -1,12 +1,17 @@
 import React from "react";
 import AuthApi from "../../api/AuthApi";
 import PostsApi from "../../api/PostsApi";
+import moment from 'moment';
+import '../../style/Profile.css';
 
-var getListOfAttendees = function(post) {
+var getListOfAttendees = function (post) {
   let emails = post.attendees.map((a) => a.email)
   return emails;
 };
 
+var formatDate = function (stringDate) {
+  return moment(stringDate).format("ddd, MMMM Do YYYY");
+};
 
 class Profile extends React.Component {
 
@@ -37,18 +42,30 @@ class Profile extends React.Component {
   render() {
     const user = this.state.user;
     const posts = this.state.posts;
+    const sortedPosts = [].concat(posts)
+      .sort((a, b) => a.date > b.date ? 1 : -1);
     const bookings = this.state.bookings;
+    const sortedBookings = [].concat(bookings)
+      .sort((a, b) => a.date > b.date ? 1 : -1);
+
 
     return (
 
       <div>
-        <h2>My Profile Information</h2>
-        <p>Name : {user.name}</p>
-        <p>Email :  {user.email}</p>
+        <div className="profile">
+          <div class="text-uppercase"> <h3>{user.name}</h3></div>
+          <hr></hr>
+          <div class="font-weight-bold">Contact Info</div>
+
+          <p>E-Mail</p>
+          <p>{user.email}</p>
+        </div>
+
+        <hr></hr>
 
         <div className="table table-hover table-responsive ">
           <h3> My Services</h3>
-          <table class="table">
+          <table className="table service-table " >
             <thead>
               <tr>
                 <th scope="col">Event Description</th>
@@ -61,11 +78,11 @@ class Profile extends React.Component {
             </thead>
 
             <tbody>
-              {posts.map((post) =>
+              {sortedPosts.map((post) =>
                 <tr>
                   <td>{post.description}</td>
                   <td>{post.place}</td>
-                  <td>{post.date.substring(0,10)}</td>
+                  <td>{formatDate(post.date)}</td>
                   <td>{post.status.toLowerCase()}</td>
                   <td>{post.attendees.length + ' out of ' + post.attendeesLimit}</td>
                   <td>{getListOfAttendees(post).join(', ')}</td>
@@ -79,25 +96,28 @@ class Profile extends React.Component {
 
         <div className="table table-hover table-responsive ">
           <h3> My Bookings</h3>
-          <table class="table">
+          <table class="table service-table">
             <thead>
               <tr>
-                <th scope="col">Event Description</th>
-                <th scope="col">Activity</th>
+              <th scope="col">Event Description</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
-                
+                <th scope="col">Activity</th>
+                <th scope="col"> Status</th>
+                <th scope="col">Provided By</th>
 
               </tr>
             </thead>
 
             <tbody>
-              {bookings.map((booking) =>
+              {sortedBookings.map((booking) =>
                 <tr>
                   <td>{booking.description}</td>
-                  <td>{booking.serviceType}</td>
                   <td>{booking.place}</td>
-                  <td>{booking.date.substring(0,10)}</td>
+                  <td>{formatDate(booking.date)}</td>
+                  <td>{booking.serviceType}</td>
+                  <td>{booking.status}</td>
+                  <td>{booking.user.name}</td>
                 </tr>
               )
               }
