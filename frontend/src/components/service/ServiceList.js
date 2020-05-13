@@ -38,7 +38,7 @@ class ServiceList extends React.Component {
   }
 
   componentDidMount() {
-    PostsApi.getAllPosts()
+    PostsApi.getAllActiveAndFull()
       .then(({ data }) => this.setState({ posts: data }))
       .catch((err) => console.error(err));
   }

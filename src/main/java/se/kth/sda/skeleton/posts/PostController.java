@@ -37,6 +37,11 @@ public class PostController {
         return authService.getLoggedInUserEmail();
     }
 
+    @GetMapping("/future")
+    public List<Post> getAllActiveAndFull(){
+        return postService.getActiveAndFullPosts();
+    }
+
     @GetMapping("/{id}")
     public Post getById(@PathVariable Long id) {
         return postService.getByID(id)
