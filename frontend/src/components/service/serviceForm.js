@@ -87,18 +87,20 @@ class serviceForm extends Component {
   render() {
     return (
       <form>
-        <div>
-          <label>Name</label>
-          <input
+        <div className="form-group">
+          <label for="exampleFormControlTextarea1">Name</label>
+          <input class="form-control" id="exampleFormControlTextarea1" rows="3"
             type='text'
             value={this.state.name}
             onChange={this.handleNameChange}
           />
         </div>
 
-        <div>
-          <label>Select an activity you want to organize</label>
-          <select
+        <div className="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="inputType">Type of activity</label>
+          <select id="inputType" className="form-control"
             value={this.state.serviceType}
             onChange={this.handleServiceTypeChange}>
             <option value='outdoorYoga'>Outdoor Yoga</option>
@@ -109,9 +111,9 @@ class serviceForm extends Component {
           </select>
         </div>
 
-        <div>
-          <label>Place </label>
-          <select value={this.state.place} onChange={this.handlePlaceChange}>
+        <div class="form-group col-md-6">
+          <label for="inputPlace">Place</label>
+          <select id="inputPlace" class="form-control" value={this.state.place} onChange={this.handlePlaceChange}>
             <option value='Solna'>Solna</option>
             <option value='Stockholm'>Stockholm</option>
             <option value='Sundbyberg'>Sundbyberg</option>
@@ -119,16 +121,18 @@ class serviceForm extends Component {
             <option value='Sollentuna'>Sollentuna</option>
           </select>
         </div>
+        </div>
 
-        <div>
+        <div className="form-group">
           <label>Date</label>
           <Calendar value={this.state.date} onChange={this.handleDateChange} />
           {/* {console.log(this.state.date)} */}
         </div>
 
-        <div>
-          <label>Time </label>
-          <select value={this.state.time} onChange={this.handleTimeChange}>
+        <div className="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputTime">Time</label>
+          <select id="inputTime" class="form-control" value={this.state.time} onChange={this.handleTimeChange}>
             <option value='6am-8am'>6.00am-8.00am</option>
             <option value='8am-10am'>8.00am-10.00am</option>
             <option value='10am-12pm'>10.00am-12.00pm</option>
@@ -141,18 +145,9 @@ class serviceForm extends Component {
           </select>
         </div>
 
-        <div>
-          <label>Activity Description</label>
-          <ServiceEditor
-            onChange={this.handleDescriptionChange}
-          />
-          {/* <textarea
-            value={this.state.description}
-            onChange={this.handleDescriptionChange}></textarea> */}
-        </div>
-        <div>
-          <label>Max number of people</label>
-          <select
+        <div class="form-group col-md-4">
+          <label for="inputMax">Max number of people</label>
+          <select id="inputMax" class="form-control"
             value={this.state.attendeesLimit}
             onChange={this.handleAttendeesLimitChange}>
             <option value='1'>1</option>
@@ -162,6 +157,17 @@ class serviceForm extends Component {
             <option value='40'>40</option>
             <option value='50'>50</option>
           </select>
+        </div>
+        </div>
+
+        <div className="form-group">
+          <label>Activity Description</label>
+          <ServiceEditor
+            onChange={this.handleDescriptionChange}
+          />
+          {/* <textarea
+            value={this.state.description}
+            onChange={this.handleDescriptionChange}></textarea> */}
         </div>
 
         <div className='form-group'>
