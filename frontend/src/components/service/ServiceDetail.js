@@ -162,7 +162,7 @@ function ServiceDetail(props) {
   );
   const deleteButton = (
     <button className='btn btn-danger' onClick={deleteAlert} id='delete'>
-      DELETE
+      Delete
     </button>
   );
   const saveButton = (
@@ -263,10 +263,13 @@ function ServiceDetail(props) {
         <p> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</p>
         <p> {edit || 'Updated at: ' + getLocalTime(post.updatedAt)}</p>
         {showEditButton && editButton}
+        <div class='divider' />
         {showEditButton && deleteButton}
         {showSaveButton && saveButton}
+        <div class='divider' />
         {showCancelButton && cancelButton}
         {visitorView && comeToTheEventButton}
+        <div class='divider' />
         {
           <Link to={'/posts/' + postId}>
             {archivedPostView || (
