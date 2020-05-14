@@ -3,7 +3,7 @@
       "id": 1,
       "name": "Igor",
       "title": "Back-end Developer",
-      "description": "Developer",
+      "description": "Having a lifelong interest in IT, new technologies and knowledge. Delighted to work on common goal",
       "image": "igor.jpg"
     },
     {
@@ -24,7 +24,7 @@
         "id": 4,
         "name": "Mehwish",
         "title": "Front-end Developer",
-        "description": "Developer",
+        "description": "Enthusiastic, Innovative Web Designer and Passionate about creating beautiful and usable designs",
         "image": "mehwish.jpg"
       },
       {
@@ -38,7 +38,7 @@
         "id": 6,
         "name": "Yana",
         "title": "Back-end Developer",
-        "description": "Developer",
+        "description": "Inspired by teamwork and constantly looking for new technical challenges",
         "image": "yana.jpg"
       },
       {
