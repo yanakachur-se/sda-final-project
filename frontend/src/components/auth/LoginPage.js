@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import Auth from "../../services/Auth";
 import Footer from "../layout/Footer";
+import { Link } from "react-router-dom";
 
 class LoginPage extends Component {
   async login(loginData) {
@@ -24,15 +25,57 @@ class LoginPage extends Component {
   render() {
     return (
       <div className="wrapper-login bg-light">
+        <div class="modal" id="login">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <div className="col-12">
+                  <LoginForm onSubmit={this.login} />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal" id="sign-up">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body">
+                <div className="col-12 mt-4">
+                  <RegisterForm onSubmit={this.register} />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <nav className="navbar navbar-expand-lg navbar-light bg-sedondary shadowNavbar">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
           <a className="navbar-brand" href="#">
             <img
               src={require(`../../assets/meetout1.png`)}
@@ -41,6 +84,15 @@ class LoginPage extends Component {
               alt="Logo"
             />
           </a>
+
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
@@ -53,32 +105,6 @@ class LoginPage extends Component {
                 >
                   Login
                 </button>
-
-                <div class="modal" id="login">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
-                          &times;
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div className="col-12">
-                          <LoginForm onSubmit={this.login} />
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-danger"
-                          data-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </li>
               <li className="nav-item">
                 <button
@@ -89,41 +115,15 @@ class LoginPage extends Component {
                 >
                   Sign up
                 </button>
-
-                <div class="modal" id="sign-up">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button class="close" data-dismiss="modal">
-                          &times;
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div className="col-12 mt-4">
-                          <RegisterForm onSubmit={this.register} />
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-danger"
-                          data-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </li>
             </ul>
           </div>
         </nav>
 
         <br />
-        <div className="container">
+        <br />
+        <div className="container mt-2">
           <div
-            container
             id="carouselExampleIndicators"
             class="carousel slide"
             data-ride="carousel"
@@ -160,7 +160,12 @@ class LoginPage extends Component {
                     Yoga, Aerobics, Meditation and Soccer.
                   </p>
 
-                  <button type="button" class="btn btn-outline-light  btn-lg">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light  btn-lg"
+                    data-toggle="modal"
+                    data-target="#sign-up"
+                  >
                     Get Started
                   </button>
                 </div>
@@ -183,7 +188,12 @@ class LoginPage extends Component {
                     services regarding hair in outdoor, open-air settings.
                   </p>
 
-                  <button type="button" class="btn btn-outline-light btn-lg">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light btn-lg"
+                    data-toggle="modal"
+                    data-target="#sign-up"
+                  >
                     Get Started
                   </button>
                 </div>
@@ -203,10 +213,16 @@ class LoginPage extends Component {
                     The main initiative of this application is to help people
                     with their business to get new customers.
                   </p>
-
-                  <button type="button" class="btn btn-outline-light btn-lg">
-                    Get Started
-                  </button>
+                  <Link className="link-button" to="">
+                    <button
+                      type="button"
+                      class="btn btn-outline-light btn-lg"
+                      data-toggle="modal"
+                      data-target="#sign-up"
+                    >
+                      Get Started
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

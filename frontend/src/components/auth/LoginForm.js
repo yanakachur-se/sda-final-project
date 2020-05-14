@@ -34,6 +34,7 @@ function LoginForm({ onSubmit }) {
           <div className="form-group">
             <button
               className="btn btn-info"
+              data-dismiss="modal"
               onClick={() => onSubmit({ email, password })}
             >
               Login

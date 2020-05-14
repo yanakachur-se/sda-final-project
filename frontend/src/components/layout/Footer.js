@@ -1,60 +1,62 @@
 import React from "react";
-import styled from "styled-components";
+
+import "../../style/Footer.css";
 
 function Footer() {
   return (
-    <FooterContainer className="main-footer">
-      <div className="footer-middle">
-        <div className="container">
-          <div className="row">
-            {/* Column 1 */}
-            <div className="col-md-4 col-sm-8">
-              <p>email</p>
-              <p>https:www.meetout.se</p>
-            </div>
-            {/* Column 2 */}
-            <div className="col-md-4 col-sm-8">
-              <p>Phone No</p>
+    <div className="main-footer">
+      <div className="container">
+        <div className="row">
+          {/* Column 1 */}
+          <div className="col">
+            <h6>Contact Us</h6>
+            <ul className="list-unstyled">
+              <li>E-Mail: meetout.se@gmail.com</li>
+              <li>Address: Sveavägen 89, Stockholm </li>
+              <li>Phone No: 0046-08 8675432</li>
+            </ul>
+            {/* <div className="address">
+                E-Mail: meetout.se@gmail.com <br></br>
+                Address: Sveavägen 89, Stockholm <br></br>
+                Phone No: 0046-08 8675432
+              </div> */}
+          </div>
 
-              <p>0046-08 8675432</p>
-            </div>
-            {/* Column 3 */}
-            <div className="col-md-4 col-sm-8">
-              <p>Address</p>
-
-              <p>Sveavägen 89, Stockholm</p>
+          {/* Column 2 */}
+          <div className="col">
+            <h6>Have Questions ?</h6>
+            <div className="footer-link-container">
+              <a href="/Faq" className="footer-links">
+                FAQ
+              </a>{" "}
+              <br></br>
+              <a href="/Chat" className="footer-links">
+                Chat
+              </a>
             </div>
           </div>
-          {/* Footer Bottom */}
-          <div className="footer-bottom">
-            <p className="text-xs-center">
-              &copy;{new Date().getFullYear()} MeetOut App - All Rights Reserved
-            </p>
+
+          {/* Column 3 */}
+          <div className="col">
+            <h6>Service Partners</h6>
+            <ul className="list-unstyled">
+              <li>KTH Royal Institute of Technology, Stockholm</li>
+              <li>Novare Potential, Stockholm</li>
+            </ul>
           </div>
         </div>
+        <hr />
+
+        {/* Footer Bottom */}
+        <div className="row">
+          <p className="col-sm">
+            &copy;{new Date().getFullYear()} ANTHURIUMS INC | All Rights
+            Reserved | Terms of Service | Privacy
+          </p>
+        </div>
       </div>
-    </FooterContainer>
+    </div>
   );
 }
 
 export default Footer;
-const FooterContainer = styled.footer`
-  .footer-middle {
-    background: var(--mainDark);
-    padding-top: 3rem;
-    color: var(--mainWhite);
-  }
-
-  .footer-bottom {
-    padding-top: 3rem;
-    padding-bottom: 2rem;
-  }
-
-  ul li a {
-    color: var(--mainGrey);
-  }
-
-  ul li a:hover {
-    color: var(--mainLightGrey);
-  }
-`;

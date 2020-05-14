@@ -31,13 +31,13 @@ function App() {
       <div className="shadowNavbar">
         <Navbar onLogout={() => Auth.logout()} />
       </div>
-      <div className="container mt-5">
+      <div className="container page-container  content-wrap mt-5">
         <Switch>
           <Route path="/posts/:id" component={CommentsPage} />
           <Route path="/posts">
             <ServicePage />
           </Route>
-          <Route path='/service/:id' component={ServiceDetail} />
+          <Route path="/service/:id" component={ServiceDetail} />
 
           <Route path="/service">
             <ServiceList />
@@ -47,15 +47,15 @@ function App() {
             <ChatPage />
           </Route>
 
-          <Route path='/profile'>
+          <Route path="/profile">
             <Profile />
           </Route>
 
-          <Route path='/aboutus'>
+          <Route path="/aboutus">
             <AboutUs />
           </Route>
 
-          <Route path='/serviceform'>
+          <Route path="/serviceform">
             <ServiceForm />
           </Route>
 
@@ -72,9 +72,11 @@ function App() {
             <HomePage />
           </Route>
         </Switch>
-        
       </div>
-      <Footer />
+      <br />
+      <div className="footer">
+        <Footer />
+      </div>
     </Router>
   );
 
