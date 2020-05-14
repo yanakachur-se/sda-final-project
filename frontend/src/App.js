@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Import custom styles for our application
-import './App.css';
+import "./App.css";
 
-import Auth from './services/Auth';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+import Auth from "./services/Auth";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 // Import pages
 import LoginPage from './components/auth/LoginPage';
@@ -27,21 +27,22 @@ function App() {
 
   const loggedInRouter = (
     <Router>
-      <Navbar onLogout={() => Auth.logout()} />
-
-      <div className='container mt-5'>
+      <div className="shadowNavbar">
+        <Navbar onLogout={() => Auth.logout()} />
+      </div>
+      <div className="container mt-5">
         <Switch>
-          <Route path='/posts/:id' component={CommentsPage} />
-          <Route path='/posts'>
+          <Route path="/posts/:id" component={CommentsPage} />
+          <Route path="/posts">
             <ServicePage />
           </Route>
           <Route path='/service/:id' component={ServiceDetail} />
 
-          <Route path='/service'>
+          <Route path="/service">
             <ServiceList />
           </Route>
 
-          <Route path='/chat'>
+          <Route path="/chat">
             <ChatPage />
           </Route>
 
@@ -57,14 +58,16 @@ function App() {
             <ServiceForm />
           </Route>
 
-          <Route path='/covid19live'>
+          <Route path="/covid19live">
             <Covid19live />
           </Route>
-          <Route path='/'>
+          <Route path="/">
             <HomePage />
           </Route>
         </Switch>
+        
       </div>
+      <Footer />
     </Router>
   );
 

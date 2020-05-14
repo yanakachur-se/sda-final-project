@@ -68,7 +68,7 @@ class Profile extends React.Component {
           <table className="table service-table " >
             <thead>
               <tr>
-                <th scope="col">Event Description</th>
+                <th scope="col">Event Type</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
@@ -80,7 +80,7 @@ class Profile extends React.Component {
             <tbody>
               {sortedPosts.map((post) =>
                 <tr>
-                  <td>{post.description}</td>
+                  <td>{post.serviceType}</td>
                   <td>{post.place}</td>
                   <td>{formatDate(post.date)}</td>
                   <td>{post.status.toLowerCase()}</td>
@@ -99,7 +99,7 @@ class Profile extends React.Component {
           <table class="table service-table">
             <thead>
               <tr>
-              <th scope="col">Event Description</th>
+              {/* <th scope="col">Event Description</th> */}
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
                 <th scope="col">Activity</th>
@@ -112,7 +112,7 @@ class Profile extends React.Component {
             <tbody>
               {sortedBookings.map((booking) =>
                 <tr>
-                  <td>{booking.description}</td>
+                  {/* <td>{booking.description}</td> */}
                   <td>{booking.place}</td>
                   <td>{formatDate(booking.date)}</td>
                   <td>{booking.serviceType}</td>
