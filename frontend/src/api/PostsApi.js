@@ -9,6 +9,10 @@ class PostsApi {
     return Api.get('/posts');
   }
 
+  getAllActiveAndFull() {
+    return Api.get('/posts/future');
+  }
+
   getPostById(id) {
     return Api.get('/posts/' + id);
   }

@@ -3,6 +3,7 @@ import CommentsApi from '../../api/CommentsApi';
 import PostsApi from '../../api/PostsApi';
 import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
+import ServiceEditor from '../service/ServiceEditor';
 
 class CommentsPage extends React.Component {
   constructor(props) {
@@ -10,7 +11,17 @@ class CommentsPage extends React.Component {
 
     this.state = {
       comments: [],
-      posts: [],
+      post: {
+        user: { email: '' },
+        description: '',
+        name: '',
+        attendeesLimit: '',
+        serviceType: '',
+        date: '',
+        time: '',
+        place: '',
+        attendees: [{ email: '' }],
+      },
       postId: '',
       email: '',
     };
@@ -54,13 +65,11 @@ class CommentsPage extends React.Component {
     }
   }
 
-  
-
   componentDidMount() {
     const idPost = Number(this.props.match.params.id);
 
-    PostsApi.getAllPosts()
-      .then(({ data }) => this.setState({ posts: data }))
+    PostsApi.getPostById(idPost)
+      .then(({ data }) => this.setState({ post: data }))
       .catch((err) => console.error(err));
 
     CommentsApi.getEmail()
@@ -79,26 +88,28 @@ class CommentsPage extends React.Component {
     const currentEmail = this.state.email;
     const id = Number(this.props.match.params.id);
     let posts = [];
-    let postEmail = '';
-    this.state.posts.map((post) => {
-      if (post.id === id) {
-        posts = post;
-        postEmail = post.user.email;
-      }
-      return null;
-    });
+
     return (
       <div>
         <div className='card mt-3'>
           <div className='card-body'>
-            <p>Activity Description: {posts.description}</p>
-            <p>Max number of people: {posts.attendeesLimit}</p>
-            <p>Date: {posts.date}</p>
-            <p>Time: {posts.time}</p>
-            <p> Service type: {posts.serviceType}</p>
+            <p>Name: {this.state.post.name}</p>
             <p>
-              From : <u>{postEmail}</u>
+              Email : <u>{this.state.post.user.email}</u>
             </p>
+            <p>Max number of people: {this.state.post.attendeesLimit}</p>
+            <p>Date: {this.state.post.date}</p>
+            <p>Time: {this.state.post.time}</p>
+            <p> Service type: {this.state.post.serviceType}</p>
+            <p>Activity Description: </p>
+            {this.state.post.description ? (
+              <ServiceEditor
+                editorState={JSON.parse(this.state.post.description)}
+                readOnly={true}
+              />
+            ) : (
+              <div />
+            )}
           </div>
         </div>
         <br />

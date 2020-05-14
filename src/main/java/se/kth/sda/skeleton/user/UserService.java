@@ -5,6 +5,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import se.kth.sda.skeleton.config.EmailServiceImpl;
 
+import javax.transaction.Transactional;
+
 @Service()
 public class UserService {
     @Autowired

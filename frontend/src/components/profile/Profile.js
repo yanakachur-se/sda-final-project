@@ -2,6 +2,7 @@ import React from "react";
 import AuthApi from "../../api/AuthApi";
 import PostsApi from "../../api/PostsApi";
 import moment from 'moment';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import '../../style/Profile.css';
 
 var getListOfAttendees = function (post) {
@@ -68,7 +69,7 @@ class Profile extends React.Component {
           <table className="table service-table " >
             <thead>
               <tr>
-                <th scope="col">Event Description</th>
+                <th scope="col">Event Type</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
@@ -80,7 +81,7 @@ class Profile extends React.Component {
             <tbody>
               {sortedPosts.map((post) =>
                 <tr>
-                  <td>{post.description}</td>
+                  <Link className = "table-link" to={`/service/${post.id}`}> <td>{post.serviceType}</td> </Link>
                   <td>{post.place}</td>
                   <td>{formatDate(post.date)}</td>
                   <td>{post.status.toLowerCase()}</td>
@@ -99,10 +100,9 @@ class Profile extends React.Component {
           <table class="table service-table">
             <thead>
               <tr>
-              <th scope="col">Event Description</th>
+                <th scope="col">Activity</th>
                 <th scope="col">Location</th>
                 <th scope="col">Date</th>
-                <th scope="col">Activity</th>
                 <th scope="col"> Status</th>
                 <th scope="col">Provided By</th>
 
@@ -112,11 +112,10 @@ class Profile extends React.Component {
             <tbody>
               {sortedBookings.map((booking) =>
                 <tr>
-                  <td>{booking.description}</td>
+                  <Link className = "table-link" to={`/service/${booking.id}`}> <td>{booking.serviceType}</td> </Link>
                   <td>{booking.place}</td>
                   <td>{formatDate(booking.date)}</td>
-                  <td>{booking.serviceType}</td>
-                  <td>{booking.status}</td>
+                  <td>{booking.status.toLowerCase()}</td>
                   <td>{booking.user.name}</td>
                 </tr>
               )

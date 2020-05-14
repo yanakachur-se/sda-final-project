@@ -9,17 +9,18 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
 // Import pages
-import LoginPage from "./components/auth/LoginPage";
-import HomePage from "./components/home/HomePage";
-import ChatPage from "./components/chat/ChatPage";
-import CommentsPage from "./components/comments/CommentsPage";
-import ServicePage from "./components/service/ServicePage";
-import ServiceForm from "./components/service/serviceForm";
-import Covid19live from "./components/covid19live/Covid19Live";
-import ServiceList from "./components/service/ServiceList";
-import ServiceDetail from "./components/service/ServiceDetail";
-import Profile from "./components/profile/Profile";
-import AboutUs from "./components/about/AboutUs";
+import LoginPage from './components/auth/LoginPage';
+import HomePage from './components/home/HomePage';
+import ChatPage from './components/chat/ChatPage';
+import CommentsPage from './components/comments/CommentsPage';
+import ServicePage from './components/service/ServicePage';
+import ServiceForm from './components/service/serviceForm';
+import Covid19live from './components/covid19live/Covid19Live';
+import ServiceList from './components/service/ServiceList';
+import ServiceDetail from './components/service/ServiceDetail';
+import Profile from './components/profile/Profile';
+import AboutUs from './components/about/AboutUs';
+import Faq from './components/faq/Faq';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -61,6 +62,12 @@ function App() {
           <Route path="/covid19live">
             <Covid19live />
           </Route>
+
+          <Route path="/faq">
+            <Faq />
+          </Route>
+
+
           <Route path="/">
             <HomePage />
           </Route>
