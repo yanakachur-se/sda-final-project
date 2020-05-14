@@ -4,12 +4,15 @@ import styled from "styled-components";
 function Footer() {
   return (
     <FooterContainer className="main-footer">
-      <div className="footer-middle">
+      
         <div className="container">
           <div className="row">
             {/* Column 1 */}
             <div className="col-md-4 col-sm-8">
-              <h12>Email</h12>
+              <h12>ANTHURIUM INC</h12>
+              <ul className = "list-unstyled">
+                <li>+46-08 59126462</li>
+              </ul>
               <p>https:www.meetout.se</p>
             </div>
             {/* Column 2 */}
@@ -32,7 +35,7 @@ function Footer() {
             </p>
           </div>
         </div>
-      </div>
+     
     </FooterContainer>
   );
 }
