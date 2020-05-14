@@ -193,3 +193,21 @@ p img {
 .RichEditor-activeButton {
   color: #5890ff;
 }
+
+
+.btn-success{
+  background-color: #176560 !important;
+  border-color: #176560!important;
+}
+
+.btn-primary{
+    background-color: #79ba9e !important;
+border-color: #79ba9e !important;
+color: #262626 !important;
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
