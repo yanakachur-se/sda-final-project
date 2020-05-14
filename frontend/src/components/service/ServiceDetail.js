@@ -5,14 +5,22 @@ import PostsApi from '../../api/PostsApi';
 import { Editor, EditorState, convertFromRaw, ConvertFromRaw } from 'draft-js';
 import ServiceEditor from './ServiceEditor';
 import moment from 'moment';
+import '../../style/ServiceDetail.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons'
 
-var getLocalTime = function(stringDate) {
+var getLocalTime = function (stringDate) {
   let localTime = moment.utc(stringDate);
   return localTime.local().format("ddd, MMMM Do YYYY, h:mm:ss a");
 };
 
-var formatDate = function(stringDate) {
+var formatDate = function (stringDate) {
   return moment(stringDate).format("ddd, MMMM Do YYYY");
+};
+
+var getUpdateTime = function (stringDate) {
+  let localTime = moment.utc(stringDate);
+  return localTime.local().startOf('hour').fromNow();
 };
 
 function ServiceDetail(props) {
@@ -86,9 +94,9 @@ function ServiceDetail(props) {
       closeOnConfirm: true,
       closeOnCancel: true,
     })
-    .then(function () {
-      window.location.reload();
-    });
+      .then(function () {
+        window.location.reload();
+      });
   };
 
   useEffect(() => {
@@ -191,13 +199,13 @@ function ServiceDetail(props) {
       I will come to this event!
     </button>
   );
- 
+
   const editedTextDescription = (
     <div>
       <label>Activity Description</label>
-      <ServiceEditor 
-      onChange={(raw) => setDescription(JSON.stringify(raw))}
-       />
+      <ServiceEditor
+        onChange={(raw) => setDescription(JSON.stringify(raw))}
+      />
     </div>
   );
 
@@ -237,31 +245,54 @@ function ServiceDetail(props) {
     post.user.email !== email;
 
   return (
-    <div className='card mt-3'>
+    <div className='card'>
+      <h5 className="card-header">{edit || 'Organizer: ' + post.user.name}</h5>
+
       <div className='card-body'>
+  
         <p>{edit && editedTextDescription}</p>
         <p>{edit && editedAttendeesLimit}</p>
-        <p>{edit || 'From: ' + post.user.email}</p>
+        
+        <span className="badge badge-default float-right m-2">{edit || 'Max ' + post.attendeesLimit + ' people'}</span>
+        <span className="badge badge-default float-right m-2">{edit || post.serviceType}</span>
+        
+        <div className='card-title'>{edit || post.name}</div>
+        
+        <div className="mt-3">
+        <span className="d-inline-block"> 
+          <FontAwesomeIcon icon={faMapMarkerAlt} /> 
+        </span>
+        <span className="d-inline-block"> {edit || post.place}</span>
+        </div>
 
-        <p> {edit || 'Name of the organizer: ' + post.name}</p>
-        <p> {edit || 'Activity: ' + post.serviceType}</p>
-        <p> {edit || 'Place: ' + post.place}</p>
-        <p>
-          {edit || 'Max number of people attending: ' + post.attendeesLimit}
-        </p>
-        <p> {edit || 'Date: ' + formatDate(post.date)}</p>
-        <p> {edit || 'Time: ' + post.time}</p>
-        <p>{edit || `Activity Description:`}</p>
-        <p>
+        <div className="mt-3">
+        <span className="d-inline-block"> 
+          <FontAwesomeIcon icon={faClock} /> 
+        </span>
+        <span className="d-inline-block"> {edit || formatDate(post.date) + " at " + post.time}</span>
+        </div>
+
+        <div className="mt-3">
+        <p className="headline-description">{edit || `Activity Description:`}</p>
+        <div className="text-box">
           {post.description !== '' && (
             <ServiceEditor
               editorState={JSON.parse(post.description)}
               readOnly={true}
             />
           )}
-        </p>
-        <p> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</p>
-        <p> {edit || 'Updated at: ' + getLocalTime(post.updatedAt)}</p>
+        </div>
+        </div>
+
+        <div className='card-footer'>
+          <small className="text-muted">
+            <div className="row">
+            <div className="col"> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</div>
+            <div className="col-right"> {edit || 'Updated ' + getUpdateTime(post.updatedAt)}</div>
+            </div>
+          </small>
+        </div>
+
         {showEditButton && editButton}
         {showEditButton && deleteButton}
         {showSaveButton && saveButton}
