@@ -6,6 +6,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import se.kth.sda.skeleton.auth.AuthController;
+import se.kth.sda.skeleton.auth.AuthRequest;
 import se.kth.sda.skeleton.auth.AuthService;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
@@ -23,15 +25,10 @@ public class PostTests {
     UserService userService;
 
     @Autowired
-    AuthService authService;
+    AuthController authController;
 
     @MockBean
     PostService postService;
-
-    private String getAuthHeader() {
-
-        return "Bearer " + authService.createAuthToken("test@exmaple.com");
-    }
 
     @Test
     public void getById() {
@@ -66,16 +63,18 @@ public class PostTests {
         Assertions.assertEquals(postList, mockedList);
     }
 
-    @Test
-    public void updatePostWithAtendeeInfoTest() throws Exception {
+//    @Test
+//    public void updatePostWithAttendeeInfoTest() throws Exception {
 //        // Arrange
 //        Post post = new Post();
 //        post.setId(1L);
 //
 //        User attendee = new User("test@exmaple.com", "pass123123", "John");
 //        post.setUser(attendee);
-//        postController.savePost(post);
+////        postController.savePost(post);
 //        userService.register(attendee);
+//        authController.authenticate(new AuthRequest(attendee.getEmail(),attendee.getPassword()));
+//
 //
 //        Mockito.when(postService.updatePostWithAttendeeInfo(Mockito.eq(post), Mockito.eq(attendee)))
 //                .thenReturn(post);
@@ -83,6 +82,5 @@ public class PostTests {
 //        Post mockedUser = postController.updatePostWithAttendeeInfo(1L);
 //        // Assert
 //        Assertions.assertEquals(post.getName(), mockedUser.getName());
-    }
-
+//    }
 }

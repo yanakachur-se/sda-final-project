@@ -2,22 +2,26 @@ package se.kth.sda.skeleton.comments;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 import se.kth.sda.skeleton.auth.AuthService;
 import se.kth.sda.skeleton.posts.Post;
+import se.kth.sda.skeleton.posts.PostController;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
-import java.util.Optional;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CommentTests {
     @Autowired
     TestRestTemplate testRestTemplate;
@@ -25,64 +29,55 @@ class CommentTests {
     @Autowired
     AuthService authService;
 
-    @MockBean
-    CommentService commentService;
+    @Autowired
+    PostController postController;
 
-    User userMock = new User();
+    @Autowired
+    UserService userService;
+
+    @LocalServerPort
+    int randomServerPort;
+
+    User userMock = new User("test@test.com", "password123", "My Name");
     Post postMock = new Post();
-
-
-
-    Comment comment = new Comment(1L,"aaa",postMock,userMock);
+    Comment commentMock = new Comment(1L, "aaa", postMock, userMock);
 
     private String getAuthHeader() {
-        commentService.create(comment);
-        return "Bearer " + authService.createAuthToken("test@exmaple.com");
+        userService.register(userMock);
+        return "Bearer " + authService.createAuthToken(userMock.getEmail());
+    }
+
+    public Post savePostIntoDB() throws URISyntaxException {
+        postMock.setId(1L);
+        postMock.setUser(userMock);
+        final String baseUrl = "http://localhost:" + randomServerPort + "/posts";
+        URI uri = new URI(baseUrl);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-COM-PERSIST", "true");
+
+        HttpEntity<Post> request = new HttpEntity<>(postMock, headers);
+
+        ResponseEntity<String> result = this.testRestTemplate.postForEntity(uri, request, String.class);
+        return postMock;
     }
 
     @Test
-    public void getAll() {
-        // Arrange
-        // Add tasks
-        Mockito.when(commentService.create(Mockito.eq(comment)))
-                .thenReturn(comment);
-        // Act
-        // Send an http request to /tasks
+    public void testAddEmployeeSuccess() throws NoSuchBeanDefinitionException, URISyntaxException {
+        Post savedPost = savePostIntoDB();
+
+        final String baseUrl = "http://localhost:" + randomServerPort + "/posts/" + savedPost.getId() +
+                "/comments/" + savedPost.getUser().getEmail();
+        URI uri = new URI(baseUrl);
+
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.AUTHORIZATION, getAuthHeader());
-        HttpEntity<String> request = new HttpEntity<>("", headers);
+        headers.set( getAuthHeader(),);
 
-        String body = testRestTemplate.exchange(
-                "/tasks",
-                HttpMethod.GET,
-                request,
-                String.class
-        ).getBody();
+        HttpEntity<Comment> request = new HttpEntity<>(commentMock, headers);
 
-        // Assert
-        Assertions.assertEquals("[]", body);
+        ResponseEntity<String> result = this.testRestTemplate.postForEntity(uri, request, String.class);
+
+        //Verify request succeed
+        Assertions.assertEquals(201, result.getStatusCodeValue());
     }
-
-    @Test
-    public void getAll1() {
-        // Arrange
-        // Add tasks
-
-        // Act
-        // Send an http request to /tasks
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.AUTHORIZATION, getAuthHeader());
-        HttpEntity<String> request = new HttpEntity<>("", headers);
-
-        String body = testRestTemplate.exchange(
-                "/tasks",
-                HttpMethod.GET,
-                request,
-                String.class
-        ).getBody();
-
-        // Assert
-        Assertions.assertEquals("[]", body);
-    }
-
 }
