@@ -25,6 +25,14 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public List<Post> getActiveAndFullPosts() {
+        List<Post> posts = postRepository.findAll();
+        List<Post> userPosts = posts.stream()
+                .filter(p -> p.getStatus()!= Status.ARCHIVED)
+                .collect(Collectors.toList());
+        return userPosts;
+    }
+
     public List<Post> getPostsByServiceProviderEmail(String email) {
         List<Post> posts = postRepository.findAll();
         List<Post> userPosts = posts.stream()

@@ -38,7 +38,7 @@ class ServiceList extends React.Component {
   }
 
   componentDidMount() {
-    PostsApi.getAllPosts()
+    PostsApi.getAllActiveAndFull()
       .then(({ data }) => this.setState({ posts: data }))
       .catch((err) => console.error(err));
   }
@@ -63,7 +63,7 @@ class ServiceList extends React.Component {
               </thead>
 
               <tbody>
-                {posts.map(
+                {sortedPosts.map(
                   (post) =>
                     (variable.service === 'all' ||
                       post.serviceType === variable.service) && (

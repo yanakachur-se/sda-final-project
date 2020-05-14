@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
+import moment from 'moment';
 
 function CommentCard(props) {
   const [body, setBody] = React.useState('');
@@ -12,6 +13,10 @@ function CommentCard(props) {
     // Clear the input field
     setBody('');
     window.location.reload();
+  };
+
+  var formatDate = function (stringDate) {
+    return moment(stringDate).format("ddd, MMMM Do YYYY");
   };
 
  const deleteComment = () => {
@@ -87,8 +92,8 @@ function CommentCard(props) {
         {edit && editedText}
         <p> {edit || 'From: ' + props.comment.user.email}</p>
         <p>{edit || props.comment.body}</p>
-        <p> {'Created at:' + props.comment.createdAt}</p>
-        <p> {'Updated at:' + props.comment.updatedAt}</p>
+        <p> {'Created at: ' + formatDate(props.comment.createdAt)}</p>
+        <p> {'Updated at: ' + formatDate(props.comment.updatedAt)}</p>
 
         {showEditButton && editButton}
         {showDeleteButton && deleteButton}
