@@ -19,7 +19,8 @@ import Covid19live from './components/covid19live/Covid19Live';
 import ServiceList from './components/service/ServiceList';
 import ServiceDetail from './components/service/ServiceDetail';
 import Profile from './components/profile/Profile';
-import AboutUs from './components/about/AboutUs'
+import AboutUs from './components/about/AboutUs';
+import Faq from './components/faq/Faq';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -61,6 +62,12 @@ function App() {
           <Route path="/covid19live">
             <Covid19live />
           </Route>
+
+          <Route path="/faq">
+            <Faq />
+          </Route>
+
+
           <Route path="/">
             <HomePage />
           </Route>
