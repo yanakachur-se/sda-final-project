@@ -1,14 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap ");
 body {
   margin: 0;
   font-family: "Rubik", sans-serif;
 }
 
 .App {
-  background-color: #e1e1e1;
+  background-color: #f3eee6;
   color: #202020;
   font-family: "Rubik", sans-serif;
+}
+.landingPageHeader {
+  font-family: "Old Standard TT", serif;
+}
+.shadow {
+  box-shadow: "5px 10px 10px #888888";
+}
+.shadowNavbar {
+  box-shadow: "5px 10px 12px #888888";
 }
 .HomePage {
   height: 100%;
@@ -30,20 +39,53 @@ body {
   color: #afadad;
 }
 
+.navbar {
+  align-items: right;
+  justify-content: space-between;
+  height: 60px;
+  padding: 20px 0px;
+  font-size: 13px;
+  background: #79ba9e;
+}
+
+.navbar-nav {
+  height: 64;
+  font-weight: 800;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #176560;
+}
+
 .nav-item {
   height: 64;
   font-weight: 800;
   margin-left: 25px;
   margin-right: 25px;
+  color: #176560;
+}
+
+button .btn {
+  color: #79ba9e;
+  height: 64;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .nav-item {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.navbar ul li button {
+  color: gray;
+}
+.navbar ul li button:hover {
+  border-bottom: 1px solid #262626;
 }
 
 .nav-item :hover {
-  background-color: rgb(206, 190, 11);
-}
-
-.navbar-brand {
-  max-width: 100%;
-  height: auto;
+  background-color: #79ba9e;
 }
 
 .form-body {
@@ -53,7 +95,8 @@ body {
 }
 
 .wrapper-login {
-  /*background-image: url(assets/login.jpg);
+  background-color: #f3eee6;
+  /*background-image: url(assets/bg-sunny.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -63,7 +106,7 @@ body {
 }
 
 .card-body-login {
-  background-color: #59b4de;
+  background-color: #79ba9e;
   border-radius: 5px;
   padding-left: 30px;
   padding-bottom: 232px;
@@ -84,4 +127,69 @@ p img {
   position: "absolute";
   top: 0%;
   transform: "translateY(-50%)";
+}
+
+
+.RichEditor-root {
+  background: #fff;
+  border: 1px solid #ddd;
+  font-family: 'Georgia', serif;
+  font-size: 14px;
+  padding: 15px;
+}
+
+.RichEditor-editor {
+  border-top: 1px solid #ddd;
+  cursor: text;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.RichEditor-editor .public-DraftEditorPlaceholder-root,
+.RichEditor-editor .public-DraftEditor-content {
+  margin: 0 -15px -15px;
+  padding: 15px;
+}
+
+.RichEditor-editor .public-DraftEditor-content {
+  min-height: 100px;
+}
+
+.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
+  display: none;
+}
+
+.RichEditor-editor .RichEditor-blockquote {
+  border-left: 5px solid #eee;
+  color: #666;
+  font-family: 'Hoefler Text', 'Georgia', serif;
+  font-style: italic;
+  margin: 16px 0;
+  padding: 10px 20px;
+}
+
+.RichEditor-editor .public-DraftStyleDefault-pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.RichEditor-controls {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+  user-select: none;
+}
+
+.RichEditor-styleButton {
+  color: #999;
+  cursor: pointer;
+  margin-right: 16px;
+  padding: 2px 0;
+  display: inline-block;
+}
+
+.RichEditor-activeButton {
+  color: #5890ff;
 }

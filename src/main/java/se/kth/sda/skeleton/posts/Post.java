@@ -1,12 +1,15 @@
 package se.kth.sda.skeleton.posts;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Type;
 import se.kth.sda.skeleton.audit.AuditModel;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
 import javax.swing.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,8 @@ public class Post extends AuditModel {
     private String name;
 
     @Column(name = "description")
+    @Lob
+    @Type(type = "text")
     private String description;
 
     @Column(name = "date")

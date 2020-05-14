@@ -55,35 +55,35 @@ class ServiceList extends React.Component {
             <table class='table service-table'>
               <thead>
                 <tr>
-                  <th scope='col'>Event Description</th>
+                  <th scope='col'>Name</th>
                   <th scope='col'>Location</th>
-                  <th scope='col'>Date and Time</th>
+                  <th scope='col'>Date</th>
                   <th></th>
                 </tr>
               </thead>
 
-          <tbody>
-            {sortedPosts.map(
-              (post) =>
-                (variable.service === 'all' ||
-                  post.serviceType === variable.service) && (
-                  <tr>
-                    <td>{post.description}</td>
-                    <td>{post.place}</td>
-                    <td>{formatDate(post.date)}</td>
-                    {
-                      <Link to={`/service/${post.id}`}>
-                        <button className='btn btn-success'>See details</button>
-                      </Link>
-                    }
-                  </tr>
-                )
-            )}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+              <tbody>
+                {posts.map(
+                  (post) =>
+                    (variable.service === 'all' ||
+                      post.serviceType === variable.service) && (
+                      <tr key={post.id}>
+                        <td>{post.name}</td>
+                        <td>{post.place}</td>
+                        <td>{formatDate(post.date)}</td>
+                        {
+                          <Link to={`/service/${post.id}`}>
+                            <button className='btn btn-success'>See details</button>
+                          </Link>
+                        }
+                      </tr>
+                    )
+                )}
+              </tbody>
+            </table>
+          </div>
+        );
+    }
 }
 
 export default ServiceList;

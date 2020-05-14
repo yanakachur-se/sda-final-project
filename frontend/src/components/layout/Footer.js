@@ -8,44 +8,27 @@ function Footer() {
         <div className="container">
           <div className="row">
             {/* Column 1 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>Lorem ipsum</h4>
-              <ul className="list-unstyled">
-                <li>Lorem, ipsum</li>
-              </ul>
+            <div className="col-md-4 col-sm-8">
+              <p>email</p>
+              <p>https:www.meetout.se</p>
             </div>
             {/* Column 2 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>Lorem ipsum</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Lorem, ipsum</a>
-                </li>
-              </ul>
+            <div className="col-md-4 col-sm-8">
+              <p>Phone No</p>
+
+              <p>0046-08 8675432</p>
             </div>
             {/* Column 3 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>Lorem ipsum</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Lorem, ipsum</a>
-                </li>
-              </ul>
-            </div>
-            {/* Column 4 */}
-            <div className="col-md-3 col-sm-6">
-              <h4>Lorem ipsum</h4>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="/">Lorem, ipsum</a>
-                </li>
-              </ul>
+            <div className="col-md-4 col-sm-8">
+              <p>Address</p>
+
+              <p>Sveavägen 89, Stockholm</p>
             </div>
           </div>
-          {/* FooteR Bottom */}
+          {/* Footer Bottom */}
           <div className="footer-bottom">
             <p className="text-xs-center">
-              &copy;{new Date().getFullYear()} FunOut App - All Rights Reserved
+              &copy;{new Date().getFullYear()} MeetOut App - All Rights Reserved
             </p>
           </div>
         </div>
