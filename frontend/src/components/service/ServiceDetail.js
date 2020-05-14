@@ -5,7 +5,9 @@ import PostsApi from '../../api/PostsApi';
 import { Editor, EditorState, convertFromRaw, ConvertFromRaw } from 'draft-js';
 import ServiceEditor from './ServiceEditor';
 import moment from 'moment';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 var getLocalTime = function(stringDate) {
   let localTime = moment.utc(stringDate);
   return localTime.local().format("ddd, MMMM Do YYYY, h:mm:ss a");
@@ -153,43 +155,53 @@ function ServiceDetail(props) {
   }
 
   const editButton = (
-    <button
-      className='btn btn-warning'
-      onClick={() => setEdit(true)}
-      id='update'>
-      Edit
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-warning'
+        onClick={() => setEdit(true)}
+        id='update'>
+        Edit
+      </button>
+    </Col>
   );
   const deleteButton = (
-    <button className='btn btn-danger' onClick={deleteAlert} id='delete'>
-      Delete
-    </button>
+    <Col xs={2}>
+      <button className='btn btn-danger' onClick={deleteAlert} id='delete'>
+        Delete
+      </button>
+    </Col>
   );
   const saveButton = (
-    <button
-      className='btn btn-warning'
-      onClick={handleSubmit}
-      // onClick={props.onSaveClick}
-      id='save'>
-      Save
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-warning'
+        onClick={handleSubmit}
+        // onClick={props.onSaveClick}
+        id='save'>
+        Save
+      </button>
+    </Col>
   );
   const cancelButton = (
-    <button
-      className='btn btn-danger'
-      onClick={() => setEdit(false)}
-      id='cancel'>
-      Cancel
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-secondary'
+        onClick={() => setEdit(false)}
+        id='cancel'>
+        Cancel
+      </button>
+    </Col>
   );
 
   const comeToTheEventButton = (
-    <button
-      className='btn btn-success'
-      onClick={registerComeToEvent}
-      id='comeToTheEvent'>
-      I will come to this event!
-    </button>
+    <Col>
+      <button
+        className='btn btn-info'
+        onClick={registerComeToEvent}
+        id='comeToTheEvent'>
+        I will come to this event!
+      </button>
+    </Col>
   );
  
   const editedTextDescription = (
@@ -262,21 +274,25 @@ function ServiceDetail(props) {
         </p>
         <p> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</p>
         <p> {edit || 'Updated at: ' + getLocalTime(post.updatedAt)}</p>
-        {showEditButton && editButton}
-        <div class='divider' />
-        {showEditButton && deleteButton}
-        {showSaveButton && saveButton}
-        <div class='divider' />
-        {showCancelButton && cancelButton}
-        {visitorView && comeToTheEventButton}
-        <div class='divider' />
-        {
-          <Link to={'/posts/' + postId}>
-            {archivedPostView || (
-              <button className='btn btn-primary'>View</button>
-            )}
-          </Link>
-        }
+        <Container>
+          <Row>
+            {showEditButton && editButton}
+            {showEditButton && deleteButton}
+            {showSaveButton && saveButton}
+            {showCancelButton && cancelButton}
+            {visitorView && comeToTheEventButton}
+            <Col xs={{ span: 3, offset: 5}}>
+              {
+                <Link to={'/posts/' + postId}>
+                  {archivedPostView || (
+                    <button className='btn btn-primary'>View</button>
+                  )}
+                </Link>
+              }
+            </Col>
+          </Row>
+        </Container>
+
         <p>
           {archivedPostView && 'Sorry! This is an archived service post. :('}
         </p>

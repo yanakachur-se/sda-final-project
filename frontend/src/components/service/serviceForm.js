@@ -165,7 +165,7 @@ class serviceForm extends Component {
         </div>
 
         <div className='form-group'>
-          <button className='btn btn-primary' onClick={this.handleSubmit}>
+          <button className='btn btn-info' onClick={this.handleSubmit}>
             Post this service!
           </button>
         </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import Col from 'react-bootstrap/Col';
+
 
 function CommentForm(props) {
   const [body, setBody] = React.useState('');
@@ -25,9 +27,11 @@ function CommentForm(props) {
         </div>
 
         <div className='form-group'>
-          <button className='btn btn-primary' onClick={handleSubmit}>
-            Comment
-          </button>
+          <Col xs={2}>
+            <button className='btn btn-primary' onClick={handleSubmit}>
+              Comment
+            </button>
+          </Col>
         </div>
       </div>
     </div>

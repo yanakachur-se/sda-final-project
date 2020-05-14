@@ -110,7 +110,7 @@ function ServiceCard(props) {
   );
   const cancelButton = (
     <button
-      className='btn btn-danger'
+      className='btn btn-secondary'
       onClick={() => setEdit(false)}
       id='cancel'>
       Cancel

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import swal from 'sweetalert';
 import moment from 'moment';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function CommentCard(props) {
   const [body, setBody] = React.useState('');
@@ -42,34 +45,42 @@ function CommentCard(props) {
    });
  };
   const editButton = (
-    <button
-      className='btn btn-warning'
-      onClick={() => setEdit(true)}
-      id='update'>
-      Edit
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-warning'
+        onClick={() => setEdit(true)}
+        id='update'>
+        Edit
+      </button>
+    </Col>
   );
   const deleteButton = (
-    <button className='btn btn-danger' onClick={deleteComment} id='delete'>
-      DELETE
-    </button>
+    <Col xs={2}>
+      <button className='btn btn-danger' onClick={deleteComment} id='delete'>
+        DELETE
+      </button>
+    </Col>
   );
   const saveButton = (
-    <button
-      className='btn btn-warning'
-      onClick={handleSubmit}
-      // onClick={props.onSaveClick}
-      id='save'>
-      Save
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-warning'
+        onClick={handleSubmit}
+        // onClick={props.onSaveClick}
+        id='save'>
+        Save
+      </button>
+    </Col>
   );
   const cancelButton = (
-    <button
-      className='btn btn-danger'
-      onClick={() => setEdit(false)}
-      id='cancel'>
-      Cancel
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-secondary'
+        onClick={() => setEdit(false)}
+        id='cancel'>
+        Cancel
+      </button>
+    </Col>
   );
 
   const editedText = (
@@ -94,11 +105,14 @@ function CommentCard(props) {
         <p>{edit || props.comment.body}</p>
         <p> {'Created at: ' + formatDate(props.comment.createdAt)}</p>
         <p> {'Updated at: ' + formatDate(props.comment.updatedAt)}</p>
-
-        {showEditButton && editButton}
-        {showDeleteButton && deleteButton}
-        {showSaveButton && saveButton}
-        {showCancelButton && cancelButton}
+        <Container>
+          <Row>
+            {showEditButton && editButton}
+            {showDeleteButton && deleteButton}
+            {showSaveButton && saveButton}
+            {showCancelButton && cancelButton}
+          </Row>
+        </Container>
       </div>
     </div>
   );
