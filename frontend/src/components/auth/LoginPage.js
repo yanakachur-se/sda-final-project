@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import Auth from "../../services/Auth";
 import Footer from "../layout/Footer";
+import { Link } from "react-router-dom";
 
 class LoginPage extends Component {
   async login(loginData) {
@@ -157,7 +158,12 @@ class LoginPage extends Component {
                     Yoga, Aerobics, Meditation and Soccer.
                   </p>
 
-                  <button type="button" class="btn btn-outline-light  btn-lg">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light  btn-lg"
+                    data-toggle="modal"
+                    data-target="#sign-up"
+                  >
                     Get Started
                   </button>
                 </div>
@@ -180,7 +186,12 @@ class LoginPage extends Component {
                     services regarding hair in outdoor, open-air settings.
                   </p>
 
-                  <button type="button" class="btn btn-outline-light btn-lg">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light btn-lg"
+                    data-toggle="modal"
+                    data-target="#sign-up"
+                  >
                     Get Started
                   </button>
                 </div>
@@ -200,10 +211,16 @@ class LoginPage extends Component {
                     The main initiative of this application is to help people
                     with their business to get new customers.
                   </p>
-
-                  <button type="button" class="btn btn-outline-light btn-lg">
-                    Get Started
-                  </button>
+                  <Link className="link-button" to="">
+                    <button
+                      type="button"
+                      class="btn btn-outline-light btn-lg"
+                      data-toggle="modal"
+                      data-target="#sign-up"
+                    >
+                      Get Started
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

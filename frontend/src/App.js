@@ -30,7 +30,7 @@ function App() {
       <div className="shadowNavbar">
         <Navbar onLogout={() => Auth.logout()} />
       </div>
-      <div className="container mt-5">
+      <div className="container page-container  content-wrap mt-5">
         <Switch>
           <Route path="/posts/:id" component={CommentsPage} />
           <Route path="/posts">
