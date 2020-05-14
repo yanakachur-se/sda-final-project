@@ -1,6 +1,8 @@
 package se.kth.sda.skeleton.posts;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Type;
 import se.kth.sda.skeleton.audit.AuditModel;
 import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.user.User;
@@ -28,6 +30,7 @@ public class Post extends AuditModel {
 
     @Column(name = "description")
     @Lob
+    @Type(type = "text")
     private String description;
 
     @Column(name = "date")
