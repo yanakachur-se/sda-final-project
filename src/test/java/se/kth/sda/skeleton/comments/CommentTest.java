@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import se.kth.sda.skeleton.auth.AuthService;
 import se.kth.sda.skeleton.posts.Post;
 import se.kth.sda.skeleton.posts.PostController;
+import org.springframework.http.HttpHeaders;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
@@ -54,7 +55,7 @@ class CommentTests {
         URI uri = new URI(baseUrl);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set("X-COM-PERSIST", "true");
+        headers.set(HttpHeaders.AUTHORIZATION,getAuthHeader());
 
         HttpEntity<Post> request = new HttpEntity<>(postMock, headers);
 
@@ -71,13 +72,13 @@ class CommentTests {
         URI uri = new URI(baseUrl);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.set( getAuthHeader(),);
+        headers.set(HttpHeaders.AUTHORIZATION,getAuthHeader());
 
         HttpEntity<Comment> request = new HttpEntity<>(commentMock, headers);
 
         ResponseEntity<String> result = this.testRestTemplate.postForEntity(uri, request, String.class);
 
         //Verify request succeed
-        Assertions.assertEquals(201, result.getStatusCodeValue());
+        Assertions.assertEquals(200, result.getStatusCodeValue());
     }
 }
