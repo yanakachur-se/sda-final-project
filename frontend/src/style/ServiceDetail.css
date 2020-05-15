@@ -1,0 +1,28 @@
+.badge {
+    display: flex;
+    margin-left: auto;
+    background-color:#176560;
+    color: #F3EEE6;
+   }
+.col-right {
+    text-align: right;
+}
+
+.text-box {
+    margin: 20px;
+}
+
+svg {
+    margin-right: 20px;
+    color: #176560;
+}
+
+.card .card-body .mt-3 .headline-description {
+    font-weight: bold;
+    color: #176560;
+}
+
+.card .card-body .card-title {
+    font-weight: bold;
+    font-size: larger;
+}

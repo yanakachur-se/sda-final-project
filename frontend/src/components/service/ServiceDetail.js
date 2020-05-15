@@ -5,14 +5,25 @@ import PostsApi from '../../api/PostsApi';
 import { Editor, EditorState, convertFromRaw, ConvertFromRaw } from 'draft-js';
 import ServiceEditor from './ServiceEditor';
 import moment from 'moment';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import '../../style/ServiceDetail.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons';
 
-var getLocalTime = function(stringDate) {
+var getLocalTime = function (stringDate) {
   let localTime = moment.utc(stringDate);
-  return localTime.local().format("ddd, MMMM Do YYYY, h:mm:ss a");
+  return localTime.local().format('ddd, MMMM Do YYYY, h:mm:ss a');
 };
 
-var formatDate = function(stringDate) {
-  return moment(stringDate).format("ddd, MMMM Do YYYY");
+var formatDate = function (stringDate) {
+  return moment(stringDate).format('ddd, MMMM Do YYYY');
+};
+
+var getUpdateTime = function (stringDate) {
+  let localTime = moment.utc(stringDate);
+  return localTime.local().startOf('hour').fromNow();
 };
 
 function ServiceDetail(props) {
@@ -55,7 +66,7 @@ function ServiceDetail(props) {
     window.location.reload();
   };
 
-  console.log(description)
+  console.log(description);
   const deleteAlert = () => {
     swal({
       title: 'Are you sure?',
@@ -85,8 +96,7 @@ function ServiceDetail(props) {
       cancelButtonText: 'No',
       closeOnConfirm: true,
       closeOnCancel: true,
-    })
-    .then(function () {
+    }).then(function () {
       window.location.reload();
     });
   };
@@ -153,51 +163,59 @@ function ServiceDetail(props) {
   }
 
   const editButton = (
-    <button
-      className='btn btn-warning'
-      onClick={() => setEdit(true)}
-      id='update'>
-      Edit
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-warning'
+        onClick={() => setEdit(true)}
+        id='update'>
+        Edit
+      </button>
+    </Col>
   );
   const deleteButton = (
-    <button className='btn btn-danger' onClick={deleteAlert} id='delete'>
-      DELETE
-    </button>
+    <Col xs={2}>
+      <button className='btn btn-danger' onClick={deleteAlert} id='delete'>
+        Delete
+      </button>
+    </Col>
   );
   const saveButton = (
-    <button
-      className='btn btn-warning'
-      onClick={handleSubmit}
-      // onClick={props.onSaveClick}
-      id='save'>
-      Save
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-warning'
+        onClick={handleSubmit}
+        // onClick={props.onSaveClick}
+        id='save'>
+        Save
+      </button>
+    </Col>
   );
   const cancelButton = (
-    <button
-      className='btn btn-danger'
-      onClick={() => setEdit(false)}
-      id='cancel'>
-      Cancel
-    </button>
+    <Col xs={2}>
+      <button
+        className='btn btn-secondary'
+        onClick={() => setEdit(false)}
+        id='cancel'>
+        Cancel
+      </button>
+    </Col>
   );
 
   const comeToTheEventButton = (
-    <button
-      className='btn btn-success'
-      onClick={registerComeToEvent}
-      id='comeToTheEvent'>
-      I will come to this event!
-    </button>
+    <Col xs={4}>
+      <button
+        className='btn btn-info'
+        onClick={registerComeToEvent}
+        id='comeToTheEvent'>
+        I will come to this event!
+      </button>
+    </Col>
   );
- 
+
   const editedTextDescription = (
     <div>
       <label>Activity Description</label>
-      <ServiceEditor 
-      onChange={(raw) => setDescription(JSON.stringify(raw))}
-       />
+      <ServiceEditor onChange={(raw) => setDescription(JSON.stringify(raw))} />
     </div>
   );
 
@@ -237,51 +255,96 @@ function ServiceDetail(props) {
     post.user.email !== email;
 
   return (
-    <div className='card mt-3'>
+    <div className='card'>
+      <h5 className='card-header'>{edit || 'Organizer: ' + post.user.name}</h5>
+
       <div className='card-body'>
         <p>{edit && editedTextDescription}</p>
         <p>{edit && editedAttendeesLimit}</p>
-        <p>{edit || 'From: ' + post.user.email}</p>
 
-        <p> {edit || 'Name of the organizer: ' + post.name}</p>
-        <p> {edit || 'Activity: ' + post.serviceType}</p>
-        <p> {edit || 'Place: ' + post.place}</p>
-        <p>
-          {edit || 'Max number of people attending: ' + post.attendeesLimit}
-        </p>
-        <p> {edit || 'Date: ' + formatDate(post.date)}</p>
-        <p> {edit || 'Time: ' + post.time}</p>
-        <p>{edit || `Activity Description:`}</p>
-        <p>
-          {post.description !== '' && (
-            <ServiceEditor
-              editorState={JSON.parse(post.description)}
-              readOnly={true}
-            />
-          )}
-        </p>
-        <p> {edit || 'Created at: ' + getLocalTime(post.createdAt)}</p>
-        <p> {edit || 'Updated at: ' + getLocalTime(post.updatedAt)}</p>
-        {showEditButton && editButton}
-        {showEditButton && deleteButton}
-        {showSaveButton && saveButton}
-        {showCancelButton && cancelButton}
-        {visitorView && comeToTheEventButton}
-        {
-          <Link to={'/posts/' + postId}>
-            {archivedPostView || (
-              <button className='btn btn-primary'>View</button>
-            )}
-          </Link>
-        }
-        <p>
-          {archivedPostView && 'Sorry! This is an archived service post. :('}
-        </p>
+        <span className='badge badge-default float-right m-2'>
+          {edit || 'Max ' + post.attendeesLimit + ' people'}
+        </span>
+        <span className='badge badge-default float-right m-2'>
+          {edit || post.serviceType}
+        </span>
 
-        {visitorView &&
-          'Only ' + seatsLeft + ' seats left! Smash the green button!'}
-        {attendeeView && ' ' + 'Thank you for booking! :)'}
-        {showYouMissTheLastSeat && ' ' + 'Sorry, you missed the last seat :)'}
+        <div className='card-title'>{edit || post.name}</div>
+
+        <div className='mt-3'>
+          <span className='d-inline-block'>
+            {edit || <FontAwesomeIcon icon={faMapMarkerAlt} />}
+          </span>
+          <span className='d-inline-block'> {edit || post.place}</span>
+        </div>
+
+        <div className='mt-3'>
+          <span className='d-inline-block'>
+            {edit || <FontAwesomeIcon icon={faClock} />}
+          </span>
+          <span className='d-inline-block'>
+            {' '}
+            {edit || formatDate(post.date) + ' at ' + post.time}
+          </span>
+        </div>
+
+        <div className='mt-3'>
+          <p className='headline-description'>
+            {edit || `Activity Description:`}
+          </p>
+          <div className='text-box'>
+            {edit ||
+              (post.description !== '' && (
+                <ServiceEditor
+                  editorState={JSON.parse(post.description)}
+                  readOnly={true}
+                />
+              ))}
+            <div className='card-footer'>
+              <small className='text-muted'>
+                <div className='row'>
+                  <div className='col'>
+                    {' '}
+                    {edit || 'Created at: ' + getLocalTime(post.createdAt)}
+                  </div>
+                  <div className='col-right'>
+                    {' '}
+                    {edit || 'Updated ' + getUpdateTime(post.updatedAt)}
+                  </div>
+                </div>
+              </small>
+            </div>
+            <Container style={{ marginTop: '30px' }}>
+              <Row>
+                {showEditButton && editButton}
+                {showEditButton && deleteButton}
+                {showSaveButton && saveButton}
+                {showCancelButton && cancelButton}
+                {visitorView && comeToTheEventButton}
+                <Col xs={{ span: 2, offset: 5 }}>
+                  {
+                    <Link to={'/posts/' + postId}>
+                      {archivedPostView || (
+                        <button className='btn btn-primary'>View</button>
+                      )}
+                    </Link>
+                  }
+                </Col>
+              </Row>
+            </Container>
+
+            <p>
+              {archivedPostView &&
+                'Sorry! This is an archived service post. :('}
+            </p>
+
+            {visitorView &&
+              'Only ' + seatsLeft + ' seats left! Smash the button above!'}
+            {attendeeView && ' ' + 'Thank you for booking! :)'}
+            {showYouMissTheLastSeat &&
+              ' ' + 'Sorry, you missed the last seat :)'}
+          </div>
+        </div>
       </div>
     </div>
   );

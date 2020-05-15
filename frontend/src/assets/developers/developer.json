@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Igor",
-    "title": "Back-end Developer",
+    "title": "Developer",
     "description": "Having a lifelong interest in IT, new technologies and knowledge. Delighted to work on common goal",
     "image": "igor.jpg",
     "github": "http://github.com/iginot",
@@ -11,8 +11,8 @@
   {
     "id": 2,
     "name": "Manju",
-    "title": "Back-end Developer",
-    "description": "Developer",
+    "title": "Developer",
+    "description": "Passionate about technology, love automation & always seek to learn new things",
     "image": "manju.jpg",
     "github": "https://github.com/",
     "linkedin": "https://www.linkedin.com/"
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "name": "Maria",
-    "title": "Tester",
+    "title": "Developer",
     "description": "Developer",
     "image": "maria.jpg",
     "github": "https://github.com/",
@@ -29,7 +29,7 @@
   {
     "id": 4,
     "name": "Mehwish",
-    "title": "Front-end Developer",
+    "title": "Developer",
     "description": "Enthusiastic, Innovative Web Designer and Passionate about creating beautiful and usable designs",
     "image": "mehwish.jpg",
     "github": "https://github.com/",
@@ -38,7 +38,7 @@
   {
     "id": 5,
     "name": "Viji",
-    "title": "Front-end Developer",
+    "title": "Developer",
     "description": "Cross skilled person who is enthusiatic and good team player",
     "image": "viji3.jpg",
     "github": "https://github.com/Viji-krishnan",
@@ -47,7 +47,7 @@
   {
     "id": 6,
     "name": "Yana",
-    "title": "Back-end Developer",
+    "title": "Developer",
     "description": "Inspired by teamwork and constantly looking for new technical challenges",
     "image": "yana.jpg",
     "github": "https://github.com/yanakachur-se",
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "name": "Yingtong",
-    "title": "Front-end Developer",
+    "title": "Developer",
     "description": "Passionate about numbers, parties :), cooking and photography",
     "image": "Yingtong.jpg",
     "github": "https://github.com/yingtong0713",

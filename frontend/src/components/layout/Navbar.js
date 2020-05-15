@@ -5,7 +5,7 @@ import { NavDropdown } from "react-bootstrap";
 function Navbar({ onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-sedondary sticky-top shadowNavbar">
-      <a className="navbar-brand mt=0" href="#">
+      <a className="navbar-brand mt=0" href="/">
         <img
           src={require(`../../assets/meetout1.png`)}
           width={120}
