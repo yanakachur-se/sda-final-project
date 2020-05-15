@@ -88,7 +88,7 @@ class serviceForm extends Component {
     return (
       <form>
         <div className="form-group">
-          <label for="exampleFormControlTextarea1">Name</label>
+          <label for="exampleFormControlTextarea1">Title</label>
           <input class="form-control" id="exampleFormControlTextarea1" rows="3"
             type='text'
             value={this.state.name}

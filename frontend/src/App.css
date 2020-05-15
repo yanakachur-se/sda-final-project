@@ -59,6 +59,9 @@ body {
   color: #176560;
   font-size: 15px;
 }
+.nav-link {
+  font-size: medium;
+}
 
 .navbar-nav li {
   font-size: 25px;
@@ -71,7 +74,10 @@ body {
   margin-right: 25px;
   color: #176560;
 }
-
+.dropdown-item {
+  font-weight: 600;
+  font-size: medium;
+}
 .link-button .btn {
   height: 64;
   font-weight: 800;
@@ -154,9 +160,9 @@ body {
 }
 
 .carousel-caption {
-  position: "absolute";
+  position: 'absolute';
   top: 20%;
-  transform: "translateY(-50%)";
+  transform: 'translateY(-50%)';
 }
 
 .carousel-item .btn {
@@ -167,7 +173,6 @@ body {
   background-color: #f26d21;
 }
 
-
 .main-page-intro {
   display: flex;
   flex-direction: column;
@@ -175,14 +180,13 @@ body {
   text-align: center;
   justify-content: flex-end;
   padding-top: 50px;
-  background-color:  #E8F8F5 ;
+  background-color: #e8f8f5;
 }
-
 
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;
-  font-family: "Georgia", serif;
+  font-family: 'Georgia', serif;
   font-size: 14px;
   padding: 15px;
 }
@@ -193,7 +197,6 @@ body {
   font-size: 16px;
   margin-top: 10px;
 }
-
 
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
 .RichEditor-editor .public-DraftEditor-content {
@@ -212,7 +215,7 @@ body {
 .RichEditor-editor .RichEditor-blockquote {
   border-left: 5px solid #eee;
   color: #666;
-  font-family: "Hoefler Text", "Georgia", serif;
+  font-family: 'Hoefler Text', 'Georgia', serif;
   font-style: italic;
   margin: 16px 0;
   padding: 10px 20px;
@@ -220,13 +223,13 @@ body {
 
 .RichEditor-editor .public-DraftStyleDefault-pre {
   background-color: rgba(0, 0, 0, 0.05);
-  font-family: "Inconsolata", "Menlo", "Consolas", monospace;
+  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
   font-size: 16px;
   padding: 20px;
 }
 
 .RichEditor-controls {
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Helvetica', sans-serif;
   font-size: 14px;
   margin-bottom: 5px;
   user-select: none;
@@ -244,10 +247,10 @@ body {
   color: #5890ff;
 }
 
- .btn {
+.btn {
   border-radius: 4px;
   text-shadow: 0 0.6px 0.5px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0px 1px 0px 0px #caefab;
+  box-shadow: inset 0px 1px 0px 0px #f3eee6;
   height: 50px;
   text-align: center;
   line-height: 1.1em;
@@ -270,22 +273,22 @@ body {
 
 .btn-warning {
   width: 120px;
-  background-color: #FED18C !important;
-  border-color: #FED18C !important;
+  background-color: #fed18c !important;
+  border-color: #fed18c !important;
 }
 .btn-info {
-  color: #262626 !important;
+  color: whitesmoke !important;
 }
 .btn-secondary {
   color: #262626 !important;
-    width: 120px;
+  width: 120px;
 }
 
 .btn-danger {
   width: 120px;
 
   background-color: #d11a2a !important;
-} 
+}
 
 .link-button button {
   height: 64;
