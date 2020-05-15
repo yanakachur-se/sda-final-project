@@ -1,0 +1,17 @@
+.serviceformLabel {
+  padding-right: 30px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.form-group .btn {
+  height: 64;
+  font-weight: 800;
+  color: white;
+  background-color: #176560;
+}
+
+.form-group .btn:hover {
+  color: white;
+  text-decoration: underline;
+}

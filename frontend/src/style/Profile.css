@@ -1,51 +1,70 @@
-.service-table{
-    margin: 10px;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0 ;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    
+/* .username {
+  width: 30em;
+  max-width: 100%;
+} */
+
+/* .email {
+    width: 30em;
+    max-width: 100%;
+  } */
+/* .email h5 {
+  display: inline-block;
+  max-width: 50%;
+  float: left;
+}
+.email p {
+  display: inline-block;
+  max-width: 50%;
+  float: right;
+} */
+
+*/ .service-table {
+  margin: 10px;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.service-table thead tr{
-    background-color:#176560;
-    color: white;
-    text-align: left;
+.service-table thead tr {
+  background-color: #176560;
+  color: white;
+  text-align: left;
 }
 
-.service-table td{
-    padding: 12px 15px;
+.service-table td {
+  padding: 12px 15px;
 }
 
-.service-table tbody tr{
-    border-bottom: 1px solid #dddddd;
+.service-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
 
-.service-table tbody tr:nth-of-type(even){
-    background-color: lightgray;
+.service-table tbody tr:nth-of-type(even) {
+  background-color: lightgray;
 }
 
 .a {
-    color:#176560 !important;
+  color: #176560 !important;
 }
 
-.service-table tbody tr:last-of-type{
-    border-bottom: 2px solid#176560;
+.service-table tbody tr:last-of-type {
+  border-bottom: 2px solid#176560;
 }
 
-.profile{
-    
-   
+.profile {
 }
-.profile-info{
-    font-weight: 200px;
+.profile-info {
+  font-weight: 200px;
 }
 
-.meta-Data{
-    font-size: 30px;
-   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+.meta-Data {
+  font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .table-link {
-    color: #176560 !important;
+  color: #176560 !important;
+  
 }

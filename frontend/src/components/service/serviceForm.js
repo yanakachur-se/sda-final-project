@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import Calendar from 'react-calendar';
-import PostsApi from './../../api/PostsApi';
-import ServiceEditor from './ServiceEditor';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import React, { Component } from "react";
+import Calendar from "react-calendar";
+import PostsApi from "./../../api/PostsApi";
+import ServiceEditor from "./ServiceEditor";
+
+import "../../style/serviceForm.css";
+
 class serviceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      name: "",
       description: '{"blocks":[],"entityMap":{}}',
-      attendeesLimit: '10',
-      serviceType: 'Outdoor Yoga',
+      attendeesLimit: "10",
+      serviceType: "Outdoor Yoga",
       date: new Date(),
-      time: '6am-8am',
-      place: 'Solna',
+      time: "6am-8am",
+      place: "Solna",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -35,7 +36,7 @@ class serviceForm extends Component {
     })
       .then((response) => {
         if (response.status == 200) {
-          window.location = '/service?service=all';
+          window.location = "/service?service=all";
         }
       })
       .catch((error) => {
@@ -49,9 +50,8 @@ class serviceForm extends Component {
     });
   };
 
-
   handleDescriptionChange = (raw) => {
-    this.setState({     
+    this.setState({
       description: JSON.stringify(raw),
     });
   };
@@ -102,12 +102,13 @@ class serviceForm extends Component {
           <label for="inputType">Type of activity</label>
           <select id="inputType" className="form-control"
             value={this.state.serviceType}
-            onChange={this.handleServiceTypeChange}>
-            <option value='outdoorYoga'>Outdoor Yoga</option>
-            <option value='groupTraining'>Group Training</option>
-            <option value='meditation'>Meditation</option>
-            <option value='groupRun'>Group Run</option>
-            <option value='soccer'>Soccer</option>
+            onChange={this.handleServiceTypeChange}
+          >
+            <option value="outdoorYoga">Outdoor Yoga</option>
+            <option value="groupTraining">Group Training</option>
+            <option value="meditation">Meditation</option>
+            <option value="groupRun">Group Run</option>
+            <option value="soccer">Soccer</option>
           </select>
         </div>
 
@@ -128,6 +129,7 @@ class serviceForm extends Component {
           <Calendar value={this.state.date} onChange={this.handleDateChange} />
           {/* {console.log(this.state.date)} */}
         </div>
+        <br />
 
         <div className="form-row">
         <div class="form-group col-md-4">
@@ -149,13 +151,14 @@ class serviceForm extends Component {
           <label for="inputMax">Max number of people</label>
           <select id="inputMax" class="form-control"
             value={this.state.attendeesLimit}
-            onChange={this.handleAttendeesLimitChange}>
-            <option value='1'>1</option>
-            <option value='10'>10</option>
-            <option value='20'>20</option>
-            <option value='30'>30</option>
-            <option value='40'>40</option>
-            <option value='50'>50</option>
+            onChange={this.handleAttendeesLimitChange}
+          >
+            <option value="1">1</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
           </select>
         </div>
         </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import AuthApi from "../../api/AuthApi";
 import PostsApi from "../../api/PostsApi";
-import moment from 'moment';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import '../../style/Profile.css';
+import moment from "moment";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "../../style/Profile.css";
 
 var getListOfAttendees = function (post) {
-  let emails = post.attendees.map((a) => a.email)
+  let emails = post.attendees.map((a) => a.email);
   return emails;
 };
 
@@ -15,7 +15,6 @@ var formatDate = function (stringDate) {
 };
 
 class Profile extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -43,12 +42,13 @@ class Profile extends React.Component {
   render() {
     const user = this.state.user;
     const posts = this.state.posts;
-    const sortedPosts = [].concat(posts)
-      .sort((a, b) => a.date > b.date ? 1 : -1);
+    const sortedPosts = []
+      .concat(posts)
+      .sort((a, b) => (a.date > b.date ? 1 : -1));
     const bookings = this.state.bookings;
-    const sortedBookings = [].concat(bookings)
-      .sort((a, b) => a.date > b.date ? 1 : -1);
-
+    const sortedBookings = []
+      .concat(bookings)
+      .sort((a, b) => (a.date > b.date ? 1 : -1));
 
     return (
       <div>
@@ -138,10 +138,6 @@ class Profile extends React.Component {
         </div>
       </div>
     );
-
   }
-
-
 }
 export default Profile;
-

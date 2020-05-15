@@ -12,7 +12,7 @@ function Footer() {
             <h6>Contact Us</h6>
             <ul className="list-unstyled">
               <li>E-Mail: meetout.se@gmail.com</li>
-              <li>Address: Sveavägen 89, Stockholm </li>
+              <li>Address: Lindstedtsvägen 30, 114 28 Stockholm</li>
               <li>Phone No: 0046-08 8675432</li>
             </ul>
             {/* <div className="address">
