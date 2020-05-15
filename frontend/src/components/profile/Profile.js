@@ -51,81 +51,92 @@ class Profile extends React.Component {
 
 
     return (
-
       <div>
-        <div className="profile">
-          <div class="text-uppercase"> <h3>{user.name}</h3></div>
+        <div className='profile'>
+          <div class='text-uppercase'>
+            <h3>{user.name}</h3>
+          </div>
           <hr></hr>
-          <div class="font-weight-bold">Contact Info</div>
-
-          <p>E-Mail</p>
-          <p>{user.email}</p>
+          <div class='font-weight-bold'>
+            <h5>Contact Information</h5>
+            <p>E-Mail: {user.email}</p>
+          </div>
         </div>
+        {/* <div className='profile'>
+          <div class='text-uppercase'>
+            {' '}
+            <h3>{user.name}</h3>
+          </div>
+          <hr></hr>
+          <div class='font-weight-bold'>Contact Info</div>
+        </div> */}
 
         <hr></hr>
 
-        <div className="table table-hover table-responsive ">
+        <div className='table table-hover table-responsive '>
           <h3> My Services</h3>
-          <table className="table service-table " >
+          <table className='table service-table '>
             <thead>
               <tr>
-                <th scope="col">Event Type</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-                <th scope="col">Booked</th>
-                <th scope="col">Attendees</th>
+                <th scope='col'>Event Type</th>
+                <th scope='col'>Location</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Status</th>
+                <th scope='col'>Booked</th>
+                <th scope='col'>Attendees</th>
               </tr>
             </thead>
 
             <tbody>
-              {sortedPosts.map((post) =>
+              {sortedPosts.map((post) => (
                 <tr>
-                  <Link className = "table-link" to={`/service/${post.id}`}> <td>{post.serviceType}</td> </Link>
+                  <Link className='table-link' to={`/service/${post.id}`}>
+                    {' '}
+                    <td>{post.serviceType}</td>{' '}
+                  </Link>
                   <td>{post.place}</td>
                   <td>{formatDate(post.date)}</td>
                   <td>{post.status.toLowerCase()}</td>
-                  <td>{post.attendees.length + ' out of ' + post.attendeesLimit}</td>
+                  <td>
+                    {post.attendees.length + ' out of ' + post.attendeesLimit}
+                  </td>
                   <td>{getListOfAttendees(post).join(', ')}</td>
                 </tr>
-              )
-              }
-
+              ))}
             </tbody>
           </table>
         </div>
 
-        <div className="table table-hover table-responsive ">
+        <div className='table table-hover table-responsive '>
           <h3> My Bookings</h3>
-          <table class="table service-table">
+          <table class='table service-table'>
             <thead>
               <tr>
-                <th scope="col">Activity</th>
-                <th scope="col">Location</th>
-                <th scope="col">Date</th>
-                <th scope="col"> Status</th>
-                <th scope="col">Provided By</th>
-
+                <th scope='col'>Activity</th>
+                <th scope='col'>Location</th>
+                <th scope='col'>Date</th>
+                <th scope='col'> Status</th>
+                <th scope='col'>Provided By</th>
               </tr>
             </thead>
 
             <tbody>
-              {sortedBookings.map((booking) =>
+              {sortedBookings.map((booking) => (
                 <tr>
-                  <Link className = "table-link" to={`/service/${booking.id}`}> <td>{booking.serviceType}</td> </Link>
+                  <Link className='table-link' to={`/service/${booking.id}`}>
+                    {' '}
+                    <td>{booking.serviceType}</td>{' '}
+                  </Link>
                   <td>{booking.place}</td>
                   <td>{formatDate(booking.date)}</td>
                   <td>{booking.status.toLowerCase()}</td>
                   <td>{booking.user.name}</td>
                 </tr>
-              )
-              }
-
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-
     );
 
   }
