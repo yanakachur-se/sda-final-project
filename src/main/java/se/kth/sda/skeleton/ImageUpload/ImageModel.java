@@ -28,7 +28,7 @@ public class ImageModel {
 
 
     @JsonIgnore
-    @OneToOne(mappedBy = "image")
+    @OneToOne(mappedBy = "imageModel")
     private User user;
 
     public ImageModel() {
