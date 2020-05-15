@@ -1,6 +1,8 @@
 package se.kth.sda.skeleton.ImageUpload;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
 
@@ -10,16 +12,24 @@ public class ImageModel {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column
     private String id;
 
+    @Column
     private String fileName;
 
+    @Column
     private String fileType;
 
     //@Lob
     //@Column(name = "photo", columnDefinition="BLOB")
     @Column
     private byte[] data;
+
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "image")
+    private User user;
 
     public ImageModel() {
 
@@ -61,5 +71,13 @@ public class ImageModel {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
