@@ -11,8 +11,10 @@
 li,
 a {
   font-size: 12px;
+  
 }
 
 h6 {
   font-weight: bold;
+  text-decoration: underline;
 }
