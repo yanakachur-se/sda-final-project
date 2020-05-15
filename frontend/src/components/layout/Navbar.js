@@ -55,9 +55,7 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-uppercase" to="/chat">
-              chat
-            </Link>
+              <a href="http://localhost:3000/">chat</a>
           </li>
           <li className="nav-item">
             <Link className="nav-link text-uppercase" to="/covid19live">
