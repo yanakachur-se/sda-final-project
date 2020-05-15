@@ -44,6 +44,8 @@ public class ImageController {
 
         ImageModel imageFile = imageService.storeFile(file);
         imageFile.setUser(user);
+        user.setImageModel(imageFile);
+        imageService.saveImage(imageFile);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")

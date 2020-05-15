@@ -2,6 +2,7 @@ package se.kth.sda.skeleton.ImageUpload;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
@@ -21,11 +22,10 @@ public class ImageModel {
     @Column
     private String fileType;
 
-    //@Lob
-    //@Column(name = "photo", columnDefinition="BLOB")
     @Column
+    @Lob
+    @Type(type="org.hibernate.type.BinaryType")
     private byte[] data;
-
 
     @JsonIgnore
     @OneToOne(mappedBy = "imageModel")

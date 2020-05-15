@@ -35,6 +35,10 @@ public class ImageService {
         return imageRepository.findById(fileId)
                 .orElseThrow(() -> new MyFileNotFoundException("File not found with id " + fileId));
     }
+
+    public ImageModel saveImage(ImageModel imageModel){
+        return imageRepository.save(imageModel);
+    }
 }
 
 
