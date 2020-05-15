@@ -1,12 +1,12 @@
 import React from "react";
 import AuthApi from "../../api/AuthApi";
 import PostsApi from "../../api/PostsApi";
-import moment from 'moment';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import '../../style/Profile.css';
+import moment from "moment";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "../../style/Profile.css";
 
 var getListOfAttendees = function (post) {
-  let emails = post.attendees.map((a) => a.email)
+  let emails = post.attendees.map((a) => a.email);
   return emails;
 };
 
@@ -15,7 +15,6 @@ var formatDate = function (stringDate) {
 };
 
 class Profile extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -43,30 +42,44 @@ class Profile extends React.Component {
   render() {
     const user = this.state.user;
     const posts = this.state.posts;
-    const sortedPosts = [].concat(posts)
-      .sort((a, b) => a.date > b.date ? 1 : -1);
+    const sortedPosts = []
+      .concat(posts)
+      .sort((a, b) => (a.date > b.date ? 1 : -1));
     const bookings = this.state.bookings;
-    const sortedBookings = [].concat(bookings)
-      .sort((a, b) => a.date > b.date ? 1 : -1);
-
+    const sortedBookings = []
+      .concat(bookings)
+      .sort((a, b) => (a.date > b.date ? 1 : -1));
 
     return (
-
       <div>
         <div className="profile">
-          <div class="text-uppercase"> <h3>{user.name}</h3></div>
-          <hr></hr>
-          <div class="font-weight-bold">Contact Info</div>
+          <h3>Contact Information</h3>
+        </div>
 
-          <p>E-Mail</p>
-          <p>{user.email}</p>
+        <hr></hr>
+        <div className="username" style={{ display: "inline" }}>
+          <p>
+            <span>
+              <b>User Name:</b>&nbsp;&nbsp;
+              {user.name}
+            </span>
+          </p>
+        </div>
+
+        <div className="email">
+          <p>
+            <span>
+              <b>Email:</b>&nbsp;&nbsp;
+              {user.email}
+            </span>
+          </p>
         </div>
 
         <hr></hr>
 
         <div className="table table-hover table-responsive ">
           <h3> My Services</h3>
-          <table className="table service-table " >
+          <table className="table service-table ">
             <thead>
               <tr>
                 <th scope="col">Event Type</th>
@@ -79,18 +92,21 @@ class Profile extends React.Component {
             </thead>
 
             <tbody>
-              {sortedPosts.map((post) =>
+              {sortedPosts.map((post) => (
                 <tr>
-                  <Link className = "table-link" to={`/service/${post.id}`}> <td>{post.serviceType}</td> </Link>
+                  <Link className="table-link" to={`/service/${post.id}`}>
+                    {" "}
+                    <td>{post.serviceType}</td>{" "}
+                  </Link>
                   <td>{post.place}</td>
                   <td>{formatDate(post.date)}</td>
                   <td>{post.status.toLowerCase()}</td>
-                  <td>{post.attendees.length + ' out of ' + post.attendeesLimit}</td>
-                  <td>{getListOfAttendees(post).join(', ')}</td>
+                  <td>
+                    {post.attendees.length + " out of " + post.attendeesLimit}
+                  </td>
+                  <td>{getListOfAttendees(post).join(", ")}</td>
                 </tr>
-              )
-              }
-
+              ))}
             </tbody>
           </table>
         </div>
@@ -105,32 +121,27 @@ class Profile extends React.Component {
                 <th scope="col">Date</th>
                 <th scope="col"> Status</th>
                 <th scope="col">Provided By</th>
-
               </tr>
             </thead>
 
             <tbody>
-              {sortedBookings.map((booking) =>
+              {sortedBookings.map((booking) => (
                 <tr>
-                  <Link className = "table-link" to={`/service/${booking.id}`}> <td>{booking.serviceType}</td> </Link>
+                  <Link className="table-link" to={`/service/${booking.id}`}>
+                    {" "}
+                    <td>{booking.serviceType}</td>{" "}
+                  </Link>
                   <td>{booking.place}</td>
                   <td>{formatDate(booking.date)}</td>
                   <td>{booking.status.toLowerCase()}</td>
                   <td>{booking.user.name}</td>
                 </tr>
-              )
-              }
-
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-
     );
-
   }
-
-
 }
 export default Profile;
-

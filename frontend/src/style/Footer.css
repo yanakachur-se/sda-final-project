@@ -1,0 +1,20 @@
+.main-footer {
+  background-color: #79ba9e;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  position: relative;
+  bottom: 0em;
+  width: 100%;
+  color: white;
+}
+
+li,
+a {
+  font-size: 12px;
+  
+}
+
+h6 {
+  font-weight: bold;
+  text-decoration: underline;
+}
