@@ -5,6 +5,7 @@ import CardDeck from 'react-bootstrap/CardDeck';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Form from "react-bootstrap/Form";
+import Table from 'react-bootstrap/Table';
 
 
 
@@ -35,53 +36,31 @@ function Covid19Live() {
     return searchCountries !== "" ? item.country.includes(searchCountries) : item;
   })
 
+
   const countries = filterCountry.map(data => {
     return (
-      <Card
-        bg="light"
-        text="dark"
-        className="text-center"
-        style={{ margin: "10px" }}>
-        <Card.Body>
-          <Card.Title>{data.country}</Card.Title>
-          <Card.Text>Cases {data.cases}</Card.Text>
-          <Card.Text>Deaths {data.deaths}</Card.Text>
-          <Card.Text>Recovered {data.recovered}</Card.Text>
-          <Card.Text>Today's Cases {data.todayCases}</Card.Text>
-          <Card.Text>Today's Deaths {data.todayDeaths}</Card.Text>
-          <Card.Text>Active {data.active}</Card.Text>
-          <Card.Text>Critical {data.critical}</Card.Text>
-        </Card.Body>
-      </Card>
+      <tbody>
+        <tr>
+          <td><b>{data.country}</b></td>
+          <td>{data.cases}</td>
+          <td>{data.deaths}</td>
+          <td style={{ backgroundColor: "#c5e1a5" }}>{data.recovered}</td>
+          <td style={{ backgroundColor: "#ffc107" }}>{data.todayCases}</td>
+          <td style={{ backgroundColor: "#ef5350" }}>{data.todayDeaths}</td>
+          <td>{data.active}</td>
+          <td>{data.critical}</td>
+        </tr>
+      </tbody>
     );
   });
-  // console.log(results[187]);
-  // const swedenData = results.filter(data => data.id === 752)
-  // console.log(swedenData);
-  // function Sweden() {
-  //   return (
-  //     <Card
-  //       bg="light"
-  //       text="dark"
-  //       className="text-center"
-  //       style={{ margin: "10px" }} >
-  //       <Card.Body>
-  //         <Card.Title>results[187].country</Card.Title>
-  //         <Card.Text>
-  //           results[187].cases
-  //         </Card.Text>
-  //       </Card.Body>
-  //     </Card>
-  //   );
-  // };
+
   return (
     <div className="App">
       <CardDeck>
         <Card
-          bg="secondary"
-          text="white"
+          text="black"
           className="text-center"
-          style={{ margin: "10px" }}>
+          style={{ margin: "10px", backgroundColor: "#ffc107" }}>
           <Card.Body>
             <Card.Title>Cases</Card.Title>
             <Card.Text>
@@ -93,10 +72,9 @@ function Covid19Live() {
           </Card.Footer>
         </Card>
         <Card
-          bg="warning"
-          text="white"
+          text="black"
           className="text-center"
-          style={{ margin: "10px" }}>
+          style={{ margin: "10px", backgroundColor: "#ef5350" }}>
           <Card.Body>
             <Card.Title>Deaths</Card.Title>
             <Card.Text>{latest.deaths}</Card.Text>
@@ -106,10 +84,9 @@ function Covid19Live() {
           </Card.Footer>
         </Card>
         <Card
-          bg="info"
-          text="white"
+          text="black"
           className="text-center"
-          style={{ margin: "10px" }}>
+          style={{ margin: "10px", backgroundColor: "#c5e1a5" }}>
           <Card.Body>
             <Card.Title>Recovered</Card.Title>
             <Card.Text>{latest.recovered}</Card.Text>
@@ -121,15 +98,28 @@ function Covid19Live() {
       </CardDeck>
       <Form>
         <Form.Group controlID="formGroupSearch">
-          <Form.Control 
-            type="text" 
+          <Form.Control
+            type="text"
             placeholder="Search a country"
-            onChange={e => setSearchCountries(e.target.value)}  
+            onChange={e => setSearchCountries(e.target.value)}
           />
         </Form.Group>
       </Form>
-      {countries}
-      {/* <Sweden /> */}
+      <Table striped bordered hover responsive>
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>Total Cases</th>
+            <th>Total Deaths</th>
+            <th>Recovered</th>
+            <th>Today's Cases</th>
+            <th>Today's Deaths</th>
+            <th>Active</th>
+            <th>Critical</th>
+          </tr>
+        </thead>
+        {countries}
+      </Table>
     </div>
   );
 }
