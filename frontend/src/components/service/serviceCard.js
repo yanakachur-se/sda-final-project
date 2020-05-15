@@ -199,7 +199,7 @@ function ServiceCard(props) {
           </Link>
         }
         {visitorView &&
-          'Only ' + seatsLeft + ' seats left! Smash the green button!'}
+          'Only ' + seatsLeft + ' seats left!'}
         {attendeeView && ' ' + 'Thank you for booking! :)'}
         {seatsLeft === 0 && ' ' + 'Sorry, you missed the last seat :)'}
       </div>
