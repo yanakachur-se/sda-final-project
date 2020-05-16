@@ -28,53 +28,51 @@ function App() {
 
   const loggedInRouter = (
     <Router>
-      <div className="shadowNavbar">
+      <div className='shadowNavbar'>
         <Navbar onLogout={() => Auth.logout()} />
       </div>
-      <div className="container page-container  content-wrap mt-5">
+      <div className='container page-container  content-wrap mt-5'>
         <Switch>
-          <Route path="/posts/:id" component={CommentsPage} />
-          <Route path="/posts">
+          <Route path='/posts/:id' component={CommentsPage} />
+          <Route path='/posts'>
             <ServicePage />
           </Route>
-          <Route path="/service/:id" component={ServiceDetail} />
+          <Route path='/service/:id' component={ServiceDetail} />
 
-          <Route path="/service">
+          <Route path='/service'>
             <ServiceList />
           </Route>
 
-          <Route path="/chat">
+          <Route path='/chat'>
             <ChatPage />
           </Route>
 
-          <Route path="/profile">
+          <Route path='/profile'>
             <Profile />
           </Route>
-
-          <Route path="/aboutus">
+          <Route path='/aboutus'>
             <AboutUs />
           </Route>
 
-          <Route path="/serviceform">
+          <Route path='/serviceform'>
             <ServiceForm />
           </Route>
 
-          <Route path="/covid19live">
+          <Route path='/covid19live'>
             <Covid19live />
           </Route>
 
-          <Route path="/faq">
+          <Route path='/faq'>
             <Faq />
           </Route>
 
-
-          <Route path="/">
+          <Route path='/'>
             <HomePage />
           </Route>
         </Switch>
       </div>
       <br />
-      <div className="footer">
+      <div className='footer'>
         <Footer />
       </div>
     </Router>

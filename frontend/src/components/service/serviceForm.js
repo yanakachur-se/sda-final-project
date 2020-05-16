@@ -1,21 +1,23 @@
-import React, { Component } from "react";
-import Calendar from "react-calendar";
-import PostsApi from "./../../api/PostsApi";
-import ServiceEditor from "./ServiceEditor";
-
-import "../../style/serviceForm.css";
+import React, { Component } from 'react';
+import Calendar from 'react-calendar';
+import PostsApi from './../../api/PostsApi';
+import ServiceEditor from './ServiceEditor';
+import '../../style/serviceForm.css';
+import Mapp from './Mapp';
 
 class serviceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: '',
       description: '{"blocks":[],"entityMap":{}}',
-      attendeesLimit: "10",
-      serviceType: "Outdoor Yoga",
+      attendeesLimit: '10',
+      serviceType: 'Outdoor Yoga',
       date: new Date(),
-      time: "6am-8am",
-      place: "Solna",
+      time: '6am-8am',
+      place: 'Solna',
+      latitude: '',
+      longitude: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,10 +35,12 @@ class serviceForm extends Component {
       date: this.state.date,
       time: this.state.time,
       place: this.state.place,
+      longitude: this.state.longitude,
+      latitude: this.state.latitude,
     })
       .then((response) => {
         if (response.status == 200) {
-          window.location = "/service?service=all";
+          window.location = '/service?service=all';
         }
       })
       .catch((error) => {
@@ -72,7 +76,20 @@ class serviceForm extends Component {
       place: event.target.value,
     });
   };
-
+  handleCoordinatesChange = (point) => {
+    console.log(point[0]);
+    console.log(point[1]);
+    this.setState({
+      latitude: point[0],
+      longitude: point[1],
+    });
+  };
+  // handleLongitudeChange = (point) => {
+  //   console.log(point[1]);
+  //   this.setState({
+  //     longitude: point[1],
+  //   });
+  // };
   handleDateChange = (date) => {
     date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
     this.setState({ date });
@@ -87,90 +104,103 @@ class serviceForm extends Component {
   render() {
     return (
       <form>
-        <div className="form-group">
-          <label for="exampleFormControlTextarea1">Title</label>
-          <input class="form-control" id="exampleFormControlTextarea1" rows="3"
+        <div className='form-group'>
+          <label for='exampleFormControlTextarea1'>Title</label>
+          <input
+            class='form-control'
+            id='exampleFormControlTextarea1'
+            rows='3'
             type='text'
             value={this.state.name}
             onChange={this.handleNameChange}
           />
         </div>
 
-        <div className="form-row">
+        <div className='form-row'>
+          <div class='form-group col-md-6'>
+            <label for='inputType'>Type of activity</label>
+            <select
+              id='inputType'
+              className='form-control'
+              value={this.state.serviceType}
+              onChange={this.handleServiceTypeChange}>
+              <option value='outdoorYoga'>Outdoor Yoga</option>
+              <option value='groupTraining'>Group Training</option>
+              <option value='meditation'>Meditation</option>
+              <option value='groupRun'>Group Run</option>
+              <option value='soccer'>Soccer</option>
+            </select>
+          </div>
 
-        <div class="form-group col-md-6">
-          <label for="inputType">Type of activity</label>
-          <select id="inputType" className="form-control"
-            value={this.state.serviceType}
-            onChange={this.handleServiceTypeChange}
-          >
-            <option value="outdoorYoga">Outdoor Yoga</option>
-            <option value="groupTraining">Group Training</option>
-            <option value="meditation">Meditation</option>
-            <option value="groupRun">Group Run</option>
-            <option value="soccer">Soccer</option>
-          </select>
+          <div class='form-group col-md-6'>
+            <label for='inputPlace'>Place</label>
+            <select
+              id='inputPlace'
+              class='form-control'
+              value={this.state.place}
+              onChange={this.handlePlaceChange}>
+              <option value='Solna'>Solna</option>
+              <option value='Stockholm'>Stockholm</option>
+              <option value='Sundbyberg'>Sundbyberg</option>
+              <option value='Täby'>Täby</option>
+              <option value='Sollentuna'>Sollentuna</option>
+            </select>
+          </div>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="inputPlace">Place</label>
-          <select id="inputPlace" class="form-control" value={this.state.place} onChange={this.handlePlaceChange}>
-            <option value='Solna'>Solna</option>
-            <option value='Stockholm'>Stockholm</option>
-            <option value='Sundbyberg'>Sundbyberg</option>
-            <option value='Täby'>Täby</option>
-            <option value='Sollentuna'>Sollentuna</option>
-          </select>
-        </div>
-        </div>
-
-        <div className="form-group">
+        <div className='form-group'>
           <label>Date</label>
           <Calendar value={this.state.date} onChange={this.handleDateChange} />
           {/* {console.log(this.state.date)} */}
         </div>
         <br />
 
-        <div className="form-row">
-        <div class="form-group col-md-4">
-          <label for="inputTime">Time</label>
-          <select id="inputTime" class="form-control" value={this.state.time} onChange={this.handleTimeChange}>
-            <option value='6am-8am'>6.00am-8.00am</option>
-            <option value='8am-10am'>8.00am-10.00am</option>
-            <option value='10am-12pm'>10.00am-12.00pm</option>
-            <option value='12pm-1pm'>12.00pm-1.00pm</option>
-            <option value='1pm-3pm'>1.00pm-3.00pm</option>
-            <option value='3pm-5pm'>3.00pm-5.00pm</option>
-            <option value='5pm-7pm'>5.00pm-7.00pm</option>
-            <option value='7pm-9pm'>7.00pm-9.00pm</option>
-            <option value='9pm-11pm'>9.00pm-11.00pm</option>
-          </select>
+        <div className='form-row'>
+          <div class='form-group col-md-4'>
+            <label for='inputTime'>Time</label>
+            <select
+              id='inputTime'
+              class='form-control'
+              value={this.state.time}
+              onChange={this.handleTimeChange}>
+              <option value='6am-8am'>6.00am-8.00am</option>
+              <option value='8am-10am'>8.00am-10.00am</option>
+              <option value='10am-12pm'>10.00am-12.00pm</option>
+              <option value='12pm-1pm'>12.00pm-1.00pm</option>
+              <option value='1pm-3pm'>1.00pm-3.00pm</option>
+              <option value='3pm-5pm'>3.00pm-5.00pm</option>
+              <option value='5pm-7pm'>5.00pm-7.00pm</option>
+              <option value='7pm-9pm'>7.00pm-9.00pm</option>
+              <option value='9pm-11pm'>9.00pm-11.00pm</option>
+            </select>
+          </div>
+
+          <div class='form-group col-md-4'>
+            <label for='inputMax'>Max number of people</label>
+            <select
+              id='inputMax'
+              class='form-control'
+              value={this.state.attendeesLimit}
+              onChange={this.handleAttendeesLimitChange}>
+              <option value='1'>1</option>
+              <option value='10'>10</option>
+              <option value='20'>20</option>
+              <option value='30'>30</option>
+              <option value='40'>40</option>
+              <option value='50'>50</option>
+            </select>
+          </div>
         </div>
 
-        <div class="form-group col-md-4">
-          <label for="inputMax">Max number of people</label>
-          <select id="inputMax" class="form-control"
-            value={this.state.attendeesLimit}
-            onChange={this.handleAttendeesLimitChange}
-          >
-            <option value="1">1</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-          </select>
-        </div>
-        </div>
-
-        <div className="form-group">
+        <div className='form-group'>
           <label>Activity Description</label>
-          <ServiceEditor
-            onChange={this.handleDescriptionChange}
-          />
-          {/* <textarea
-            value={this.state.description}
-            onChange={this.handleDescriptionChange}></textarea> */}
+          <ServiceEditor onChange={this.handleDescriptionChange} />
+        </div>
+
+        <div className='form-group'>
+          <label>Pick a spot!</label>
+          <Mapp 
+          onChange={this.handleCoordinatesChange} />
         </div>
 
         <div className='form-group'>
