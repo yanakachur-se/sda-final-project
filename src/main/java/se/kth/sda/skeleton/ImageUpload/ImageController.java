@@ -7,18 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import se.kth.sda.skeleton.auth.AuthService;
+import se.kth.sda.skeleton.posts.Post;
+import se.kth.sda.skeleton.posts.PostService;
 import se.kth.sda.skeleton.user.User;
 import se.kth.sda.skeleton.user.UserService;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.zip.DataFormatException;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
 @RestController
 public class ImageController {
@@ -33,6 +43,9 @@ public class ImageController {
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private PostService postService;
 
 
     @PostMapping("/uploadFile")
@@ -83,4 +96,23 @@ public class ImageController {
                 .body(new ByteArrayResource(imageFile.getData()));
     }
 
+    @GetMapping(path = { "/getImage" })
+    public ImageModel getImage() throws IOException {
+        User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
+        String id = user.getImageModel().getId();
+        return imageService.getFile(id);
+    }
+
+    @GetMapping(path = { "/{id}/getImage" })
+    public ImageModel getServiceProviderImage(@PathVariable Long postId) throws IOException {
+        Post post = postService.getByID(postId).get();
+        ImageModel serviceProviderImage = post.getUser().getImageModel();
+        return serviceProviderImage;
+    }
+
+
 }
+
+
+
+

@@ -4,6 +4,7 @@ import PostsApi from "../../api/PostsApi";
 import moment from "moment";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "../../style/Profile.css";
+import FileApi from "../../api/FileApi";
 
 var getListOfAttendees = function (post) {
   let emails = post.attendees.map((a) => a.email);
@@ -22,6 +23,7 @@ class Profile extends React.Component {
       email: "",
       posts: [],
       bookings: [],
+      image: [],
     };
   }
 
@@ -37,6 +39,10 @@ class Profile extends React.Component {
     PostsApi.listOfPostsByAttendeeEmail()
       .then(({ data }) => this.setState({ bookings: data }))
       .catch((err) => console.error(err));
+
+    FileApi.getProfilePic()
+      .then(({ data }) => this.setState({ image: data }))
+      .catch((err) => console.error(err));
   }
 
   render() {
@@ -49,6 +55,7 @@ class Profile extends React.Component {
     const sortedBookings = []
       .concat(bookings)
       .sort((a, b) => (a.date > b.date ? 1 : -1));
+    const data = this.state.image.data
 
     return (
       <div>
@@ -60,6 +67,7 @@ class Profile extends React.Component {
           <div class='font-weight-bold'>
             <h5>Contact Information</h5>
             <p>E-Mail: {user.email}</p>
+            <img src={`data:image/jpeg;base64,${data}`} />
           </div>
         </div>
         {/* <div className='profile'>

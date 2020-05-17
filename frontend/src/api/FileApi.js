@@ -9,6 +9,10 @@ class FileApi {
         return Api.post(`/uploadFile/`, file, { headers: { 'Content-Type': 'multipart/form-data' }})
     }
 
+    getProfilePic() {
+        return Api.get('/getImage')
+    }
+
 }
 
 export default new FileApi();
