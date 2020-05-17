@@ -52,8 +52,6 @@ public class ImageController {
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
 
         User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
-        //ImageModel imageModel = user.getImageModel();
-        //private byte[] imagefile = imageModel.getData();
 
         ImageModel imageFile = imageService.storeFile(file);
         imageFile.setUser(user);
@@ -81,7 +79,7 @@ public class ImageController {
     public ResponseEntity<Resource> downloadFile() {
 
         User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
-        ImageModel imageFile = imageService.getFile(user.getImageModel().getId());
+        ImageModel imageFile = imageService.getImageByUser(user);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(imageFile.getFileType()))
@@ -92,15 +90,12 @@ public class ImageController {
     @GetMapping(path = { "/getImage" })
     public ImageModel getImage() throws IOException {
         User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
-        String id = user.getImageModel().getId();
-        return imageService.getFile(id);
+        return imageService.getImageByUser(user);
     }
 
     @GetMapping(path = { "/{id}/getImage" })
     public ImageModel getServiceProviderImage(@PathVariable Long postId) throws IOException {
-        Post post = postService.getByID(postId).get();
-        String imageId = post.getUser().getImageModel().getId();
-        return imageService.getFile(imageId);
+        return imageService.getImageForPost(postId);
     }
 
 

@@ -5,6 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import se.kth.sda.skeleton.posts.Post;
+import se.kth.sda.skeleton.posts.PostService;
+import se.kth.sda.skeleton.user.User;
+
 import java.io.IOException;
 
 @Service
@@ -12,6 +16,9 @@ public class ImageService {
 
     @Autowired
     ImageRepository imageRepository;
+
+    @Autowired
+    PostService postService;
 
     public ImageModel storeFile(MultipartFile file) {
         // Normalize file name
@@ -38,6 +45,15 @@ public class ImageService {
 
     public ImageModel saveImage(ImageModel imageModel){
         return imageRepository.save(imageModel);
+    }
+
+    public ImageModel getImageByUser(User user) {
+        return getFile(user.getImageModel().getId());
+    }
+
+    public ImageModel getImageForPost(long postId) {
+        Post post = postService.getByID(postId).get();
+        return getFile(post.getUser().getImageModel().getId());
     }
 }
 
