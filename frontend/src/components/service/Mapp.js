@@ -27,13 +27,12 @@ const Mapp = (props) => {
     zoom: 12,
   };
 
-  
-
   return (
     <LocationPicker
       startPort={IViewport}
       pointMode={pointMode}
       circleMode={circleMode} />
+  
   );
 };
 

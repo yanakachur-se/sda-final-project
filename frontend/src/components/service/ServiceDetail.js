@@ -12,6 +12,8 @@ import '../../style/ServiceDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons';
 import { Map, Popup, TileLayer, Marker, Circle } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import ServiceMap from './ServiceMap';
 
 var getLocalTime = function (stringDate) {
   let localTime = moment.utc(stringDate);
@@ -167,6 +169,18 @@ function ServiceDetail(props) {
       console.error(e);
     }
   }
+
+  React.useEffect(() => {
+    const L = require('leaflet');
+
+    delete L.Icon.Default.prototype._getIconUrl;
+
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+      iconUrl: require('leaflet/dist/images/marker-icon.png'),
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+    });
+  }, []);
 
   const editButton = (
     <Col xs={2}>
@@ -367,14 +381,6 @@ function ServiceDetail(props) {
                   <Popup>
                     <span>Coordinates: {coordinatesArray}</span>
                   </Popup>
-                  <Circle
-                    center={{
-                      lat: post.latitude,
-                      lng: post.longitude,
-                    }}
-                    fillColor='blue'
-                    radius={100}
-                  />
                 </Marker>
               </Map>
             )}

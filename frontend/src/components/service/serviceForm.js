@@ -6,6 +6,7 @@ import ServiceEditor from './ServiceEditor';
 import '../../style/serviceForm.css';
 import Mapp from './Mapp';
 import moment from 'moment';
+import ServiceMap from './ServiceMap'
 
 class serviceForm extends Component {
   constructor(props) {
@@ -79,8 +80,6 @@ class serviceForm extends Component {
     });
   };
   handleCoordinatesChange = (point) => {
-    console.log(point[0]);
-    console.log(point[1]);
     this.setState({
       latitude: point[0],
       longitude: point[1],
@@ -197,9 +196,14 @@ class serviceForm extends Component {
           <ServiceEditor onChange={this.handleDescriptionChange} />
         </div>
 
-        <div className='form-group'>
+        {/* <div className='form-group'>
           <label>Pick a spot!</label>
           <Mapp onChange={this.handleCoordinatesChange} />
+        </div> */}
+
+        <div className='form-group'>
+          <label>Pick a spot!</label>
+          <ServiceMap onChange={this.handleCoordinatesChange} />
         </div>
 
         <div className='form-group'>
