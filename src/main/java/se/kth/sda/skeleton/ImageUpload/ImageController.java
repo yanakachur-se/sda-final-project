@@ -81,15 +81,8 @@ public class ImageController {
     public ResponseEntity<Resource> downloadFile() {
 
         User user = userService.findUserByEmail(authService.getLoggedInUserEmail());
-        ImageModel imageModel = user.getImageModel();
-        ImageModel imageFile = null;
+        ImageModel imageFile = imageService.getFile(user.getImageModel().getId());
 
-        if (user.equals((imageModel.getUser()))) {
-            String fileId = imageModel.getId();
-
-            // Load file from database
-            imageFile = imageService.getFile(fileId);
-        }
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(imageFile.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + imageFile.getFileName() + "\"")
@@ -106,8 +99,8 @@ public class ImageController {
     @GetMapping(path = { "/{id}/getImage" })
     public ImageModel getServiceProviderImage(@PathVariable Long postId) throws IOException {
         Post post = postService.getByID(postId).get();
-        ImageModel serviceProviderImage = post.getUser().getImageModel();
-        return serviceProviderImage;
+        String imageId = post.getUser().getImageModel().getId();
+        return imageService.getFile(imageId);
     }
 
 
