@@ -19,7 +19,8 @@ function ServiceMap(props) {
   }, []);
 
   const handleClick = (event) => {
-    console.log(event.latlng);
+    // console.log(event.latlng);
+    props.onChange(event)
     setLatitude(event.latlng.lat);
     setLongitude(event.latlng.lng);
   };
@@ -28,7 +29,8 @@ function ServiceMap(props) {
       center={[59.3293, 18.0686]}
       zoom={13}
       style={{ height: '100vh' }}
-      onClick={handleClick}>
+      onClick={handleClick}
+      >
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

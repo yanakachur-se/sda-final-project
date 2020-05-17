@@ -13,7 +13,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons';
 import { Map, Popup, TileLayer, Marker, Circle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import ServiceMap from './ServiceMap';
 
 var getLocalTime = function (stringDate) {
   let localTime = moment.utc(stringDate);
@@ -371,8 +370,11 @@ function ServiceDetail(props) {
                 </span>
               </div>
             )}
-            {attendeeView && (
-              <Map center={coordinatesArray} zoom={13}>
+            {!visitorView && (
+              <Map
+                center={coordinatesArray}
+                zoom={13}
+               >
                 <TileLayer
                   url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

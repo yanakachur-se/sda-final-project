@@ -4,7 +4,6 @@ import 'react-calendar/dist/Calendar.css';
 import PostsApi from './../../api/PostsApi';
 import ServiceEditor from './ServiceEditor';
 import '../../style/serviceForm.css';
-import Mapp from './Mapp';
 import moment from 'moment';
 import ServiceMap from './ServiceMap'
 
@@ -79,10 +78,13 @@ class serviceForm extends Component {
       place: event.target.value,
     });
   };
-  handleCoordinatesChange = (point) => {
+
+
+  handleCoordinatesChange = (event) => {
+    console.log(event.latlng);
     this.setState({
-      latitude: point[0],
-      longitude: point[1],
+      latitude: event.latlng.lat,
+      longitude: event.latlng.lng,
     });
   };
 
@@ -195,11 +197,6 @@ class serviceForm extends Component {
           <label>Activity Description</label>
           <ServiceEditor onChange={this.handleDescriptionChange} />
         </div>
-
-        {/* <div className='form-group'>
-          <label>Pick a spot!</label>
-          <Mapp onChange={this.handleCoordinatesChange} />
-        </div> */}
 
         <div className='form-group'>
           <label>Pick a spot!</label>
