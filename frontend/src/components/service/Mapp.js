@@ -16,9 +16,7 @@ const Mapp = (props) => {
       },
       onRemove: (point) =>
         console.log("I've just been clicked for removal :(", point),
-        
     },
-    
   };
   const circleMode = {
     banner: false,

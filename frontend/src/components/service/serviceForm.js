@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import PostsApi from './../../api/PostsApi';
 import ServiceEditor from './ServiceEditor';
 import '../../style/serviceForm.css';
 import Mapp from './Mapp';
+import moment from 'moment';
 
 class serviceForm extends Component {
   constructor(props) {
@@ -84,12 +86,7 @@ class serviceForm extends Component {
       longitude: point[1],
     });
   };
-  // handleLongitudeChange = (point) => {
-  //   console.log(point[1]);
-  //   this.setState({
-  //     longitude: point[1],
-  //   });
-  // };
+
   handleDateChange = (date) => {
     date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
     this.setState({ date });
@@ -151,7 +148,10 @@ class serviceForm extends Component {
         <div className='form-group'>
           <label>Date</label>
           <Calendar value={this.state.date} onChange={this.handleDateChange} />
-          {/* {console.log(this.state.date)} */}
+          <p>
+            The date you've selected is:{' '}
+            {moment(this.state.date).format('ddd, MMMM Do YYYY')}
+          </p>
         </div>
         <br />
 
@@ -199,8 +199,7 @@ class serviceForm extends Component {
 
         <div className='form-group'>
           <label>Pick a spot!</label>
-          <Mapp 
-          onChange={this.handleCoordinatesChange} />
+          <Mapp onChange={this.handleCoordinatesChange} />
         </div>
 
         <div className='form-group'>
