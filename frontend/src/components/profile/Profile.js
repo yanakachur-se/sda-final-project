@@ -1,9 +1,12 @@
-import React from 'react';
-import AuthApi from '../../api/AuthApi';
-import PostsApi from '../../api/PostsApi';
-import moment from 'moment';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import '../../style/Profile.css';
+import React from "react";
+import AuthApi from "../../api/AuthApi";
+import PostsApi from "../../api/PostsApi";
+import moment from "moment";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "../../style/Profile.css";
+import FileApi from "../../api/FileApi";
+import ProfilePic from './ProfilePic';
+import { FaUserCircle } from 'react-icons/fa'
 
 var getListOfAttendees = function (post) {
   let emails = post.attendees.map((a) => a.email);
@@ -22,6 +25,7 @@ class Profile extends React.Component {
       email: '',
       posts: [],
       bookings: [],
+      image: [],
     };
   }
 
@@ -37,7 +41,13 @@ class Profile extends React.Component {
     PostsApi.listOfPostsByAttendeeEmail()
       .then(({ data }) => this.setState({ bookings: data }))
       .catch((err) => console.error(err));
+
+    FileApi.getProfilePic()
+      .then(({ data }) => this.setState({ image: data }))
+      .catch((err) => console.error(err));
   }
+
+  
 
   render() {
     const user = this.state.user;
@@ -50,6 +60,8 @@ class Profile extends React.Component {
     const sortedBookings = []
       .concat(bookings)
       .sort((a, b) => (a.date > b.date ? 1 : -1));
+    const data = this.state.image.data
+    const imageId = this.state.user.imageId;
 
     const serviceDiv = (
       <div className='table table-hover table-responsive '>
@@ -118,10 +130,24 @@ class Profile extends React.Component {
       </div>
     );
     return (
-      <div>
-        <div className='profile'>
-          <div class='text-uppercase'>
-            <h3>{user.name}</h3>
+      <div className='container'>
+        <div className="row profile">
+          <div className="col-md-6">
+
+            {  data ?
+              <img class="profile-pic rounded-circle" src={`data:image/jpeg;base64,${data}`} /> :
+              <FaUserCircle color="gray"size='13rem'/>}
+
+          </div>
+          <div className="col-md-6">
+            <ProfilePic />
+          </div>
+        </div>
+
+        <div>
+          <div>
+            
+          <h3 class='text-uppercase'>{user.name}</h3>
           </div>
           <hr></hr>
           <div class='font-weight-bold'>
@@ -132,6 +158,8 @@ class Profile extends React.Component {
         <hr></hr>
         {sortedPosts.length === 0 || serviceDiv}
         {sortedBookings.length === 0 || bookingDiv}
+    
+
       </div>
     );
   }
