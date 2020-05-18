@@ -39,6 +39,12 @@ public class Post extends AuditModel {
     @Column(name = "time")
     private String time;
 
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
     @Column(name = "place")
     private String place;
 
@@ -72,6 +78,22 @@ public class Post extends AuditModel {
 
     public void setAttendeesLimit(int attendeesLimit) {
         this.attendeesLimit = attendeesLimit;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public List<User> getAttendees() {

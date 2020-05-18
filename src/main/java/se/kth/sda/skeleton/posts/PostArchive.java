@@ -37,7 +37,7 @@ public class PostArchive {
                 int hyphenIndex = completePostTime.indexOf("-");
                 String postTime = completePostTime.substring(0, hyphenIndex);
 
-                postTime = postTime.replace("am", "AM").replace("pm","PM");
+//                postTime = postTime.replace("am", "AM").replace("pm","PM");
 
                 DateTimeFormatter parser = DateTimeFormatter.ofPattern("h[:mm]a");
                 LocalTime postTimePart = LocalTime.parse(postTime, parser);
