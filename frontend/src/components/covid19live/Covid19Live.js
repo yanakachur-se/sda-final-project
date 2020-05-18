@@ -55,8 +55,7 @@ function Covid19Live() {
         <Card
           text="black"
           className="text-center"
-          style={{ margin: "10px", backgroundColor: "#ffc107" }}
-        >
+          style={{ margin: "10px", backgroundColor: "#ffc107" }}>
           <Card.Body>
             <Card.Title>Cases</Card.Title>
             <Card.Text>{latest.cases}</Card.Text>
