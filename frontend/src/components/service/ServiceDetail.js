@@ -11,6 +11,8 @@ import Col from 'react-bootstrap/Col';
 import '../../style/ServiceDetail.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faClock } from '@fortawesome/free-solid-svg-icons';
+import { Map, Popup, TileLayer, Marker, Circle } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 var getLocalTime = function (stringDate) {
   let localTime = moment.utc(stringDate);
@@ -37,6 +39,8 @@ function ServiceDetail(props) {
     time: '',
     place: '',
     attendees: [{ email: '' }],
+    latitude: '',
+    longitude: '',
   };
 
   const postId = props.match.params.id;
@@ -50,6 +54,8 @@ function ServiceDetail(props) {
   const [time, setTime] = React.useState('');
   const [place, setPlace] = React.useState('');
   const [edit, setEdit] = useState(false);
+  const [latitude, setLatitude] = React.useState('');
+  const [longitude, setLongitude] = React.useState('');
 
   const handleSubmit = (event) => {
     const onSubmit = {
@@ -61,12 +67,13 @@ function ServiceDetail(props) {
       date: date,
       time: time,
       place: place,
+      latitude: latitude,
+      longitude: longitude,
     };
     updatePost(onSubmit);
     window.location.reload();
   };
 
-  console.log(description);
   const deleteAlert = () => {
     swal({
       title: 'Are you sure?',
@@ -162,6 +169,18 @@ function ServiceDetail(props) {
     }
   }
 
+  React.useEffect(() => {
+    const L = require('leaflet');
+
+    delete L.Icon.Default.prototype._getIconUrl;
+
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+      iconUrl: require('leaflet/dist/images/marker-icon.png'),
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+    });
+  }, []);
+
   const editButton = (
     <Col xs={2}>
       <button
@@ -254,6 +273,9 @@ function ServiceDetail(props) {
     post.status === 'FULL' &&
     post.user.email !== email;
 
+  let coordinates = `${post.latitude}, ${post.longitude}`;
+  let coordinatesArray = [post.latitude, post.longitude];
+
   return (
     <div className='card'>
       <h5 className='card-header'>{edit || 'Organizer: ' + post.user.name}</h5>
@@ -341,6 +363,29 @@ function ServiceDetail(props) {
             {visitorView &&
               'Only ' + seatsLeft + ' seats left! Smash the button above!'}
             {attendeeView && ' ' + 'Thank you for booking! :)'}
+            {attendeeView && (
+              <div className='mt-3'>
+                <span className='d-inline-block'>
+                  {edit || 'Please save the coordinates: ' + coordinates}
+                </span>
+              </div>
+            )}
+            {!visitorView && (
+              <Map
+                center={coordinatesArray}
+                zoom={13}
+               >
+                <TileLayer
+                  url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={coordinatesArray} key={post.id}>
+                  <Popup>
+                    <span>Coordinates: {coordinatesArray}</span>
+                  </Popup>
+                </Marker>
+              </Map>
+            )}
             {showYouMissTheLastSeat &&
               ' ' + 'Sorry, you missed the last seat :)'}
           </div>
