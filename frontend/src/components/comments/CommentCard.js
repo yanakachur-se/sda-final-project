@@ -105,7 +105,7 @@ function CommentCard(props) {
         <small className='text-muted'> <p> {edit || 'Updated ' + moment.utc(props.comment.updatedAt).format('ddd, MMMM Do YYYY')}</p> </small>
         </div>
         <Container>
-          <Row>
+          <Row className="mb-2" >
             {showEditButton && editButton}
             {showDeleteButton && deleteButton}
             {showSaveButton && saveButton}
