@@ -47,6 +47,9 @@ function Navbar({ onLogout }) {
               <NavDropdown.Item href="/service?service=Outdoor Yoga">
                 Outdoor Yoga
               </NavDropdown.Item>
+              <NavDropdown.Item href="/service?service=haircut">
+                Outdoor Haircut
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/service?service=all">
                 All Services
@@ -73,7 +76,7 @@ function Navbar({ onLogout }) {
 
           <li className="nav-item">
             <Link className="nav-link text-uppercase" to="/profile">
-              Profile
+              My Profile
             </Link>
           </li>
 

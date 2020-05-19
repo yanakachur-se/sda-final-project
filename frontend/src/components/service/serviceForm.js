@@ -122,10 +122,11 @@ class serviceForm extends Component {
               className='form-control'
               value={this.state.serviceType}
               onChange={this.handleServiceTypeChange}>
-              <option value='outdoorYoga'>Outdoor Yoga</option>
               <option value='groupTraining'>Group Training</option>
-              <option value='meditation'>Meditation</option>
               <option value='groupRun'>Group Run</option>
+              <option value='meditation'>Meditation</option>
+              <option value='haircut'>Outdoor Haircut</option>
+              <option value='outdoorYoga'>Outdoor Yoga</option>
               <option value='soccer'>Soccer</option>
             </select>
           </div>
@@ -138,10 +139,10 @@ class serviceForm extends Component {
               value={this.state.place}
               onChange={this.handlePlaceChange}>
               <option value='Solna'>Solna</option>
-              <option value='Stockholm'>Stockholm</option>
               <option value='Sundbyberg'>Sundbyberg</option>
               <option value='Täby'>Täby</option>
               <option value='Sollentuna'>Sollentuna</option>
+              <option value='Stockholm'>Stockholm</option>
             </select>
           </div>
         </div>
