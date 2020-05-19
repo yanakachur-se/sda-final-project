@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import "../../style/Footer.css";
 
 function Footer() {
@@ -30,9 +30,9 @@ function Footer() {
                 FAQ
               </a>{" "}
               <br></br>
-              <a href="/Chat" className="footer-links">
+              <Link className="footer-links" to="localhost:3001">
                 Chat
-              </a>
+              </Link>
             </div>
           </div>
 

@@ -55,10 +55,11 @@ function Navbar({ onLogout }) {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link text-uppercase" to="/chat">
-              chat
+            <Link className="nav-link text-uppercase" to="/serviceform">
+              Service Form
             </Link>
           </li>
+
           <li className="nav-item">
             <Link className="nav-link text-uppercase" to="/covid19live">
               Covid19Live
@@ -73,12 +74,6 @@ function Navbar({ onLogout }) {
           <li className="nav-item">
             <Link className="nav-link text-uppercase" to="/profile">
               Profile
-            </Link>
-          </li>
-
-          <li className="nav-item">
-            <Link className="nav-link text-uppercase" to="/serviceform">
-              Service Form
             </Link>
           </li>
 
