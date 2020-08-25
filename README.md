@@ -1,24 +1,28 @@
-# Ways of running small & medium business during Covid 19 Pandemic
+# About MeetOut project
+Final group project within KTH Royal Institute of Technology in Stockholm Software Development Academy. Awarded for the highest technical ambition.
 
-This web starter template is based on Spring, PostgreSQL, React, React router and Axios. Check the following links for documentation and guides:
+Client-server application for booking services. Main features: 
+- CRUD events 
+- Booking events
+- Updating events statuses (active / fully booked / archived)
+- Display list of event participant users
+- Map location, markup for text description for events posting
+- Email notifications to participants about event updates  
+- Sorting (by date) and filtering (by categories) event lists 
+- User profile with profile image and list of events published / booked
 
-- [Spring](https://spring.io/projects/spring-boot)
-- [PostgreSQL](https://www.postgresql.org)
-- [React](https://reactjs.org)
-- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
-- [Axios](https://github.com/axios/axios)
+# Contributors
+Yana Kachur, Yingtong Ding, Viji Radhakrishnan, Igor Truchlik, Manju Lata Arya, Mehwish Roohan, Maria Lucia Gubolin
+
+# Technical stack
+Based on Java/Spring, PostgreSQL, Hibernate, Javascript/React.js, React router and Axios, Bootstrap. 
+
+## Third-party libraries used
+- Moment.js
+- Draft.js 
+- Leaflet.js
 
 ## Setup
-
-Our development environment for a full-stack web application will consist of three main parts:
-
-1. Database (Postgres).
-2. Backend server (Spring).
-3. Frontend development server (React).
-
-We will need to set up and start these three components in the order above for everything to work.
-
-### Prerequisites
 
 - Install `docker` and `docker-compose`.
 - Install `Nodejs`.
@@ -42,19 +46,3 @@ To install the project dependencies for the frontend, open the terminal and make
 To start the frontend server run `npm start` from the `frontend` directory. Make sure that database and backend server are also running so that the frontend can interact with the backend.
 When working on the frontend, open the `frontend` folder in your favorite Javascript IDE.  
 
-### Inviting collaborators
-
-The following should be done by one person in each group.
-
-Now that you have a repo, you can start inviting your group members as collaborators so that they can work
-with you on your repo. Go to `Settings` -> `Members` and then add your group members via their usernames.
-
-## FAQ
-
-### How can I connect to running database from terminal
-
-Sometimes you might want to inspect the tables, run raw queries, seed the database, check that a certain backend action has been performed correctly. To do that you can simply run the following command
-
-`docker run -it --network host postgres:11-alpine psql -h localhost -U skeleton_user -p 5433 -W skeleton`
-
-Use the password specified in `docker-compose.yaml`.
